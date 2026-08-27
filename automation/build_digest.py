@@ -68,6 +68,12 @@ ADSENSE_SLOTS = {
     "top": os.environ.get("ADSENSE_SLOT_TOP", ""),
     "mid": os.environ.get("ADSENSE_SLOT_MID", ""),
     "bottom": os.environ.get("ADSENSE_SLOT_BOTTOM", ""),
+    # 본문 좌우 사이드 레일 광고 — 넓은 화면에서만 보인다(docs/css/style.css의
+    # .side-rail 참고). 슬롯을 아직 하나만 만들었다면 같은 값을 양쪽에 등록해도
+    # 동작은 하지만(정상), 애드센스 리포트에서 좌/우를 구분해서 보고 싶으면
+    # 나중에 슬롯을 하나 더 만들어 등록하면 된다.
+    "left": os.environ.get("ADSENSE_SLOT_LEFT", ""),
+    "right": os.environ.get("ADSENSE_SLOT_RIGHT", ""),
 }
 
 
@@ -167,6 +173,18 @@ def _ad_slot(position: str) -> str:
   <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
 </div>"""
     return '<div class="ad-slot">광고 영역 — 애드센스 승인 후 이 자리에 표시됩니다 (MY_SETUP_CHECKLIST.md 참고)</div>'
+
+
+def _ad_side(position: str) -> str:
+    """본문 좌우의 사이드 레일 광고. 넓은 화면에서만 보이고(모바일은
+    docs/css/style.css의 미디어 쿼리로 숨김), 슬롯이 없으면 빈 자리만 잡는다."""
+    slot = ADSENSE_SLOTS.get(position, "")
+    if ADSENSE_CLIENT_ID and slot:
+        inner = f"""<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="{ADSENSE_CLIENT_ID}" data-ad-slot="{slot}"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>"""
+    else:
+        inner = ""
+    return f'<aside class="side-rail {position}">{inner}</aside>'
 
 
 def _onesignal_snippet() -> str:
@@ -312,6 +330,8 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
     top_ad = "" if (for_email or embeddable) else _ad_slot("top")
     mid_ad = "" if (for_email or embeddable) else _ad_slot("mid")
     bottom_ad = "" if (for_email or embeddable) else _ad_slot("bottom")
+    left_side = "" if (for_email or embeddable) else _ad_side("left")
+    right_side = "" if (for_email or embeddable) else _ad_side("right")
     header_nav = "" if for_email else f"""<header>
   <div class="header-inner">
     <a class="logo" href="./"><span class="logo-mark">🎯</span>지원금헌터</a>
@@ -377,7 +397,9 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
   <a class="btn-secondary" href="https://smilemaskl.github.io/" target="_blank" rel="noopener">바로가기</a>
 </div>"""
 
-    body_main = f"""<main>
+    body_main = f"""<div class="page-shell">
+{left_side}
+<main>
 {stat_bar}
 {subscribe_html}
 {top_ad}
@@ -395,7 +417,9 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
 {f'<div id="intl">{intl_section}</div>' if intl_section else ""}
 {related_site}
 {bottom_ad}
-</main>""" if not for_email else f"""
+</main>
+{right_side}
+</div>""" if not for_email else f"""
 {top_ad}
 <h2 class="section-title">🔥 오늘의 마감임박 TOP {len(top)}</h2>
 <div class="digest-grid">

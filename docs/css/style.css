@@ -127,6 +127,32 @@ nav a:hover { color: var(--primary); background: var(--accent-bg); }
 /* ---------- 레이아웃 ---------- */
 main { max-width: 880px; margin: 0 auto; padding: 0 20px 64px; }
 
+/* ---------- 양쪽 사이드 광고 레일 ---------- */
+/* 넓은 화면에서만 본문 좌우에 광고를 띄운다. 화면이 좁으면(사이드에 놓을
+   공간이 부족하면) 완전히 숨겨서 본문을 가리거나 찌그러뜨리지 않는다. */
+.page-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) min(880px, 100%) minmax(0, 1fr);
+  column-gap: 20px;
+  align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.page-shell > main { grid-column: 2; max-width: none; margin: 0; }
+
+.side-rail {
+  position: sticky;
+  top: 84px;
+  width: 160px;
+  min-height: 300px;
+}
+.side-rail.left { grid-column: 1; justify-self: end; }
+.side-rail.right { grid-column: 3; justify-self: start; }
+
+@media (max-width: 1300px) {
+  .side-rail { display: none; }
+}
+
 /* 히어로는 라이트/다크 모드와 무관하게 항상 어두운 배경 — awwwards류 쇼케이스
    사이트처럼 "임팩트 있는 첫 화면"을 만들려는 의도. 아래 본문은 계속
    salary-calculator와 같은 밝은 카드 시스템을 쓴다(다크모드 토글은 본문에만 적용). */
