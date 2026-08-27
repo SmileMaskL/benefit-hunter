@@ -30,18 +30,26 @@
 
 1. [search.google.com/search-console](https://search.google.com/search-console/welcome) 접속 → 구글 계정으로 로그인
 2. 속성 유형에서 **"URL 접두어"** 선택 → `https://smilemaskl.github.io/benefit-hunter/` 입력
-3. 소유권 확인 방법 중 **"HTML 태그"** 선택 → `<meta name="google-site-verification" content="....">` 형태의 코드가 나온다 → `content="..."` 안의 값만 복사
-4. GitHub 저장소 **Settings → Secrets and variables → Actions → Variables
-   탭 → New repository variable**:
-   - 이름: `GOOGLE_SITE_VERIFICATION`
-   - 값: 방금 복사한 값
-5. 다음 자동 발행(또는 Actions 탭에서 수동 실행) 후, Search Console
-   화면에서 **"확인"** 버튼 클릭 → 성공하면 소유권 확인 완료
-6. 왼쪽 메뉴 **"Sitemaps"** → `sitemap.xml` 입력 → 제출
-   (`https://smilemaskl.github.io/benefit-hunter/sitemap.xml`이 실제로
-   제출되는 주소)
-7. **"URL 검사"** 메뉴에 메인 페이지 주소를 넣고 **"색인 생성 요청"**을
-   누르면 훨씬 빨리(보통 며칠 내) 색인이 시작된다
+3. **(2026-08-27 실제 확인)** 이 계정으로 `https://smilemaskl.github.io/`
+   (salary-calculator)가 이미 검증된 상태라서, 구글이 하위 경로도 자동으로
+   같은 소유자로 인식해 **HTML 태그 복사 없이 바로 확인 팝업이 뜨고
+   즉시 소유권 확인이 끝났다.** 이 경우 `GOOGLE_SITE_VERIFICATION`
+   변수는 필요 없다. (혹시 자동으로 안 되고 HTML 태그 코드가 나오는
+   계정이라면, `content="..."` 값만 복사해서 GitHub 저장소 Settings →
+   Secrets and variables → Actions → Variables에 `GOOGLE_SITE_VERIFICATION`
+   으로 등록하면 된다 — 코드는 이미 준비돼 있다)
+4. 소유권 확인이 끝나면 개요(대시보드) 화면으로 이동한다. **여기서부터
+   할 일**:
+   - 왼쪽 메뉴 **"색인생성" → "Sitemaps"** 클릭 → 입력창에
+     `sitemap.xml`만 입력(속성 주소 뒤에 자동으로 붙어
+     `https://smilemaskl.github.io/benefit-hunter/sitemap.xml`이 됨) →
+     **제출**
+   - 왼쪽 메뉴 **"URL 검사"** 클릭 → 상단 검색창에
+     `https://smilemaskl.github.io/benefit-hunter/` 붙여넣고 검사 →
+     결과가 나오면 **"색인 생성 요청"** 버튼 클릭
+   - 개요 화면의 "실적"/"색인생성" 카드에 "데이터를 처리하는 중이므로
+     며칠 후에 다시 확인해 보세요"라고 뜨는 건 **정상**이다(오류 아님) —
+     처음 등록하면 항상 이렇게 뜨고, 보통 며칠~2주 뒤부터 데이터가 쌓인다
 
 ---
 
