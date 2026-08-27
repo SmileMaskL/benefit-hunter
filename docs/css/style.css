@@ -313,6 +313,8 @@ main { max-width: 880px; margin: 0 auto; padding: 0 20px 64px; }
 .ad-slot {
   max-width: 728px;
   min-height: 90px;
+  max-height: 280px;
+  overflow: hidden;
   border: 1px dashed var(--border);
   border-radius: var(--radius);
   display: flex;
@@ -323,6 +325,9 @@ main { max-width: 880px; margin: 0 auto; padding: 0 20px 64px; }
   margin: 28px auto;
   background: var(--card-bg);
 }
+/* 애드센스 자바스크립트가 "반응형 광고"용으로 자체적으로 큰 높이를
+   예약해버리는 경우가 있어서, 승인 전 빈 상태에서 너무 크게 부풀지
+   않도록 상한선(max-height)을 걸어둔다. */
 /* 히어로 바로 아래 — 스크롤 없이 보이는, 가장 먼저 눈에 띄는 광고 자리 */
 .ad-slot.prominent {
   max-width: 880px;
