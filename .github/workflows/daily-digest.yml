@@ -49,6 +49,9 @@ jobs:
           NAVER_SITE_VERIFICATION: ${{ vars.NAVER_SITE_VERIFICATION }}
           KAKAO_ID: ${{ vars.KAKAO_ID }}
           KAKAO_OPENCHAT_URL: ${{ vars.KAKAO_OPENCHAT_URL }}
+          AFFILIATE_BANNER_URL: ${{ vars.AFFILIATE_BANNER_URL }}
+          AFFILIATE_BANNER_TEXT: ${{ vars.AFFILIATE_BANNER_TEXT }}
+          AFFILIATE_DISCLOSURE: ${{ vars.AFFILIATE_DISCLOSURE }}
         run: python build_digest.py
         working-directory: automation
 
