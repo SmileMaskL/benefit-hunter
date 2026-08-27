@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>지원금헌터 — 지난 발행 검색</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: -apple-system, "Malgun Gothic", sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
+  input { width: 100%; padding: .6rem; font-size: 1rem; box-sizing: border-box; margin-bottom: 1rem; }
+  li { margin-bottom: .5rem; }
+  .date { color: #888; font-size: .8rem; }
+</style>
+</head>
+<body>
+<h1>지난 발행 검색</h1>
+<p><a href="../">오늘의 다이제스트로 돌아가기</a></p>
+<input id="q" type="search" placeholder="예: 청년, 대구, 창업 ...">
+<ul id="results"></ul>
+<script>
+  let data = [];
+  fetch('../search-index.json').then(r => r.json()).then(d => { data = d; render(''); });
+  function render(query) {
+    const q = query.trim().toLowerCase();
+    const filtered = q ? data.filter(row =>
+      row.title.toLowerCase().includes(q) ||
+      row.agency.toLowerCase().includes(q) ||
+      (row.tags || []).some(t => t.toLowerCase().includes(q))
+    ) : data;
+    const ul = document.getElementById('results');
+    ul.innerHTML = filtered.slice(0, 200).map(row =>
+      `<li><span class="date">${row.date}</span> — <a href="${row.url}">${row.title}</a> (${row.agency})</li>`
+    ).join('') || '<li>결과가 없습니다.</li>';
+  }
+  document.getElementById('q').addEventListener('input', e => render(e.target.value));
+</script>
+</body>
+</html>
