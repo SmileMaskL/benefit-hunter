@@ -115,13 +115,6 @@ SUMMARY:[마감] 2026년 성장플러스 창업사업화 지원사업 참여기�
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178622
 END:VEVENT
 BEGIN:VEVENT
-UID:4f1d38ddfaa7fc24c58e2e8e604c8a93@benefit-hunter
-DTSTAMP:20260904T000000Z
-DTSTART;VALUE=DATE:20260904
-SUMMARY:[마감] 2026년 전남농공단지 기업맞춤형 특화지원사업 수혜기업 모집 공고 (전남광주통합특별시)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000125876
-END:VEVENT
-BEGIN:VEVENT
 UID:d285c84033d812c9831598d12d5abb93@benefit-hunter
 DTSTAMP:20260906T000000Z
 DTSTART;VALUE=DATE:20260906
@@ -239,6 +232,13 @@ DTSTAMP:20260930T000000Z
 DTSTART;VALUE=DATE:20260930
 SUMMARY:[마감] 2026년 2차 스마트상점 기술보급사업 참여 소상공인 모집 공고(구입형ㆍ렌탈형ㆍS/W형) (중소벤처기업부)
 URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000125880
+END:VEVENT
+BEGIN:VEVENT
+UID:9a949f244508376b44b7235eff39cecf@benefit-hunter
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20260930
+SUMMARY:[마감] 제주시 2026년 지역연고자원을 활용한 치유산업 육성 및 활성화 지원사업 기술고도화 컨설팅 지원 수혜기업 모집 공고(시군구연고산업육성사업) (중소벤처기업부)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000125878
 END:VEVENT
 BEGIN:VEVENT
 UID:407c4367db37b50ad58cbeb2b13ed752@benefit-hunter
