@@ -16,6 +16,9 @@
 | **개인화(유료 전용) 필터링** | `automation/send_email_brevo.py`의 `personalize_html` | `subscribers.csv`에 `tier=paid`이고 `region`/`tags`를 채운 구독자만 그 조건에 맞는 공고만 골라 받는다. `tier=free`는 항상 전체 다이제스트 — MONETIZATION.md의 "맞춤 필터는 유료 전용" 설계를 코드로 그대로 구현한 것 |
 | **국내 체류 외국인 창업가용 영문 섹션** | `common.is_english_title` → `build_digest.render_html`의 "🌐" 섹션 | 번역 없이도 K-Startup 원문 중 한글이 전혀 없는 공고(실제로 "Startup Korea Special Visa" 등 존재 확인됨)를 따로 모아 보여줌 |
 | **브라우저 푸시(OneSignal) 연동 코드** | `build_digest.py`의 `_onesignal_snippet`, `automation/notify_onesignal.py` | `ONESIGNAL_APP_ID`/`ONESIGNAL_API_KEY`를 설정하면 자동으로 켜짐. 코드는 완성했지만 **OneSignal 자체 가입/무료한도는 아직 실계정으로 검증 못 함** — 아래 "도입 전 재확인" 참고 |
+| **웹페이지 구독 신청 폼** | `docs/index.html`의 구독 박스 | 지금까지는 "발행 결과물을 보여주는 사이트"였을 뿐 방문자가 그 자리에서 구독할 방법이 없었다 — 지금은 메일 신청 임시 폼이 떠 있고, Brevo 연동 후 진짜 폼으로 교체 예정(MY_SETUP_CHECKLIST.md 9번) |
+| **개인정보처리방침 페이지** | `docs/privacy.html` | 이메일을 수집하는 이상 최소한의 고지가 필요해서 템플릿을 만들어뒀다. 운영자 정보만 채우면 됨(자동 생성 파일이 아니라 덮어써지지 않음) |
+| **SEO/공유 최적화** | `render_html`의 OG 태그·`<meta name="description">`, `docs/robots.txt`, `docs/sitemap.xml` | 카카오톡/트위터 등에 링크를 공유했을 때 미리보기가 제대로 뜨게 하고, 검색엔진 색인도 유도한다 — salary-calculator와 동일한 관례를 따름 |
 
 ## ⚠️ 의도적으로 넣지 않은 것 (검증 결과 "무료"가 아니었음)
 

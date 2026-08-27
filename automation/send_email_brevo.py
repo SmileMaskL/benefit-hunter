@@ -78,7 +78,7 @@ def personalize_html(entries: list[dict], today: date_cls, region_csv: str, tags
         e for e in entries
         if any(matches_subscriber_filters(e, r, tags) for r in (regions or [""]))
     ]
-    return render_html(filtered or entries, today)  # 필터링 결과가 0건이면 실망시키지 않게 전체를 대신 보냄
+    return render_html(filtered or entries, today, for_email=True)  # 0건이면 실망시키지 않게 전체를 대신 보냄
 
 
 def send_one(api_key: str, to_email: str, to_name: str, subject: str, html: str) -> bool:

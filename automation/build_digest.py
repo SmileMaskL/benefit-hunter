@@ -81,7 +81,20 @@ def _onesignal_snippet() -> str:
 </script>"""
 
 
-def render_html(entries: list[dict], today: date, *, embeddable: bool = False) -> str:
+SUBSCRIBE_BOX = """
+<div style="border:2px solid #1a56db;border-radius:8px;padding:1rem;margin:1.5rem 0;">
+  <strong>📬 매일 아침, 이 페이지를 이메일로 받아보세요</strong>
+  <p style="margin:.5rem 0;font-size:.9rem;">
+    <!-- TODO(운영자): Brevo 가입 후 "웹 폼" 임베드 코드로 이 블록을 통째로
+         교체할 것 (MY_SETUP_CHECKLIST.md 참고). 그 전까지는 메일로 신청받는
+         임시 방식으로 동작한다. -->
+    아래 메일로 "구독 신청"이라고 보내주시면 등록해드립니다:
+    <a href="mailto:{contact}?subject=지원금헌터%20구독신청">{contact_display}</a>
+  </p>
+</div>"""
+
+
+def render_html(entries: list[dict], today: date, *, embeddable: bool = False, for_email: bool = False) -> str:
     # entries는 이미 "날짜 있는 건 먼저, 마감 임박순"으로 정렬돼 있으므로
     # 앞쪽 TOP_N개를 그대로 잘라 쓰면 된다.
     top = entries[:TOP_N]
@@ -116,12 +129,26 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False) -
 </ul>""" if intl else ""
 
     widget_link = f"{PAGES_URL}/widget.html" if PAGES_URL else "widget.html"
+    page_url = f"{PAGES_URL}/" if PAGES_URL else ""
+    top_title = top[0]["title"] if top else "오늘의 지원사업"
+    description = f"마감임박 D-{top[0]['days_left']}: {top_title[:60]}" if top and top[0]["days_left"] is not None else "정부·지자체 지원금·지원사업 마감임박 데일리 큐레이션"
+    og_tags = f"""
+<meta property="og:title" content="지원금헌터 — {today.isoformat()}">
+<meta property="og:description" content="{escape(description)}">
+<meta property="og:type" content="website">
+{f'<meta property="og:url" content="{escape(page_url)}">' if page_url else ''}
+<link rel="alternate" type="application/rss+xml" title="지원금헌터 RSS" href="feed.xml">""" if not for_email else ""
+    subscribe_html = "" if (for_email or embeddable) else SUBSCRIBE_BOX.format(
+        contact=CONTACT_EMAIL or "미설정",
+        contact_display=CONTACT_EMAIL or "(운영자가 SENDER_EMAIL을 아직 설정하지 않았습니다)",
+    )
 
     return f"""<!doctype html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <title>지원금헌터 — {today.isoformat()} 마감임박 지원사업</title>
+<meta name="description" content="{escape(description)}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   body {{ font-family: -apple-system, "Malgun Gothic", sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }}
@@ -130,7 +157,7 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False) -
   li {{ margin-bottom: .6rem; }}
   a {{ color: #1a56db; }}
   .updated {{ color: #666; font-size: .85rem; }}
-</style>
+</style>{og_tags}
 {_onesignal_snippet()}
 </head>
 <body>
@@ -138,7 +165,7 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False) -
 <p class="updated">매일 아침 GitHub Actions가 자동으로 갱신합니다 (PC를 꺼도 계속 발행됩니다).
 RSS: <a href="feed.xml">feed.xml</a> · 캘린더: <a href="deadlines.ics">deadlines.ics</a> ·
 <a href="{widget_link}">내 블로그에 위젯 심기</a> · <a href="archive/">지난 발행 검색</a></p>
-
+{subscribe_html}
 <h2>🔥 오늘의 마감임박 TOP {len(top)}</h2>
 <ul>
 {top_html or "<li>표시할 항목이 없습니다.</li>"}
@@ -150,7 +177,7 @@ RSS: <a href="feed.xml">feed.xml</a> · 캘린더: <a href="deadlines.ics">deadl
 </ul>
 {intl_section}
 <hr>
-<p style="font-size:.75rem;color:#888">지원금헌터{f' · 문의/수신거부: {escape(CONTACT_EMAIL)}로 회신' if CONTACT_EMAIL else ''} · 이 메일은 구독 신청하신 분께만 발송됩니다.</p>
+<p style="font-size:.75rem;color:#888">지원금헌터{f' · 문의/수신거부: {escape(CONTACT_EMAIL)}로 회신' if CONTACT_EMAIL else ''} · <a href="{page_url}privacy.html">개인정보처리방침</a> · 이 메일은 구독 신청하신 분께만 발송됩니다.</p>
 </body>
 </html>"""
 
@@ -214,7 +241,7 @@ def render_email(entries: list[dict], today: date) -> tuple[str, str]:
         f"[지원금헌터] 오늘 마감 D-{top[0]['days_left']}, {top[0]['title'][:20]} 외 {max(count - 1, 0)}건"
         if top else f"[지원금헌터] {today.isoformat()} 소식"
     )
-    html = render_html(entries, today)  # 이메일 본문도 웹 페이지와 동일한 내용으로 재사용
+    html = render_html(entries, today, for_email=True)  # 이메일 본문 — 구독 유도 박스는 뺀다(이미 구독자니까)
     return subject, html
 
 

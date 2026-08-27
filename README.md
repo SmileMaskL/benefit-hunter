@@ -5,6 +5,16 @@
 파이프라인으로 발행 → 구독자·오픈율이 쌓이면 맞춤 필터/마감 리마인더를 유료
 프리미엄으로 전환한다.
 
+> **2026-08-27 (3번째)**: 실제로 GitHub 저장소를 만들고(Public) Pages를
+> 켜서 **https://smilemaskl.github.io/benefit-hunter/ 를 라이브로
+> 띄웠다.** GitHub Actions 수동 실행으로 전체 파이프라인이 클라우드에서
+> 성공하는 것까지 확인함. 추가로 웹페이지 구독 신청 폼, 개인정보처리방침
+> 페이지(`docs/privacy.html`), 소셜 공유용 OG 태그, `robots.txt`/
+> `sitemap.xml`을 새로 만들었다 — 지금까지는 "발행물을 보여주기만" 했지
+> 방문자가 그 자리에서 구독할 방법이 없었다는 공백을 메운 것. 남은 설정은
+> [MY_SETUP_CHECKLIST.md](MY_SETUP_CHECKLIST.md)에서 완료 상태(✅/⬜)로
+> 관리한다.
+>
 > **2026-08-27 (2번째)**: "PC를 꺼도 평생 무료로 돌아가게 해달라"는 요청에
 > 따라 실제로 자동화 파이프라인을 만들고 라이브 데이터로 테스트까지
 > 끝냈다. 그 과정에서 원래 계획이던 **Stibee 무료 플랜은 API/자동 발송을
@@ -71,18 +81,19 @@
 3. **5~8주차**: 오픈율 안정화(목표 35%+), 구독자 500~1,000명 도달 시 [MONETIZATION.md](MONETIZATION.md)의 유료 티어 오픈 검토
 4. **이후**: 유료 전용 맞춤 필터·마감 리마인더 도입, 지자체 소스 확장
 
-## 이 프로젝트를 어디서 확인할 수 있나
+## 이 프로젝트를 어디서 확인할 수 있나 (2026-08-27, 실제로 켜져 있음)
 
-| 확인하고 싶은 것 | 지금(푸시 전) | MY_SETUP_CHECKLIST.md 완료 후 |
-| --- | --- | --- |
-| 코드·문서 전체 | `D:\Lee\benefit-hunter` 폴더(지금 이 상태) | `https://github.com/SmileMaskL/<저장소명>` |
-| 실제로 도는지 (실행 로그) | 로컬에서 `python automation/build_digest.py` 직접 실행 | 저장소의 **Actions 탭** — 매일 실행 기록과 성공/실패, 로그가 남는다 |
-| 발행 결과물(오늘의 지원금 페이지) | `D:\Lee\benefit-hunter\docs\index.html`을 브라우저로 열기 | `https://smilemaskl.github.io/<저장소명>/` (PAGES_URL) |
-| 이메일이 실제 나갔는지 | (로컬 테스트는 키가 없으면 항상 스킵됨) | Brevo 대시보드의 **발송 로그(Transactional → Logs)** |
+| 확인하고 싶은 것 | 어디서 |
+| --- | --- |
+| 코드·문서 전체 | https://github.com/SmileMaskL/benefit-hunter (Public) — 로컬은 `D:\Lee\benefit-hunter` |
+| 실제로 도는지 (실행 로그) | 저장소의 **[Actions 탭](https://github.com/SmileMaskL/benefit-hunter/actions)** — 매일 KST 08시(평일) 자동 실행되고, 이미 1회 수동 실행으로 성공(success) 확인함 |
+| 발행 결과물(오늘의 지원금 페이지) | **https://smilemaskl.github.io/benefit-hunter/** — 실제 응답 확인함(HTTP 200) |
+| RSS / 캘린더 / 위젯 / 검색 | 위 주소에 각각 `feed.xml` / `deadlines.ics` / `widget.html` / `archive/` 추가 |
+| 이메일이 실제 나갔는지 | Brevo 설정(MY_SETUP_CHECKLIST.md 4번) 후 Brevo 대시보드의 **발송 로그(Transactional → Logs)** — 아직 키를 안 넣어서 지금은 스킵되는 상태 |
 
-지금은 로컬에만 있어서 "실제로 돌아가는 걸" 온라인에서 볼 수 있는 상태가
-아니다 — MY_SETUP_CHECKLIST.md의 1~4번(저장소 생성·Pages·PAGES_URL)까지
-끝나야 위 오른쪽 칸의 URL들이 실제로 생긴다.
+남은 설정(Brevo·구독자·웹훅·개인정보처리방침 내용)은
+[MY_SETUP_CHECKLIST.md](MY_SETUP_CHECKLIST.md)에서 진행 상태(✅/⬜)까지
+같이 관리한다.
 
 ## 브랜드명 — 지원금헌터
 
