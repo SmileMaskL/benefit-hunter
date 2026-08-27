@@ -16,6 +16,7 @@
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 from datetime import date
@@ -214,7 +215,11 @@ def render_ics(entries: list[dict]) -> str:
         if not e["deadline"]:
             continue
         dt = e["deadline"].strftime("%Y%m%d")
-        uid = f"{abs(hash(e['detail_url']))}@benefit-hunter"
+        # Python 내장 hash()는 프로세스마다 값이 달라져서(해시 랜덤화) 같은
+        # URL인데도 매일 실행마다 UID가 바뀌는 버그가 있었다 — 캘린더 앱은
+        # UID로 "같은 일정의 갱신"을 판단하므로, 안 바뀌는 md5로 바꿔서
+        # 아직 마감 안 된 같은 공고가 매일 새 일정으로 중복 추가되지 않게 한다.
+        uid = f"{hashlib.md5(e['detail_url'].encode('utf-8')).hexdigest()}@benefit-hunter"
         summary = _ics_escape(f"[마감] {e['title']} ({e['agency']})")
         events.append(
             f"""BEGIN:VEVENT
