@@ -84,10 +84,13 @@ AFFILIATE_BANNER_TEXT = os.environ.get("AFFILIATE_BANNER_TEXT", "")
 # 쿠팡 약관 + 공정위 추천보증 심사지침이 요구하는 필수 표시 문구.
 # 쿠팡파트너스가 아닌 다른 제휴(금융상품 등)를 걸 땐 AFFILIATE_DISCLOSURE로
 # 그 프로그램에 맞는 문구로 바꿔서 등록할 것.
-AFFILIATE_DISCLOSURE = os.environ.get(
-    "AFFILIATE_DISCLOSURE",
-    "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
-)
+# 주의: GitHub Actions 워크플로가 이 변수를 항상 env로 넘기기 때문에(값을
+# 안 채웠으면 빈 문자열로) os.environ.get(key, 기본값) 방식은 못 쓴다 —
+# 키가 "존재"만 해도(빈 값이어도) 기본값이 무시되고 빈 문자열이 반환돼서,
+# 법적으로 필수인 고지 문구가 조용히 사라지는 사고가 실제로 있었다. 그래서
+# 빈 문자열도 "안 채워진 것"으로 취급하는 or 방식으로 바꿨다.
+AFFILIATE_DISCLOSURE = os.environ.get("AFFILIATE_DISCLOSURE") or \
+    "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
 
 
 def build_entries(today: date) -> list[dict]:

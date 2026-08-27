@@ -43,8 +43,8 @@ BREVO_SEND_URL = "https://api.brevo.com/v3/smtp/email"
 # Brevo 무료 플랜 일일 한도(300통)를 절대 넘지 않도록 여유를 두고 캡을 건다.
 DAILY_SEND_CAP = int(os.environ.get("DAILY_SEND_CAP", "290"))
 SENDER = {
-    "email": os.environ.get("SENDER_EMAIL", "noreply@example.com"),
-    "name": os.environ.get("SENDER_NAME", "지원금헌터"),
+    "email": os.environ.get("SENDER_EMAIL") or "noreply@example.com",
+    "name": os.environ.get("SENDER_NAME") or "지원금헌터",
 }
 
 
