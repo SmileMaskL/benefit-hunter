@@ -34,9 +34,17 @@ jobs:
             echo "$SUBSCRIBERS_CSV_B64" | base64 -d > automation/subscribers.csv
           fi
 
-      - name: 오늘의 다이제스트 생성 (기업마당 + K-Startup 수집 → HTML/RSS/ICS/위젯/검색색인)
+      - name: 오늘의 다이제스트 생성 (기업마당 + K-Startup 수집 → HTML/RSS/ICS/위젯/검색색인/사이트맵)
         env:
           ONESIGNAL_APP_ID: ${{ secrets.ONESIGNAL_APP_ID }}
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          GA_MEASUREMENT_ID: ${{ vars.GA_MEASUREMENT_ID }}
+          ADSENSE_CLIENT_ID: ${{ vars.ADSENSE_CLIENT_ID }}
+          ADSENSE_SLOT_TOP: ${{ vars.ADSENSE_SLOT_TOP }}
+          ADSENSE_SLOT_MID: ${{ vars.ADSENSE_SLOT_MID }}
+          ADSENSE_SLOT_BOTTOM: ${{ vars.ADSENSE_SLOT_BOTTOM }}
+          GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
+          NAVER_SITE_VERIFICATION: ${{ vars.NAVER_SITE_VERIFICATION }}
         run: python build_digest.py
         working-directory: automation
 
@@ -72,3 +80,7 @@ jobs:
           git add docs/
           git diff --cached --quiet || git commit -m "chore: 오늘의 다이제스트 $(date -u +'%Y-%m-%d')"
           git push
+
+      - name: 네이버·Bing에 즉시 색인 요청 (IndexNow — PAGES_URL 없으면 자동으로 건너뜀)
+        run: python notify_indexnow.py
+        working-directory: automation

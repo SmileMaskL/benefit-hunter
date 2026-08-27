@@ -22,6 +22,13 @@ from datetime import date, datetime
 
 REGION_RE = re.compile(r"^\[([^\]]+)\]\s*")
 
+# IndexNow(네이버·Bing이 지원하는 즉시 색인 알림 프로토콜) 검증용 키.
+# 비밀값이 아니다 — 이 값을 담은 파일을 docs/{키}.txt로 공개 배포해서
+# "이 사이트의 관리자가 보낸 요청이 맞다"는 걸 증명하는 용도일 뿐이다.
+# build_digest.py가 이 키로 파일을 쓰고, notify_indexnow.py가 같은 키로
+# 핑을 보낸다.
+INDEXNOW_KEY = "74df0aedaa5bfc87859187d7d0a03f7b"
+
 # 소진시까지 등 고정 마감일이 없는 상시모집 표현
 ONGOING_MARKERS = ("소진", "상시", "예산 소진", "채용시", "선발시")
 

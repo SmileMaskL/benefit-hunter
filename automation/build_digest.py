@@ -32,7 +32,7 @@ from html import escape
 
 from collect_bizinfo import collect as collect_bizinfo
 from collect_kstartup import collect as collect_kstartup
-from common import days_left, guess_categories, today_kst
+from common import INDEXNOW_KEY, days_left, guess_categories, today_kst
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS_DIR = os.path.join(REPO_ROOT, "docs")
@@ -250,18 +250,41 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
 
     widget_link = f"{PAGES_URL}/widget.html" if PAGES_URL else "widget.html"
     page_url = f"{PAGES_URL}/" if PAGES_URL else ""
+    # index.html과 archive/YYYY-MM-DD.html은 발행 당일엔 내용이 완전히 같다
+    # (같은 html 문자열을 그대로 두 곳에 저장하기 때문). 검색엔진이 이걸
+    # "중복 콘텐츠"로 보지 않도록, 영구적으로 안 바뀌는 아카이브 쪽 주소를
+    # 정식 주소(canonical)로 지정한다 — index.html은 매일 내용이 바뀌는
+    # "오늘자 미리보기", 아카이브가 그날의 진짜 permalink라는 개념.
+    canonical_url = f"{page_url}archive/{today.isoformat()}.html" if page_url else f"archive/{today.isoformat()}.html"
     top_title = top[0]["title"] if top else "오늘의 지원사업"
     description = f"마감임박 D-{top[0]['days_left']}: {top_title[:60]}" if top and top[0]["days_left"] is not None else "정부·지자체 지원금·지원사업 마감임박 데일리 큐레이션"
     site_verification = (
         (f'<meta name="google-site-verification" content="{escape(GOOGLE_SITE_VERIFICATION)}">\n' if GOOGLE_SITE_VERIFICATION else "")
         + (f'<meta name="naver-site-verification" content="{escape(NAVER_SITE_VERIFICATION)}">\n' if NAVER_SITE_VERIFICATION else "")
     )
+    json_ld = ""
+    if not for_email and not embeddable and page_url:
+        item_list = [
+            {"@type": "ListItem", "position": i + 1, "url": e["detail_url"], "name": e["title"]}
+            for i, e in enumerate(entries[:10])
+        ]
+        ld = {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": f"지원금헌터 — {today.isoformat()}",
+            "url": canonical_url,
+            "description": description,
+            "mainEntity": {"@type": "ItemList", "itemListElement": item_list},
+        }
+        json_ld = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>'
     og_tags = f"""
-{site_verification}<meta property="og:title" content="지원금헌터 — {today.isoformat()}">
+{site_verification}<link rel="canonical" href="{escape(canonical_url)}">
+<meta property="og:title" content="지원금헌터 — {today.isoformat()}">
 <meta property="og:description" content="{escape(description)}">
 <meta property="og:type" content="website">
 {f'<meta property="og:url" content="{escape(page_url)}">' if page_url else ''}
-<link rel="alternate" type="application/rss+xml" title="지원금헌터 RSS" href="feed.xml">""" if not for_email else ""
+<link rel="alternate" type="application/rss+xml" title="지원금헌터 RSS" href="feed.xml">
+{json_ld}""" if not for_email else ""
     subscribe_html = "" if (for_email or embeddable) else SUBSCRIBE_BOX.format(
         contact=CONTACT_EMAIL or "미설정",
         contact_display=CONTACT_EMAIL or "(운영자가 SENDER_EMAIL을 아직 설정하지 않았습니다)",
@@ -536,6 +559,48 @@ def render_archive_index() -> str:
 </html>"""
 
 
+def render_sitemap(today: date) -> str:
+    """sitemap.xml을 실제 아카이브 파일 목록 기준으로 매번 새로 만든다.
+
+    이전엔 손으로 쓴 정적 sitemap.xml(URL 3개, lastmod 없음)이었다 — 검색
+    엔진에 "이 사이트에 매일 새 페이지가 쌓인다"는 신호를 정확히 주려면
+    실제로 존재하는 아카이브 페이지 전부와 정확한 최종수정일(lastmod)이
+    있어야 한다. sitemap 자체를 여러 개 등록한다고 검색 순위가 오르는 게
+    아니라, **이렇게 실제 콘텐츠를 빠짐없이·정확하게 담은 사이트맵 하나**가
+    중요하다(SEO_SETUP.md 참고).
+    """
+    base = f"{PAGES_URL}/" if PAGES_URL else "https://smilemaskl.github.io/benefit-hunter/"
+    urls = [(base, today, "daily", "1.0")]
+
+    archive_files = sorted(
+        f for f in os.listdir(ARCHIVE_DIR)
+        if f.endswith(".html") and f != "index.html"
+    ) if os.path.isdir(ARCHIVE_DIR) else []
+    for fname in archive_files:
+        try:
+            d = date.fromisoformat(fname[:-len(".html")])
+        except ValueError:
+            continue  # 예상 못한 파일명은 조용히 건너뜀
+        urls.append((f"{base}archive/{fname}", d, "never", "0.5"))
+
+    urls.append((f"{base}archive/", today, "daily", "0.6"))
+    urls.append((f"{base}privacy.html", today, "yearly", "0.2"))
+
+    entries_xml = "\n".join(
+        f"""  <url>
+    <loc>{escape(loc)}</loc>
+    <lastmod>{d.isoformat()}</lastmod>
+    <changefreq>{freq}</changefreq>
+    <priority>{prio}</priority>
+  </url>"""
+        for loc, d, freq, prio in urls
+    )
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{entries_xml}
+</urlset>"""
+
+
 def main() -> None:
     today = today_kst()
     entries = build_entries(today)
@@ -551,6 +616,14 @@ def main() -> None:
         f.write(html)
     with open(os.path.join(ARCHIVE_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(render_archive_index())
+
+    with open(os.path.join(DOCS_DIR, "sitemap.xml"), "w", encoding="utf-8") as f:
+        f.write(render_sitemap(today))
+
+    # IndexNow(네이버·Bing) 소유 검증용 키 파일 — notify_indexnow.py가 핑을
+    # 보낼 때 이 파일이 실제로 공개돼 있어야 검색엔진이 신뢰한다.
+    with open(os.path.join(DOCS_DIR, f"{INDEXNOW_KEY}.txt"), "w", encoding="utf-8") as f:
+        f.write(INDEXNOW_KEY)
 
     with open(os.path.join(DOCS_DIR, "widget.html"), "w", encoding="utf-8") as f:
         f.write(render_html(entries, today, embeddable=True))
