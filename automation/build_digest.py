@@ -180,12 +180,17 @@ def _adsense_head_snippet() -> str:
 
 def _ad_slot(position: str) -> str:
     slot = ADSENSE_SLOTS.get(position, "")
+    # top은 히어로 바로 아래, 스크롤 없이(또는 아주 조금만 스크롤해서) 보이는
+    # 자리라 PC·모바일 가리지 않고 가장 많은 사람이 보는 위치다. 사이드
+    # 레일(_ad_side)은 넓은 화면에서만 보여서 모바일 비중이 큰 트래픽에서는
+    # 오히려 top보다 노출이 훨씬 적다 — 그래서 top을 시각적으로도 강조한다.
+    css_class = "ad-slot prominent" if position == "top" else "ad-slot"
     if ADSENSE_CLIENT_ID and slot:
-        return f"""<div class="ad-slot">
+        return f"""<div class="{css_class}">
   <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="{ADSENSE_CLIENT_ID}" data-ad-slot="{slot}" data-ad-format="auto" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
 </div>"""
-    return '<div class="ad-slot">광고 영역 — 애드센스 승인 후 이 자리에 표시됩니다 (MY_SETUP_CHECKLIST.md 참고)</div>'
+    return f'<div class="{css_class}">광고 영역 — 애드센스 승인 후 이 자리에 표시됩니다 (MY_SETUP_CHECKLIST.md 참고)</div>'
 
 
 def _ad_side(position: str) -> str:
@@ -428,9 +433,9 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
     body_main = f"""<div class="page-shell">
 {left_side}
 <main>
+{top_ad}
 {stat_bar}
 {subscribe_html}
-{top_ad}
 <h2 class="section-title" id="top3">🔥 오늘의 마감임박 TOP {len(top)}</h2>
 <div class="digest-grid">
 {top_html or '<p>표시할 항목이 없습니다.</p>'}

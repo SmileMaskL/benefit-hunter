@@ -322,6 +322,13 @@ main { max-width: 880px; margin: 0 auto; padding: 0 20px 64px; }
   font-size: .82rem;
   margin: 28px auto;
   background: var(--card-bg);
+}
+/* 히어로 바로 아래 — 스크롤 없이 보이는, 가장 먼저 눈에 띄는 광고 자리 */
+.ad-slot.prominent {
+  max-width: 880px;
+  min-height: 120px;
+  border: 1px solid var(--primary);
+  box-shadow: var(--shadow-md);
   padding: 8px;
 }
 
