@@ -53,6 +53,12 @@ CONTACT_EMAIL = os.environ.get("SENDER_EMAIL", "")
 # "최대한 많이/자주 찾아오게" 전략과 방향이 같다. 승인 전엔 자리만 예약해둔다.
 GA_MEASUREMENT_ID = os.environ.get("GA_MEASUREMENT_ID", "")
 ADSENSE_CLIENT_ID = os.environ.get("ADSENSE_CLIENT_ID", "")
+# 구글/네이버 웹마스터 도구의 "HTML 태그" 소유확인 방식. 파일 업로드 방식 대신
+# 이걸 쓰는 이유: docs/는 매일 자동으로 통째로 다시 생성되므로, 검증 파일을
+# 手동으로 docs/에 넣어두면 다음 실행에 사라진다 — 환경변수(Variables)로 넣어야
+# 영구적으로 유지된다.
+GOOGLE_SITE_VERIFICATION = os.environ.get("GOOGLE_SITE_VERIFICATION", "")
+NAVER_SITE_VERIFICATION = os.environ.get("NAVER_SITE_VERIFICATION", "")
 ADSENSE_SLOTS = {
     "top": os.environ.get("ADSENSE_SLOT_TOP", ""),
     "mid": os.environ.get("ADSENSE_SLOT_MID", ""),
@@ -246,8 +252,12 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
     page_url = f"{PAGES_URL}/" if PAGES_URL else ""
     top_title = top[0]["title"] if top else "오늘의 지원사업"
     description = f"마감임박 D-{top[0]['days_left']}: {top_title[:60]}" if top and top[0]["days_left"] is not None else "정부·지자체 지원금·지원사업 마감임박 데일리 큐레이션"
+    site_verification = (
+        (f'<meta name="google-site-verification" content="{escape(GOOGLE_SITE_VERIFICATION)}">\n' if GOOGLE_SITE_VERIFICATION else "")
+        + (f'<meta name="naver-site-verification" content="{escape(NAVER_SITE_VERIFICATION)}">\n' if NAVER_SITE_VERIFICATION else "")
+    )
     og_tags = f"""
-<meta property="og:title" content="지원금헌터 — {today.isoformat()}">
+{site_verification}<meta property="og:title" content="지원금헌터 — {today.isoformat()}">
 <meta property="og:description" content="{escape(description)}">
 <meta property="og:type" content="website">
 {f'<meta property="og:url" content="{escape(page_url)}">' if page_url else ''}
@@ -273,37 +283,76 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
     scripts = "" if for_email else '<script src="js/common.js"></script>'
 
     body_count = f"오늘 마감임박 {len(top)}건 포함, 총 {len(entries)}건"
+    soonest = top[0]["days_left"] if top and top[0]["days_left"] is not None else None
+    giant = f"D-{soonest}" if soonest is not None else "NEW"
+    urgent_count = sum(1 for e in entries if e["days_left"] is not None and e["days_left"] <= 3)
+    startup_count = sum(1 for e in entries if "예비창업" in e["tags"])
+    biz_count = sum(1 for e in entries if "소상공인" in e["tags"])
+    intl_count = len(intl)
+
+    quicknav = """<div class="quicknav">
+      <a href="#top3"><span class="qicon">🔥</span>마감임박</a>
+      <a href="#all"><span class="qicon">📂</span>전체공고</a>
+      <a href="#intl"><span class="qicon">🌐</span>해외</a>
+      <a href="archive/"><span class="qicon">🔍</span>아카이브</a>
+      <a href="widget.html"><span class="qicon">🧩</span>위젯</a>
+    </div>""" if intl_count else """<div class="quicknav">
+      <a href="#top3"><span class="qicon">🔥</span>마감임박</a>
+      <a href="#all"><span class="qicon">📂</span>전체공고</a>
+      <a href="archive/"><span class="qicon">🔍</span>아카이브</a>
+      <a href="widget.html"><span class="qicon">🧩</span>위젯</a>
+    </div>"""
+
     hero = "" if for_email else f"""<section class="hero">
   <div class="hero-deco" aria-hidden="true">
     <svg class="blob-1" viewBox="0 0 200 200"><defs><linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#dc2626"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs><circle cx="100" cy="100" r="90" fill="url(#hg1)"/></svg>
     <svg class="blob-2" viewBox="0 0 200 200"><defs><linearGradient id="hg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#2563eb"/></linearGradient></defs><circle cx="100" cy="100" r="90" fill="url(#hg2)"/></svg>
   </div>
   <div class="hero-inner">
-    <div class="trust-badge"><span class="pulse-dot"></span> 매일 아침 GitHub Actions가 자동으로 갱신 — PC를 꺼도 계속 발행됩니다</div>
-    <h1>🎯 지원금헌터 — {today.isoformat()}</h1>
+    <span class="hero-kicker">지원금헌터 · {today.isoformat()}</span>
+    <div class="hero-giant">{giant}</div>
+    <h1>오늘 마감임박 지원사업, 지금 확인하세요</h1>
     <p class="tagline">{escape(body_count)} · 기업마당 + K-Startup 공식 소스 실시간 수집</p>
+    <div class="trust-badge on-dark"><span class="pulse-dot"></span> 매일 아침 GitHub Actions가 자동으로 갱신 — PC를 꺼도 계속 발행됩니다</div>
     <div class="hero-actions">
       <button class="btn-primary" onclick="shareCurrentPage('오늘의 마감임박 지원금 확인하세요')">🔗 오늘의 발행 공유하기</button>
       <a class="btn-secondary" href="{widget_link}">내 블로그에 위젯 심기</a>
     </div>
+    {quicknav}
   </div>
 </section>"""
 
+    stat_bar = f"""<div class="stat-bar">
+  <div class="stat-pill"><span class="num">{len(entries)}</span><span class="label">전체 공고</span></div>
+  <div class="stat-pill"><span class="num">{urgent_count}</span><span class="label">D-3 이내</span></div>
+  <div class="stat-pill"><span class="num">{startup_count}</span><span class="label">예비창업</span></div>
+  <div class="stat-pill"><span class="num">{biz_count}</span><span class="label">소상공인</span></div>
+  <div class="stat-pill"><span class="num">{intl_count}</span><span class="label">해외/영문</span></div>
+</div>"""
+
+    related_site = """<div class="related-site">
+  <span class="icon">🧮</span>
+  <div class="txt"><strong>같이 보면 좋은 사이트: SmileMaskL의 계산기</strong><span>연봉·퇴직금·육아휴직급여·재산세 계산기 — 지원금 받을 때 세금·수령액도 같이 확인하세요</span></div>
+  <a class="btn-secondary" href="https://smilemaskl.github.io/" target="_blank" rel="noopener">바로가기</a>
+</div>"""
+
     body_main = f"""<main>
+{stat_bar}
 {subscribe_html}
 {top_ad}
-<h2 class="section-title">🔥 오늘의 마감임박 TOP {len(top)}</h2>
+<h2 class="section-title" id="top3">🔥 오늘의 마감임박 TOP {len(top)}</h2>
 <div class="digest-grid">
 {top_html or '<p>표시할 항목이 없습니다.</p>'}
 </div>
 
 {mid_ad}
 
-<h2 class="section-title">📂 전체 공고 ({len(domestic)}건)</h2>
+<h2 class="section-title" id="all">📂 전체 공고 ({len(domestic)}건)</h2>
 <ul class="digest-list">
 {rest_html or "<li>추가 공고가 없습니다.</li>"}
 </ul>
-{intl_section}
+{f'<div id="intl">{intl_section}</div>' if intl_section else ""}
+{related_site}
 {bottom_ad}
 </main>""" if not for_email else f"""
 {top_ad}

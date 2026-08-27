@@ -66,6 +66,15 @@ AUTOMATION.md가 "무엇을 왜 이렇게 만들었나"라면, 이 문서는 **"
 고치면 안 된다** — 매일 자동으로 덮어써져서 사라진다. 반드시 위 Variables로
 등록할 것.
 
+## 4-1. 네이버·구글 검색 노출 (SEO)
+
+애드센스로 광고 수익을 내려면 결국 검색 유입이 중요하다. 구글은 하위
+경로(지금 주소)를 그대로 등록해도 문제없지만, 네이버는 막힐 수 있어
+대안(커스텀 도메인)까지 준비해뒀다. 전체 절차는
+**[SEO_SETUP.md](SEO_SETUP.md)**에 아주 상세히 정리했다 — 요약하면
+`GOOGLE_SITE_VERIFICATION`, `NAVER_SITE_VERIFICATION` 두 변수를
+Variables에 등록하는 것까지가 핵심이다.
+
 ## 5. Brevo 무료 계정 — 이메일 발송용
 
 - [brevo.com](https://www.brevo.com) 가입 (신용카드 불필요로 알려져
@@ -151,6 +160,7 @@ Secrets and variables → Actions → Secrets 탭 → New repository secret**
 | GitHub 저장소·Pages·`PAGES_URL` | 필수 | ✅ 완료 |
 | `ADSENSE_CLIENT_ID`, `ADSENSE_SLOT_TOP/MID/BOTTOM` | **수익화 1순위** | ⬜ 대기 |
 | `GA_MEASUREMENT_ID` | 권장(트래픽 확인용) | ⬜ 대기 |
+| `GOOGLE_SITE_VERIFICATION`/`NAVER_SITE_VERIFICATION` | 검색 노출 원하면 필수 — [SEO_SETUP.md](SEO_SETUP.md) 참고 | ⬜ 대기 |
 | `BREVO_API_KEY`, `SENDER_EMAIL` | 이메일 발송 원하면 필수 | ⬜ 대기 |
 | `SUBSCRIBERS_CSV_B64` | 구독자 있으면 필수 | ⬜ 대기 |
 | `DISCORD_WEBHOOK_URL`/`SLACK_WEBHOOK_URL` | 선택 | ⬜ 대기 |

@@ -1,4 +1,8 @@
+# 참고: robots.txt는 검색엔진이 도메인 루트(https://smilemaskl.github.io/robots.txt)
+# 에서만 읽는다. 이 파일(하위 경로 /benefit-hunter/robots.txt)은 크롤러가
+# 실제로 참조하지 않는다 — 루트의 salary-calculator 쪽 robots.txt("Allow: /")가
+# 이 경로도 이미 허용하고 있어 크롤링 자체는 막혀있지 않다. sitemap.xml은
+# 여기 적어봤자 자동으로 안 읽히므로 Search Console/서치어드바이저에
+# 수동으로 등록해야 한다 (MY_SETUP_CHECKLIST.md 참고).
 User-agent: *
 Allow: /
-
-Sitemap: https://smilemaskl.github.io/benefit-hunter/sitemap.xml

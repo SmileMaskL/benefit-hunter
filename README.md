@@ -67,6 +67,7 @@
 | [GROWTH.md](GROWTH.md) | 구독자 확보 채널 + 재방문·리텐션 장치 (salary-calculator 연동 포함) |
 | [AUTOMATION.md](AUTOMATION.md) | PC 없이 매일 자동 발행되게 만드는 방법 — 이미 만들고 테스트까지 끝낸 파이프라인 |
 | [MY_SETUP_CHECKLIST.md](MY_SETUP_CHECKLIST.md) | **내가 직접 계정을 만들고 채워야 하는 값**만 모은 실행 체크리스트 |
+| [SEO_SETUP.md](SEO_SETUP.md) | 네이버·구글에 검색 노출되게 만드는 상세 절차 (하위 경로 등록 이슈와 커스텀 도메인 대안 포함) |
 | [MONETIZATION_HOWTO.md](MONETIZATION_HOWTO.md) | 실제로 어디서·어떻게 결제를 받는지(경로별 실행 가이드) |
 | [FEATURES_BACKLOG.md](FEATURES_BACKLOG.md) | 구현 완료/보류/아이디어 단계로 정리한 추가 기능 목록 |
 | [issues/](issues/) | 실제 발행 초안 (창간준비호부터 누적) |
