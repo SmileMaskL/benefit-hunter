@@ -76,6 +76,19 @@ ADSENSE_SLOTS = {
     "right": os.environ.get("ADSENSE_SLOT_RIGHT", ""),
 }
 
+# 제휴 마케팅(쿠팡파트너스, 금융상품 비교 등) 배너 — 애드센스와 같은 철학:
+# 실제 제휴 링크가 생기기 전까지는 조용히 숨어있고, 값이 채워지면 자동으로
+# 나타난다. MONETIZATION_HOWTO.md 경로 B 참고.
+AFFILIATE_BANNER_URL = os.environ.get("AFFILIATE_BANNER_URL", "")
+AFFILIATE_BANNER_TEXT = os.environ.get("AFFILIATE_BANNER_TEXT", "")
+# 쿠팡 약관 + 공정위 추천보증 심사지침이 요구하는 필수 표시 문구.
+# 쿠팡파트너스가 아닌 다른 제휴(금융상품 등)를 걸 땐 AFFILIATE_DISCLOSURE로
+# 그 프로그램에 맞는 문구로 바꿔서 등록할 것.
+AFFILIATE_DISCLOSURE = os.environ.get(
+    "AFFILIATE_DISCLOSURE",
+    "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+)
+
 
 def build_entries(today: date) -> list[dict]:
     raw = collect_bizinfo() + collect_kstartup()
@@ -185,6 +198,20 @@ def _ad_side(position: str) -> str:
     else:
         inner = ""
     return f'<aside class="side-rail {position}">{inner}</aside>'
+
+
+def render_affiliate_banner() -> str:
+    """제휴 링크 배너. URL이 없으면 빈 문자열(아무것도 안 뜸) — 애드센스와
+    같은 "값 채우기 전엔 조용히 숨김" 패턴. 값이 있으면 법적으로 필요한
+    고지 문구(AFFILIATE_DISCLOSURE)를 반드시 같이 표시한다."""
+    if not AFFILIATE_BANNER_URL:
+        return ""
+    text = AFFILIATE_BANNER_TEXT or "추천 상품 보러 가기"
+    return f"""<div class="related-site">
+  <span class="icon">🛍️</span>
+  <div class="txt"><strong>{escape(text)}</strong><span>{escape(AFFILIATE_DISCLOSURE)}</span></div>
+  <a class="btn-secondary" href="{escape(AFFILIATE_BANNER_URL)}" target="_blank" rel="noopener sponsored">바로가기</a>
+</div>"""
 
 
 def _onesignal_snippet() -> str:
@@ -332,6 +359,7 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
     bottom_ad = "" if (for_email or embeddable) else _ad_slot("bottom")
     left_side = "" if (for_email or embeddable) else _ad_side("left")
     right_side = "" if (for_email or embeddable) else _ad_side("right")
+    affiliate_html = "" if (for_email or embeddable) else render_affiliate_banner()
     header_nav = "" if for_email else f"""<header>
   <div class="header-inner">
     <a class="logo" href="./"><span class="logo-mark">🎯</span>지원금헌터</a>
@@ -416,6 +444,7 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
 </ul>
 {f'<div id="intl">{intl_section}</div>' if intl_section else ""}
 {related_site}
+{affiliate_html}
 {bottom_ad}
 </main>
 {right_side}

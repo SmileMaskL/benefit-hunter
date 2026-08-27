@@ -18,8 +18,9 @@ AUTOMATION.md가 "무엇을 왜 이렇게 만들었나"라면, 이 문서는 **"
 | 네이버 검색 등록 | ⬜ 기존 `smilemaskl.github.io` 사이트에서 sitemap 제출 필요 — SEO_SETUP.md 참고 |
 | IndexNow(네이버·Bing 즉시 색인) | ✅ 연동 완료, 매일 자동 핑 |
 | 카카오톡 구독 신청 (ID 검색) | ✅ `KAKAO_ID` 등록 완료 — 구독 박스에 반영됨 |
-| 카카오톡 오픈채팅방 (원클릭 참여) | ⬜ 아직 안 만듦 — 아래 11번 |
-| **구글 애드센스/애널리틱스** | ⬜ **아직 안 함 — 수익화 1순위, 아래 4번** |
+| 카카오톡 오픈채팅방 (원클릭 참여) | ✅ 완료 — 구독 박스가 원클릭 버튼으로 승격됨 |
+| **구글 애드센스** | ✅ 실제 승인·연동 완료(ca-pub-4674765308814336) — 좌우 사이드 레일 광고까지 적용, 애널리틱스만 아직 |
+| 제휴 마케팅(쿠팡파트너스 등) | ⬜ 아직 안 함 — 수익화 2순위, 아래 4-2번 |
 | Brevo(이메일 발송) | ⬜ 아직 안 함 — 아래 5번 |
 | 구독자 명단 | ⬜ 아직 없음 — 아래 6번 |
 | 결제/정산 계좌(구독료용) | ⬜ 아직 아무 데도 설정 안 함 — 아래 "수익화 관련" 참고, 구독자 500명대까지는 필요 없음 |
@@ -84,6 +85,24 @@ AUTOMATION.md가 "무엇을 왜 이렇게 만들었나"라면, 이 문서는 **"
   이미 검증돼 있어서) — 코드에는 나중을 위해 남겨뒀지만 안 써도 됨
 
 전체 절차는 **[SEO_SETUP.md](SEO_SETUP.md)**에 정리했다.
+
+## 4-2. 제휴 마케팅(쿠팡파트너스 등) — 애드센스 다음 우선순위
+
+MONETIZATION_HOWTO.md 경로 B 참고. 쿠팡파트너스부터 시작하는 걸 권장한다
+(승인이 거의 즉시라 진입장벽이 낮음).
+
+1. [coupartners.coupang.com](https://coupartners.coupang.com) 가입 →
+   본인 인증 → 승인 후 원하는 상품의 제휴 링크 생성
+2. GitHub 저장소 Variables에 등록:
+   - `AFFILIATE_BANNER_URL` = 생성한 제휴 링크
+   - `AFFILIATE_BANNER_TEXT` = 배너에 보일 문구 (예: "사업자 필수품 모음")
+   - `AFFILIATE_DISCLOSURE` = 필요하면 기본 문구(쿠팡파트너스 고지문)를
+     다른 제휴 프로그램에 맞는 문구로 교체
+3. 등록하면 다음 자동 발행부터 본문 하단에 배너가 자동으로 뜨고,
+   법적으로 필요한 고지 문구도 같이 표시된다 — 직접 HTML을 고칠 필요 없음
+
+이걸 안 채우면: 배너 자리가 아예 안 뜬다(빈 자리조차 안 남기고 완전히
+숨김 — 애드센스 자리와 달리 "미승인" 상태를 보여줄 필요가 없어서).
 
 ## 5. Brevo 무료 계정 — 이메일 발송용
 
@@ -167,7 +186,8 @@ Secrets and variables → Actions → Secrets 탭 → New repository secret**
 
 | 경로 | 지금 상태 | 계좌를 어디에 등록하나 |
 | --- | --- | --- |
-| **구글 애드센스** (1순위) | ⬜ 4번 완료 후 시작 가능 | 애드센스 계정 → "지급" 메뉴 → 은행 계좌·세금 정보 등록. 구글이 매달 자동 입금 |
+| **구글 애드센스** (1순위) | ✅ 연동 완료 | 애드센스 계정 → "지급" 메뉴에서 은행 계좌·세금 정보 등록 필요(아직 안 했다면 지금 하면 됨). 구글이 매달 자동 입금 |
+| 제휴 마케팅(쿠팡파트너스 등) (2순위) | ⬜ 대기 | 쿠팡파트너스 대시보드에서 정산 계좌 등록 |
 | 제휴 마케팅 | ⬜ 아직 미착수 (MONETIZATION_HOWTO.md 경로 B) | 가입하는 제휴 프로그램마다 각자의 정산 계좌 등록 화면에서 |
 | Stibee 유료 뉴스레터 (구독자 500~1,000명 이후) | ⬜ 아직 필요 없음 | Stibee 유료 구독 설정 화면의 "정산 정보 등록"(계좌 신청서 제출) |
 | 토스페이먼츠 등 자체 결제 (규모가 더 커진 뒤) | ⬜ 아직 필요 없음 | 사업자등록 후 PG 가입 심사 과정에서 사업자 명의 계좌 등록 |
@@ -183,12 +203,13 @@ Secrets and variables → Actions → Secrets 탭 → New repository secret**
 | 항목 | 필수 여부 | 상태 |
 | --- | --- | --- |
 | GitHub 저장소·Pages·`PAGES_URL` | 필수 | ✅ 완료 |
-| `ADSENSE_CLIENT_ID`, `ADSENSE_SLOT_TOP/MID/BOTTOM` | **수익화 1순위** | ⬜ 대기 |
+| `ADSENSE_CLIENT_ID`, `ADSENSE_SLOT_TOP/MID/BOTTOM/LEFT/RIGHT` | **수익화 1순위** | ✅ 완료 (ca-pub-4674765308814336, 사이드 레일 포함) |
+| `AFFILIATE_BANNER_URL/TEXT/DISCLOSURE` | 수익화 2순위(쿠팡파트너스 등) | ⬜ 대기 — 아래 4-2번 |
 | `GA_MEASUREMENT_ID` | 권장(트래픽 확인용) | ⬜ 대기 |
 | `GOOGLE_SITE_VERIFICATION` | 구글 검색 노출 | ✅ 자동 인증돼서 불필요 (SEO_SETUP.md 참고) |
 | 네이버 sitemap 제출 (변수 불필요) | 기존 `smilemaskl.github.io` 사이트에서 제출 — [SEO_SETUP.md](SEO_SETUP.md) 참고 | ⬜ 대기 |
 | `KAKAO_ID` | 카카오톡 구독 신청 | ✅ 완료 (`blackhole826@nate.com`) |
-| `KAKAO_OPENCHAT_URL` | 권장(원클릭 참여로 승격) | ⬜ 대기 — 오픈채팅방 만들면 알려줄 것 |
+| `KAKAO_OPENCHAT_URL` | 원클릭 참여 | ✅ 완료 |
 | `BREVO_API_KEY`, `SENDER_EMAIL` | 이메일 발송 원하면 필수 | ⬜ 대기 |
 | `SUBSCRIBERS_CSV_B64` | 구독자 있으면 필수 | ⬜ 대기 |
 | `DISCORD_WEBHOOK_URL`/`SLACK_WEBHOOK_URL` | 선택 | ⬜ 대기 |
