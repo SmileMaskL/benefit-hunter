@@ -4,18 +4,29 @@
 <meta charset="utf-8">
 <title>지원금헌터 — 지난 발행 검색</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  body { font-family: -apple-system, "Malgun Gothic", sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
-  input { width: 100%; padding: .6rem; font-size: 1rem; box-sizing: border-box; margin-bottom: 1rem; }
-  li { margin-bottom: .5rem; }
-  .date { color: #888; font-size: .8rem; }
-</style>
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<h1>지난 발행 검색</h1>
-<p><a href="../">오늘의 다이제스트로 돌아가기</a></p>
-<input id="q" type="search" placeholder="예: 청년, 대구, 창업 ...">
-<ul id="results"></ul>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="../"><span class="logo-mark">🎯</span>지원금헌터</a>
+    <nav>
+      <a href="../">오늘의 발행</a>
+      <a href="../widget.html">위젯 심기</a>
+      <a href="../feed.xml">RSS</a>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()" aria-label="다크모드 전환">🌙</button>
+  </div>
+</header>
+<main>
+<h2 class="section-title">지난 발행 검색</h2>
+<input id="q" type="search" placeholder="예: 청년, 대구, 창업 ..." style="width:100%;padding:.7rem;font-size:1rem;border:1.5px solid var(--border);border-radius:10px;margin-bottom:1rem;background:var(--card-bg);color:var(--text)">
+<ul class="digest-list" id="results"></ul>
+<div class="ad-slot">광고 영역 — 애드센스 승인 후 이 자리에 표시됩니다 (MY_SETUP_CHECKLIST.md 참고)</div>
+</main>
+<footer>지원금헌터 · <a href="../privacy.html">개인정보처리방침</a></footer>
+<script src="../js/common.js"></script>
 <script>
   let data = [];
   fetch('../search-index.json').then(r => r.json()).then(d => { data = d; render(''); });
@@ -28,7 +39,7 @@
     ) : data;
     const ul = document.getElementById('results');
     ul.innerHTML = filtered.slice(0, 200).map(row =>
-      `<li><span class="date">${row.date}</span> — <a href="${row.url}">${row.title}</a> (${row.agency})</li>`
+      `<li><span class="meta">${row.date}</span> — <a href="${row.url}" target="_blank" rel="noopener">${row.title}</a><div class="meta">${row.agency}</div></li>`
     ).join('') || '<li>결과가 없습니다.</li>';
   }
   document.getElementById('q').addEventListener('input', e => render(e.target.value));

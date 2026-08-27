@@ -1,7 +1,8 @@
 """오늘의 다이제스트를 만든다: 수집 → 정렬/태깅 → HTML/RSS/ICS/위젯/검색색인 생성.
 
 이 스크립트 하나로 다음을 전부 만든다.
-- docs/index.html        : GitHub Pages로 공개되는 오늘의 웹 페이지
+- docs/index.html        : GitHub Pages로 공개되는 오늘의 웹 페이지 (salary-calculator와
+  같은 디자인 시스템 — docs/css/style.css, docs/js/common.js 참고)
 - docs/feed.xml          : 오늘 다이제스트의 RSS 미러
 - docs/deadlines.ics     : 마감일 캘린더 구독 파일
 - docs/widget.html       : 다른 사이트에 <iframe>으로 심는 초소형 위젯(TOP3만)
@@ -11,6 +12,13 @@
 - automation/output/entries.json  : 오늘 항목의 원본 구조화 데이터 — send_email_brevo.py가
   유료 구독자 맞춤 필터링에 재사용한다
 - automation/output/email_body.html / subject.txt : 무료 구독자용 기본 발송 본문
+
+⚠️ 이 파일이 만드는 docs/index.html 등은 **매일 자동으로 덮어써진다.** 그래서
+구글 애널리틱스 측정 ID·애드센스 클라이언트/슬롯 ID는 생성된 HTML 파일을
+직접 손으로 고치면 안 되고(다음 실행에 사라짐), 반드시 아래 환경변수
+(GitHub 저장소 Settings → Actions → Variables)로 넣어야 한다. 채워야 할
+값과 위치는 MY_SETUP_CHECKLIST.md 참고. docs/privacy.html처럼 이 스크립트가
+안 건드리는 정적 파일은 직접 고쳐도 유지된다.
 
 실행 위치는 저장소 루트를 가정한다(`python automation/build_digest.py`).
 """
@@ -40,6 +48,17 @@ ONESIGNAL_APP_ID = os.environ.get("ONESIGNAL_APP_ID", "")
 # 별도 시크릿을 새로 요구하지 않으려고 이미 있는 SENDER_EMAIL을 재사용한다.
 CONTACT_EMAIL = os.environ.get("SENDER_EMAIL", "")
 
+# 방문자가 많아질수록 수익이 커지는 광고(구글 애드센스) — "무언가를 팔거나
+# 대여하는" 모델이 아니라 트래픽에 비례해 자동으로 붙는 수익이라 이 프로젝트의
+# "최대한 많이/자주 찾아오게" 전략과 방향이 같다. 승인 전엔 자리만 예약해둔다.
+GA_MEASUREMENT_ID = os.environ.get("GA_MEASUREMENT_ID", "")
+ADSENSE_CLIENT_ID = os.environ.get("ADSENSE_CLIENT_ID", "")
+ADSENSE_SLOTS = {
+    "top": os.environ.get("ADSENSE_SLOT_TOP", ""),
+    "mid": os.environ.get("ADSENSE_SLOT_MID", ""),
+    "bottom": os.environ.get("ADSENSE_SLOT_BOTTOM", ""),
+}
+
 
 def build_entries(today: date) -> list[dict]:
     raw = collect_bizinfo() + collect_kstartup()
@@ -57,16 +76,86 @@ def build_entries(today: date) -> list[dict]:
     return entries
 
 
-def render_item_line(it: dict) -> str:
-    tag_str = "".join(f"[{t}]" for t in it["tags"])
-    region_str = f"[지역:{it['region']}]" if it["region"] else ""
-    dday = f"[D-{it['days_left']}] " if it["days_left"] is not None else "⚠️ "
-    deadline_str = it["deadline_note"] if it["deadline_note"] else "정보 없음"
-    return (
-        f"<li><strong>{dday}{escape(tag_str)}{escape(region_str)} "
-        f"<a href=\"{escape(it['detail_url'])}\">{escape(it['title'])}</a></strong> "
-        f"({escape(it['agency'])}) — 마감: {escape(deadline_str)} · 출처: {escape(it['source'])}</li>"
-    )
+def _urgency(days_left_val: int | None) -> str:
+    """마감 긴급도를 3단계 CSS 클래스로 — None(예산 소진시까지 등)도 언제 끝날지
+    모른다는 점에서 사실 가장 긴급할 수 있어 urgent로 취급한다."""
+    if days_left_val is None or days_left_val <= 3:
+        return "urgent"
+    if days_left_val <= 7:
+        return "soon"
+    return "normal"
+
+
+def _tag_pills(it: dict) -> str:
+    pills = "".join(f'<span class="tag-pill">{escape(t)}</span>' for t in it["tags"])
+    if it["region"]:
+        pills += f'<span class="tag-pill">📍{escape(it["region"])}</span>'
+    return pills
+
+
+def render_digest_card(it: dict) -> str:
+    urgency = _urgency(it["days_left"])
+    dday_text = f"D-{it['days_left']}" if it["days_left"] is not None else "⚠️ 상시/소진임박"
+    return f"""<a class="digest-card" href="{escape(it['detail_url'])}" target="_blank" rel="noopener">
+  <span class="dday-badge {urgency}">{dday_text}</span>
+  <h3>{escape(it['title'])}</h3>
+  <p class="meta">{escape(it['agency'])} · 마감 {escape(it['deadline_note'] or '정보 없음')} · {escape(it['source'])}</p>
+  <div>{_tag_pills(it)}</div>
+</a>"""
+
+
+def render_digest_row(it: dict) -> str:
+    urgency = _urgency(it["days_left"])
+    dday_text = f"D-{it['days_left']}" if it["days_left"] is not None else "⚠️"
+    return f"""<li>
+  <span class="dday-badge {urgency}">{dday_text}</span>
+  {_tag_pills(it)}
+  <a href="{escape(it['detail_url'])}" target="_blank" rel="noopener">{escape(it['title'])}</a>
+  <div class="meta">{escape(it['agency'])} · 마감 {escape(it['deadline_note'] or '정보 없음')} · 출처: {escape(it['source'])}</div>
+</li>"""
+
+
+def _ga_snippet() -> str:
+    if not GA_MEASUREMENT_ID:
+        return """
+<!--
+  구글 애널리틱스(방문자 수 확인, 완전 무료): analytics.google.com 에서 속성을
+  만들고 측정 ID(G-로 시작)를 GitHub 저장소 Settings → Actions → Variables의
+  GA_MEASUREMENT_ID에 등록하면 다음 자동 발행부터 이 자리에 실제 코드가 들어간다.
+  자세한 방법은 MY_SETUP_CHECKLIST.md 참고.
+-->"""
+    return f"""
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{ dataLayer.push(arguments); }}
+  gtag('js', new Date());
+  gtag('config', '{GA_MEASUREMENT_ID}');
+</script>"""
+
+
+def _adsense_head_snippet() -> str:
+    if not ADSENSE_CLIENT_ID:
+        return """
+<!--
+  구글 애드센스: 승인 완료 후 발급받은 클라이언트 ID(ca-pub-로 시작)를
+  GitHub 저장소 Settings → Actions → Variables의 ADSENSE_CLIENT_ID에 등록하면
+  다음 자동 발행부터 이 자리에 실제 코드가 들어간다. 개별 광고 자리(.ad-slot)를
+  활성화하려면 ADSENSE_SLOT_TOP / ADSENSE_SLOT_MID / ADSENSE_SLOT_BOTTOM도
+  함께 등록할 것. 자세한 방법은 MY_SETUP_CHECKLIST.md 참고.
+-->"""
+    return f"""
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT_ID}" crossorigin="anonymous"></script>"""
+
+
+def _ad_slot(position: str) -> str:
+    slot = ADSENSE_SLOTS.get(position, "")
+    if ADSENSE_CLIENT_ID and slot:
+        return f"""<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="{ADSENSE_CLIENT_ID}" data-ad-slot="{slot}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+</div>"""
+    return '<div class="ad-slot">광고 영역 — 애드센스 승인 후 이 자리에 표시됩니다 (MY_SETUP_CHECKLIST.md 참고)</div>'
 
 
 def _onesignal_snippet() -> str:
@@ -82,10 +171,9 @@ def _onesignal_snippet() -> str:
 </script>"""
 
 
-SUBSCRIBE_BOX = """
-<div style="border:2px solid #1a56db;border-radius:8px;padding:1rem;margin:1.5rem 0;">
+SUBSCRIBE_BOX = """<div class="subscribe-box">
   <strong>📬 매일 아침, 이 페이지를 이메일로 받아보세요</strong>
-  <p style="margin:.5rem 0;font-size:.9rem;">
+  <p>
     <!-- TODO(운영자): Brevo 가입 후 "웹 폼" 임베드 코드로 이 블록을 통째로
          교체할 것 (MY_SETUP_CHECKLIST.md 참고). 그 전까지는 메일로 신청받는
          임시 방식으로 동작한다. -->
@@ -94,38 +182,63 @@ SUBSCRIBE_BOX = """
   </p>
 </div>"""
 
+NAV_LINKS = """<a href="./">오늘의 발행</a>
+      <a href="archive/">아카이브·검색</a>
+      <a href="widget.html">위젯 심기</a>
+      <a href="feed.xml">RSS</a>"""
+
+# 이메일 클라이언트는 외부 스타일시트(<link>)를 대부분 무시하거나 잘라낸다.
+# docs/css/style.css의 CSS 변수(var(--text) 등)도 구버전 Outlook 등에서
+# 지원이 약해서, 이메일 전용으로 값을 하드코딩한 최소 <style> 블록을 따로 둔다.
+EMAIL_STYLE = """<style>
+  body { font-family: -apple-system, "Malgun Gothic", sans-serif; color:#191d28; }
+  .section-title { font-size:1.05rem; font-weight:800; margin:24px 4px 14px; padding-bottom:8px; border-bottom:2px solid #191d28; }
+  .digest-grid { display:block; }
+  .digest-card { display:block; background:#fff; border:1px solid #e6e8ee; border-radius:14px; padding:16px 18px; margin-bottom:12px; color:#191d28; }
+  .dday-badge { display:inline-block; font-size:.72rem; font-weight:800; padding:3px 9px; border-radius:999px; margin-bottom:8px; }
+  .dday-badge.urgent { color:#dc2626; background:#fee2e2; }
+  .dday-badge.soon { color:#d97706; background:#fef3c7; }
+  .dday-badge.normal { color:#2563eb; background:#eef2ff; }
+  .digest-card h3 { margin:0 0 6px; font-size:1rem; }
+  .meta { margin:0; font-size:.82rem; color:#6b7280; }
+  .tag-pill { display:inline-block; font-size:.7rem; font-weight:700; padding:2px 8px; border-radius:999px; background:#eef2ff; color:#2563eb; margin:0 4px 4px 0; }
+  .digest-list { list-style:none; margin:0; padding:0; }
+  .digest-list li { padding:10px 4px; border-bottom:1px solid #e6e8ee; font-size:.92rem; }
+  .digest-list li a { color:#191d28; font-weight:600; }
+</style>"""
+
 
 def render_html(entries: list[dict], today: date, *, embeddable: bool = False, for_email: bool = False) -> str:
     # entries는 이미 "날짜 있는 건 먼저, 마감 임박순"으로 정렬돼 있으므로
     # 앞쪽 TOP_N개를 그대로 잘라 쓰면 된다.
     top = entries[:TOP_N]
-    top_html = "\n".join(render_item_line(e) for e in top)
 
     if embeddable:
-        # 위젯 페이지는 TOP3만 보여주는 초소형 버전 — 임베드용
+        # 위젯 페이지는 TOP3만 보여주는 초소형 버전 — 임베드용, 자체 광고는 없음
+        top_html = "\n".join(render_digest_row(e) for e in top)
+        page_url = f"{PAGES_URL}/" if PAGES_URL else "."
         return f"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <title>지원금헌터 위젯</title>
-<style>
-  body {{ font-family: -apple-system, "Malgun Gothic", sans-serif; margin: 0; padding: .8rem; font-size: .85rem; }}
-  h1 {{ font-size: .9rem; margin: 0 0 .5rem; }}
-  li {{ margin-bottom: .4rem; }}
-  a {{ color: #1a56db; text-decoration: none; }}
-</style></head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+<style>body{{margin:0;padding:.6rem;font-size:.85rem}} main{{padding:0;max-width:none}} h1{{font-size:.95rem;margin:0 0 .6rem}}</style>
+</head>
 <body>
 <h1>🎯 오늘의 마감임박 지원금 (지원금헌터)</h1>
-<ul>{top_html or "<li>표시할 항목이 없습니다.</li>"}</ul>
-<p style="font-size:.75rem;color:#888">Powered by <a href="{PAGES_URL or '.'}" target="_blank">지원금헌터</a></p>
+<ul class="digest-list">{top_html or "<li>표시할 항목이 없습니다.</li>"}</ul>
+<p style="font-size:.72rem;color:var(--text-sub)">Powered by <a href="{page_url}" target="_blank">지원금헌터</a></p>
 </body></html>"""
 
     rest = entries[TOP_N:]
     domestic = [e for e in rest if "해외" not in e["tags"]]
     intl = [e for e in entries if "해외" in e["tags"]]
-    rest_html = "\n".join(render_item_line(e) for e in domestic)
-    intl_html = "\n".join(render_item_line(e) for e in intl)
+    top_html = "\n".join(render_digest_card(e) for e in top)
+    rest_html = "\n".join(render_digest_row(e) for e in domestic)
+    intl_html = "\n".join(render_digest_row(e) for e in intl)
     intl_section = f"""
-<h2>🌐 국내 체류 외국인 창업가를 위한 영문 공고 ({len(intl)}건)</h2>
-<ul>
+<h2 class="section-title">🌐 국내 체류 외국인 창업가를 위한 영문 공고 ({len(intl)}건)</h2>
+<ul class="digest-list">
 {intl_html}
 </ul>""" if intl else ""
 
@@ -143,6 +256,72 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
         contact=CONTACT_EMAIL or "미설정",
         contact_display=CONTACT_EMAIL or "(운영자가 SENDER_EMAIL을 아직 설정하지 않았습니다)",
     )
+    css_link = EMAIL_STYLE if for_email else '<link rel="stylesheet" href="css/style.css">'
+    head_extra = "" if for_email else f"{_ga_snippet()}{_adsense_head_snippet()}"
+    top_ad = "" if (for_email or embeddable) else _ad_slot("top")
+    mid_ad = "" if (for_email or embeddable) else _ad_slot("mid")
+    bottom_ad = "" if (for_email or embeddable) else _ad_slot("bottom")
+    header_nav = "" if for_email else f"""<header>
+  <div class="header-inner">
+    <a class="logo" href="./"><span class="logo-mark">🎯</span>지원금헌터</a>
+    <nav>
+      {NAV_LINKS}
+    </nav>
+    <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()" aria-label="다크모드 전환">🌙</button>
+  </div>
+</header>"""
+    scripts = "" if for_email else '<script src="js/common.js"></script>'
+
+    body_count = f"오늘 마감임박 {len(top)}건 포함, 총 {len(entries)}건"
+    hero = "" if for_email else f"""<section class="hero">
+  <div class="hero-deco" aria-hidden="true">
+    <svg class="blob-1" viewBox="0 0 200 200"><defs><linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#dc2626"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs><circle cx="100" cy="100" r="90" fill="url(#hg1)"/></svg>
+    <svg class="blob-2" viewBox="0 0 200 200"><defs><linearGradient id="hg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#2563eb"/></linearGradient></defs><circle cx="100" cy="100" r="90" fill="url(#hg2)"/></svg>
+  </div>
+  <div class="hero-inner">
+    <div class="trust-badge"><span class="pulse-dot"></span> 매일 아침 GitHub Actions가 자동으로 갱신 — PC를 꺼도 계속 발행됩니다</div>
+    <h1>🎯 지원금헌터 — {today.isoformat()}</h1>
+    <p class="tagline">{escape(body_count)} · 기업마당 + K-Startup 공식 소스 실시간 수집</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="shareCurrentPage('오늘의 마감임박 지원금 확인하세요')">🔗 오늘의 발행 공유하기</button>
+      <a class="btn-secondary" href="{widget_link}">내 블로그에 위젯 심기</a>
+    </div>
+  </div>
+</section>"""
+
+    body_main = f"""<main>
+{subscribe_html}
+{top_ad}
+<h2 class="section-title">🔥 오늘의 마감임박 TOP {len(top)}</h2>
+<div class="digest-grid">
+{top_html or '<p>표시할 항목이 없습니다.</p>'}
+</div>
+
+{mid_ad}
+
+<h2 class="section-title">📂 전체 공고 ({len(domestic)}건)</h2>
+<ul class="digest-list">
+{rest_html or "<li>추가 공고가 없습니다.</li>"}
+</ul>
+{intl_section}
+{bottom_ad}
+</main>""" if not for_email else f"""
+{top_ad}
+<h2 class="section-title">🔥 오늘의 마감임박 TOP {len(top)}</h2>
+<div class="digest-grid">
+{top_html or '<p>표시할 항목이 없습니다.</p>'}
+</div>
+<h2 class="section-title">📂 전체 공고 ({len(domestic)}건)</h2>
+<ul class="digest-list">
+{rest_html or "<li>추가 공고가 없습니다.</li>"}
+</ul>
+{intl_section}"""
+
+    footer = "" if for_email else f"""<footer>
+  지원금헌터{f' · 문의/수신거부: {escape(CONTACT_EMAIL)}로 회신' if CONTACT_EMAIL else ''} ·
+  <a href="{page_url}privacy.html">개인정보처리방침</a>
+</footer>"""
+    footer_email = f'<p style="font-size:.75rem;color:#888">지원금헌터{f" · 문의/수신거부: {escape(CONTACT_EMAIL)}로 회신" if CONTACT_EMAIL else ""} · <a href="{page_url}privacy.html">개인정보처리방침</a> · 이 메일은 구독 신청하신 분께만 발송됩니다.</p>' if for_email else ""
 
     return f"""<!doctype html>
 <html lang="ko">
@@ -151,34 +330,16 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
 <title>지원금헌터 — {today.isoformat()} 마감임박 지원사업</title>
 <meta name="description" content="{escape(description)}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  body {{ font-family: -apple-system, "Malgun Gothic", sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }}
-  h1 {{ font-size: 1.4rem; }}
-  h2 {{ font-size: 1.1rem; margin-top: 2rem; border-bottom: 2px solid #333; padding-bottom: .3rem; }}
-  li {{ margin-bottom: .6rem; }}
-  a {{ color: #1a56db; }}
-  .updated {{ color: #666; font-size: .85rem; }}
-</style>{og_tags}
+{css_link}{og_tags}{head_extra}
 {_onesignal_snippet()}
 </head>
 <body>
-<h1>🎯 지원금헌터 — {today.isoformat()}</h1>
-<p class="updated">매일 아침 GitHub Actions가 자동으로 갱신합니다 (PC를 꺼도 계속 발행됩니다).
-RSS: <a href="feed.xml">feed.xml</a> · 캘린더: <a href="deadlines.ics">deadlines.ics</a> ·
-<a href="{widget_link}">내 블로그에 위젯 심기</a> · <a href="archive/">지난 발행 검색</a></p>
-{subscribe_html}
-<h2>🔥 오늘의 마감임박 TOP {len(top)}</h2>
-<ul>
-{top_html or "<li>표시할 항목이 없습니다.</li>"}
-</ul>
-
-<h2>📂 전체 공고 ({len(domestic)}건)</h2>
-<ul>
-{rest_html or "<li>추가 공고가 없습니다.</li>"}
-</ul>
-{intl_section}
-<hr>
-<p style="font-size:.75rem;color:#888">지원금헌터{f' · 문의/수신거부: {escape(CONTACT_EMAIL)}로 회신' if CONTACT_EMAIL else ''} · <a href="{page_url}privacy.html">개인정보처리방침</a> · 이 메일은 구독 신청하신 분께만 발송됩니다.</p>
+{header_nav}
+{hero}
+{body_main}
+{footer_email}
+{footer}
+{scripts}
 </body>
 </html>"""
 
@@ -246,7 +407,7 @@ def render_email(entries: list[dict], today: date) -> tuple[str, str]:
         f"[지원금헌터] 오늘 마감 D-{top[0]['days_left']}, {top[0]['title'][:20]} 외 {max(count - 1, 0)}건"
         if top else f"[지원금헌터] {today.isoformat()} 소식"
     )
-    html = render_html(entries, today, for_email=True)  # 이메일 본문 — 구독 유도 박스는 뺀다(이미 구독자니까)
+    html = render_html(entries, today, for_email=True)  # 이메일 본문 — 구독 유도 박스/광고는 뺀다
     return subject, html
 
 
@@ -275,28 +436,40 @@ def update_search_index(entries: list[dict], today: date) -> None:
         json.dump(existing, f, ensure_ascii=False)
 
 
-ARCHIVE_INDEX_HTML = """<!doctype html>
+def render_archive_index() -> str:
+    return f"""<!doctype html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <title>지원금헌터 — 지난 발행 검색</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  body { font-family: -apple-system, "Malgun Gothic", sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
-  input { width: 100%; padding: .6rem; font-size: 1rem; box-sizing: border-box; margin-bottom: 1rem; }
-  li { margin-bottom: .5rem; }
-  .date { color: #888; font-size: .8rem; }
-</style>
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<h1>지난 발행 검색</h1>
-<p><a href="../">오늘의 다이제스트로 돌아가기</a></p>
-<input id="q" type="search" placeholder="예: 청년, 대구, 창업 ...">
-<ul id="results"></ul>
+{_onesignal_snippet()}
+<header>
+  <div class="header-inner">
+    <a class="logo" href="../"><span class="logo-mark">🎯</span>지원금헌터</a>
+    <nav>
+      <a href="../">오늘의 발행</a>
+      <a href="../widget.html">위젯 심기</a>
+      <a href="../feed.xml">RSS</a>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()" aria-label="다크모드 전환">🌙</button>
+  </div>
+</header>
+<main>
+<h2 class="section-title">지난 발행 검색</h2>
+<input id="q" type="search" placeholder="예: 청년, 대구, 창업 ..." style="width:100%;padding:.7rem;font-size:1rem;border:1.5px solid var(--border);border-radius:10px;margin-bottom:1rem;background:var(--card-bg);color:var(--text)">
+<ul class="digest-list" id="results"></ul>
+{_ad_slot("bottom")}
+</main>
+<footer>지원금헌터 · <a href="../privacy.html">개인정보처리방침</a></footer>
+<script src="../js/common.js"></script>
 <script>
   let data = [];
-  fetch('../search-index.json').then(r => r.json()).then(d => { data = d; render(''); });
-  function render(query) {
+  fetch('../search-index.json').then(r => r.json()).then(d => {{ data = d; render(''); }});
+  function render(query) {{
     const q = query.trim().toLowerCase();
     const filtered = q ? data.filter(row =>
       row.title.toLowerCase().includes(q) ||
@@ -305,9 +478,9 @@ ARCHIVE_INDEX_HTML = """<!doctype html>
     ) : data;
     const ul = document.getElementById('results');
     ul.innerHTML = filtered.slice(0, 200).map(row =>
-      `<li><span class="date">${row.date}</span> — <a href="${row.url}">${row.title}</a> (${row.agency})</li>`
+      `<li><span class="meta">${{row.date}}</span> — <a href="${{row.url}}" target="_blank" rel="noopener">${{row.title}}</a><div class="meta">${{row.agency}}</div></li>`
     ).join('') || '<li>결과가 없습니다.</li>';
-  }
+  }}
   document.getElementById('q').addEventListener('input', e => render(e.target.value));
 </script>
 </body>
@@ -328,7 +501,7 @@ def main() -> None:
     with open(os.path.join(ARCHIVE_DIR, f"{today.isoformat()}.html"), "w", encoding="utf-8") as f:
         f.write(html)
     with open(os.path.join(ARCHIVE_DIR, "index.html"), "w", encoding="utf-8") as f:
-        f.write(ARCHIVE_INDEX_HTML)
+        f.write(render_archive_index())
 
     with open(os.path.join(DOCS_DIR, "widget.html"), "w", encoding="utf-8") as f:
         f.write(render_html(entries, today, embeddable=True))
