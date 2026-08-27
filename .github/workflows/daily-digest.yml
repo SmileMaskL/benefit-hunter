@@ -27,8 +27,12 @@ jobs:
         run: pip install -r automation/requirements.txt
 
       - name: 구독자 명단 복원 (비공개 Secret → 로컬 CSV, 저장소엔 절대 커밋 안 됨)
-        if: ${{ secrets.SUBSCRIBERS_CSV_B64 != '' }}
-        run: echo "${{ secrets.SUBSCRIBERS_CSV_B64 }}" | base64 -d > automation/subscribers.csv
+        env:
+          SUBSCRIBERS_CSV_B64: ${{ secrets.SUBSCRIBERS_CSV_B64 }}
+        run: |
+          if [ -n "$SUBSCRIBERS_CSV_B64" ]; then
+            echo "$SUBSCRIBERS_CSV_B64" | base64 -d > automation/subscribers.csv
+          fi
 
       - name: 오늘의 다이제스트 생성 (기업마당 + K-Startup 수집 → HTML/RSS/ICS/위젯/검색색인)
         env:
