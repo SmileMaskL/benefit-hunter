@@ -45,6 +45,8 @@ jobs:
           ADSENSE_SLOT_BOTTOM: ${{ vars.ADSENSE_SLOT_BOTTOM }}
           GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
           NAVER_SITE_VERIFICATION: ${{ vars.NAVER_SITE_VERIFICATION }}
+          KAKAO_ID: ${{ vars.KAKAO_ID }}
+          KAKAO_OPENCHAT_URL: ${{ vars.KAKAO_OPENCHAT_URL }}
         run: python build_digest.py
         working-directory: automation
 

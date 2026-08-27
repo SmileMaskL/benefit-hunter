@@ -47,6 +47,11 @@ ONESIGNAL_APP_ID = os.environ.get("ONESIGNAL_APP_ID", "")
 # 정보통신망법상 이메일에는 발신자 연락처 + 수신거부 방법을 밝혀야 한다.
 # 별도 시크릿을 새로 요구하지 않으려고 이미 있는 SENDER_EMAIL을 재사용한다.
 CONTACT_EMAIL = os.environ.get("SENDER_EMAIL", "")
+# 이메일보다 카카오톡을 훨씬 많이 쓴다는 피드백에 따라 구독 신청 채널을
+# 카카오톡 중심으로 바꿨다. KAKAO_ID는 "카카오톡 ID로 검색"용, KAKAO_OPENCHAT_URL은
+# 오픈채팅방을 만들면 그 초대 링크를 넣는 용도(있으면 원클릭 참여가 가능해서 더 낫다).
+KAKAO_ID = os.environ.get("KAKAO_ID", "")
+KAKAO_OPENCHAT_URL = os.environ.get("KAKAO_OPENCHAT_URL", "")
 
 # 방문자가 많아질수록 수익이 커지는 광고(구글 애드센스) — "무언가를 팔거나
 # 대여하는" 모델이 아니라 트래픽에 비례해 자동으로 붙는 수익이라 이 프로젝트의
@@ -177,15 +182,31 @@ def _onesignal_snippet() -> str:
 </script>"""
 
 
-SUBSCRIBE_BOX = """<div class="subscribe-box">
-  <strong>📬 매일 아침, 이 페이지를 이메일로 받아보세요</strong>
+def render_subscribe_box() -> str:
+    """구독 신청 박스. 카카오톡을 1순위로 보여준다(이메일은 회사 밖에서는
+    잘 안 쓴다는 피드백 반영) — 오픈채팅방 링크가 있으면 원클릭 참여 버튼을,
+    없으면 카카오톡 ID 검색 안내를 보여준다. 이메일은 보조 수단으로 유지한다.
+    """
+    if KAKAO_OPENCHAT_URL:
+        kakao_block = f"""<a class="btn-primary" href="{escape(KAKAO_OPENCHAT_URL)}" target="_blank" rel="noopener" style="display:inline-block;text-decoration:none;margin-bottom:8px">💬 카카오톡 오픈채팅방 바로 참여하기</a>
+    <p style="margin:4px 0 0">참여하면 매일 아침 이 방에 오늘의 다이제스트가 올라옵니다.</p>"""
+    elif KAKAO_ID:
+        kakao_block = f"""카카오톡에서 <strong>ID로 검색 → {escape(KAKAO_ID)}</strong> 추가 후
+    "구독신청"이라고 메시지 보내주시면 등록해드립니다."""
+    else:
+        kakao_block = "(운영자가 카카오톡 연락처를 아직 설정하지 않았습니다)"
+
+    email_block = (
+        f'이메일도 받고 싶다면: <a href="mailto:{escape(CONTACT_EMAIL)}?subject=지원금헌터%20구독신청">{escape(CONTACT_EMAIL)}</a>로 "구독 신청"'
+        if CONTACT_EMAIL else "(이메일 구독은 아직 준비 중입니다)"
+    )
+
+    return f"""<div class="subscribe-box">
+  <strong>💬 카카오톡으로 매일 아침 새 소식 받아보기</strong>
   <p>
-    <!-- TODO(운영자): Brevo 가입 후 "웹 폼" 임베드 코드로 이 블록을 통째로
-         교체할 것 (MY_SETUP_CHECKLIST.md 참고). 그 전까지는 메일로 신청받는
-         임시 방식으로 동작한다. -->
-    아래 메일로 "구독 신청"이라고 보내주시면 등록해드립니다:
-    <a href="mailto:{contact}?subject=지원금헌터%20구독신청">{contact_display}</a>
+    {kakao_block}
   </p>
+  <p style="font-size:.78rem;">{email_block}</p>
 </div>"""
 
 NAV_LINKS = """<a href="./">오늘의 발행</a>
@@ -285,10 +306,7 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
 {f'<meta property="og:url" content="{escape(page_url)}">' if page_url else ''}
 <link rel="alternate" type="application/rss+xml" title="지원금헌터 RSS" href="feed.xml">
 {json_ld}""" if not for_email else ""
-    subscribe_html = "" if (for_email or embeddable) else SUBSCRIBE_BOX.format(
-        contact=CONTACT_EMAIL or "미설정",
-        contact_display=CONTACT_EMAIL or "(운영자가 SENDER_EMAIL을 아직 설정하지 않았습니다)",
-    )
+    subscribe_html = "" if (for_email or embeddable) else render_subscribe_box()
     css_link = EMAIL_STYLE if for_email else '<link rel="stylesheet" href="css/style.css">'
     head_extra = "" if for_email else f"{_ga_snippet()}{_adsense_head_snippet()}"
     top_ad = "" if (for_email or embeddable) else _ad_slot("top")
@@ -601,6 +619,26 @@ def render_sitemap(today: date) -> str:
 </urlset>"""
 
 
+def render_kakao_text(entries: list[dict], today: date, subject: str) -> str:
+    """카카오톡 오픈채팅방에 매일 복사·붙여넣기용 평문 요약.
+
+    카카오톡 알림톡/브랜드메시지 자동 발송은 건당 비용이 드는 유료
+    서비스라(FEATURES_BACKLOG.md 참고) 무료 자동화에는 못 넣었다. 대신
+    이 파일을 매일 자동으로 만들어 `docs/kakao-message.txt`로 공개해두면,
+    운영자가 매일 아침 이 주소를 열어 복사한 뒤 오픈채팅방에 붙여넣기만
+    하면 된다(완전 자동은 아니지만 10초 이내로 끝나는 반자동).
+    """
+    lines = [f"🎯 지원금헌터 — {subject}", ""]
+    page_url = f"{PAGES_URL}/" if PAGES_URL else ""
+    for e in entries[:TOP_N]:
+        dday = f"D-{e['days_left']}" if e["days_left"] is not None else "⚠️"
+        lines.append(f"[{dday}] {e['title']} ({e['agency']})")
+        lines.append(f"  마감: {e['deadline_note']} · {e['detail_url']}")
+    lines.append("")
+    lines.append(f"전체 목록 보기: {page_url or './'}")
+    return "\n".join(lines)
+
+
 def main() -> None:
     today = today_kst()
     entries = build_entries(today)
@@ -647,6 +685,11 @@ def main() -> None:
         f.write(subject)
     with open(os.path.join(OUTPUT_DIR, "email_body.html"), "w", encoding="utf-8") as f:
         f.write(email_html)
+
+    # 카카오톡 오픈채팅방 반자동 공유용 — automation/output/은 커밋 안 되니
+    # (gitignore) 사람이 매일 열어볼 수 있게 docs/에도 공개해둔다.
+    with open(os.path.join(DOCS_DIR, "kakao-message.txt"), "w", encoding="utf-8") as f:
+        f.write(render_kakao_text(entries, today, subject))
 
     print(f"[build_digest] {len(entries)}건 처리 완료 (기업마당+K-Startup). 제목: {subject}")
 

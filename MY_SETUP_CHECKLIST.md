@@ -14,6 +14,11 @@ AUTOMATION.md가 "무엇을 왜 이렇게 만들었나"라면, 이 문서는 **"
 | `PAGES_URL` 변수 | ✅ 등록 완료 |
 | 매일 자동 실행(GitHub Actions) | ✅ 최소 2회 수동 실행으로 성공 확인함(`success`). 다음은 예정된 평일 KST 08:00에 스케줄대로 자동 실행됨 |
 | 디자인(헤더/히어로/카드/다크모드/광고 자리) | ✅ salary-calculator와 같은 디자인 시스템으로 교체 완료 |
+| 구글 검색 등록 | ✅ Search Console 소유확인 완료(자동), 사이트맵/색인 요청은 사용자가 진행 중 |
+| 네이버 검색 등록 | ⬜ 기존 `smilemaskl.github.io` 사이트에서 sitemap 제출 필요 — SEO_SETUP.md 참고 |
+| IndexNow(네이버·Bing 즉시 색인) | ✅ 연동 완료, 매일 자동 핑 |
+| 카카오톡 구독 신청 (ID 검색) | ✅ `KAKAO_ID` 등록 완료 — 구독 박스에 반영됨 |
+| 카카오톡 오픈채팅방 (원클릭 참여) | ⬜ 아직 안 만듦 — 아래 11번 |
 | **구글 애드센스/애널리틱스** | ⬜ **아직 안 함 — 수익화 1순위, 아래 4번** |
 | Brevo(이메일 발송) | ⬜ 아직 안 함 — 아래 5번 |
 | 구독자 명단 | ⬜ 아직 없음 — 아래 6번 |
@@ -141,6 +146,21 @@ Secrets and variables → Actions → Secrets 탭 → New repository secret**
 `automation/build_digest.py`의 `SUBSCRIBE_BOX` 부분을 그 코드로
 바꿔달라고 요청하면 된다(코드 수정이 필요한 부분이라 알려주면 처리한다).
 
+## 11. 카카오톡 오픈채팅방 만들기 (강력 권장 — 완료됨: ID 검색은 이미 작동)
+
+- ✅ `KAKAO_ID` = `blackhole826@nate.com`으로 이미 등록해둠 — 지금
+  사이트 구독 박스에 "카카오톡 ID로 검색" 안내가 뜨는 상태
+- ⬜ **더 나은 방법**: 카카오톡 앱에서 오픈채팅방 만들기 → 방 이름을
+  "지원금헌터 - 마감임박 정부지원금 정보방"처럼 검색에 잘 걸리는
+  이름으로 설정 → 초대 링크(`https://open.kakao.com/o/...` 형태) 복사
+- 그 링크를 알려주면 `KAKAO_OPENCHAT_URL` 변수로 등록해준다 — 등록되면
+  구독 박스가 "카카오톡 오픈채팅방 바로 참여하기" **원클릭 버튼**으로
+  자동 승격된다(ID 검색보다 훨씬 참여 장벽이 낮음)
+- 매일 아침 `https://smilemaskl.github.io/benefit-hunter/kakao-message.txt`
+  를 열어 복사한 뒤 오픈채팅방에 붙여넣으면 "매일 카카오톡으로 소식
+  받기"가 완성된다(완전 자동은 아니지만 10초 내외 — 카카오톡 완전 자동
+  발송이 왜 무료로 안 되는지는 FEATURES_BACKLOG.md 참고)
+
 ---
 
 ## 수익화 관련 — "돈은 어디로 들어오나"
@@ -165,8 +185,10 @@ Secrets and variables → Actions → Secrets 탭 → New repository secret**
 | GitHub 저장소·Pages·`PAGES_URL` | 필수 | ✅ 완료 |
 | `ADSENSE_CLIENT_ID`, `ADSENSE_SLOT_TOP/MID/BOTTOM` | **수익화 1순위** | ⬜ 대기 |
 | `GA_MEASUREMENT_ID` | 권장(트래픽 확인용) | ⬜ 대기 |
-| `GOOGLE_SITE_VERIFICATION` | 구글 검색 노출 원하면 필수 | ⬜ 대기 |
+| `GOOGLE_SITE_VERIFICATION` | 구글 검색 노출 | ✅ 자동 인증돼서 불필요 (SEO_SETUP.md 참고) |
 | 네이버 sitemap 제출 (변수 불필요) | 기존 `smilemaskl.github.io` 사이트에서 제출 — [SEO_SETUP.md](SEO_SETUP.md) 참고 | ⬜ 대기 |
+| `KAKAO_ID` | 카카오톡 구독 신청 | ✅ 완료 (`blackhole826@nate.com`) |
+| `KAKAO_OPENCHAT_URL` | 권장(원클릭 참여로 승격) | ⬜ 대기 — 오픈채팅방 만들면 알려줄 것 |
 | `BREVO_API_KEY`, `SENDER_EMAIL` | 이메일 발송 원하면 필수 | ⬜ 대기 |
 | `SUBSCRIBERS_CSV_B64` | 구독자 있으면 필수 | ⬜ 대기 |
 | `DISCORD_WEBHOOK_URL`/`SLACK_WEBHOOK_URL` | 선택 | ⬜ 대기 |
