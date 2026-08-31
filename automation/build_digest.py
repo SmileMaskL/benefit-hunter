@@ -436,6 +436,7 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
     body_main = f"""<div class="page-shell">
 {left_side}
 <main>
+{affiliate_html}
 {top_ad}
 {stat_bar}
 {subscribe_html}
@@ -452,7 +453,6 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
 </ul>
 {f'<div id="intl">{intl_section}</div>' if intl_section else ""}
 {related_site}
-{affiliate_html}
 {bottom_ad}
 </main>
 {right_side}
