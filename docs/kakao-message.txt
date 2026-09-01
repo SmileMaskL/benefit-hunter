@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026 대덕특구 딥테크 혁신성장 플 외 23건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-1, 함평군 2026년 음식점 입식테이블  외 39건
 
-[D-0] 2026 대덕특구 딥테크 혁신성장 플랫폼(전략기술 발굴 및 매칭) (8/1 ~ 8/31) (연구개발특구진흥재단)
-  마감: 2026-08-01 ~ 2026-08-31 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178719
-[D-0] 2026 충남 대학생 창업경진대회 참여기업 모집 (씨엔티테크(주))
-  마감: 2026-08-20 ~ 2026-08-31 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178988
-[D-2] 2026년 제3차 보건신기술(NET) 인증사업 신규인증 및 기간연장 신청 (한국보건산업진흥원)
+[D-1] 함평군 2026년 음식점 입식테이블 및 경사로 설치 지원사업 신청 공고 (전남광주통합특별시)
+  마감: 2026-08-26 ~ 2026-09-02 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000125989
+[D-1] 2026년 제3차 보건신기술(NET) 인증사업 신규인증 및 기간연장 신청 (한국보건산업진흥원)
   마감: 2026-08-03 ~ 2026-09-02 15:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178571
+[D-1] 『BOUNCE 2026』 '스타트업 오픈이노베이션 페스타' 참여 스타트업 모집 (부산창조경제혁신센터)
+  마감: 2026-08-11 ~ 2026-09-02 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178883
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
