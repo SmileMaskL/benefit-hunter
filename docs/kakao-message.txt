@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-1, 함평군 2026년 음식점 입식테이블  외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026년 제3차 보건신기술(NET) 외 39건
 
-[D-1] 함평군 2026년 음식점 입식테이블 및 경사로 설치 지원사업 신청 공고 (전남광주통합특별시)
-  마감: 2026-08-26 ~ 2026-09-02 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000125989
-[D-1] 2026년 제3차 보건신기술(NET) 인증사업 신규인증 및 기간연장 신청 (한국보건산업진흥원)
+[D-0] 2026년 제3차 보건신기술(NET) 인증사업 신규인증 및 기간연장 신청 (한국보건산업진흥원)
   마감: 2026-08-03 ~ 2026-09-02 15:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178571
-[D-1] 『BOUNCE 2026』 '스타트업 오픈이노베이션 페스타' 참여 스타트업 모집 (부산창조경제혁신센터)
+[D-0] 『BOUNCE 2026』 '스타트업 오픈이노베이션 페스타' 참여 스타트업 모집 (부산창조경제혁신센터)
   마감: 2026-08-11 ~ 2026-09-02 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178883
+[D-0] 2026 관악S밸리 성장 지원 세미나 3회 (재단법인 관악중소벤처진흥원)
+  마감: 2026-08-19 ~ 2026-09-02 14:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178961
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
