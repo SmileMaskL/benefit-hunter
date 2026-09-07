@@ -3,27 +3,6 @@ VERSION:2.0
 PRODID:-//benefit-hunter//deadlines//KO
 CALSCALE:GREGORIAN
 BEGIN:VEVENT
-UID:73b7190f0ae57da1e365c912f83ec3d1@benefit-hunter
-DTSTAMP:20260904T000000Z
-DTSTART;VALUE=DATE:20260904
-SUMMARY:[마감] 2026년 한전KPS 창업벤처기업 육성 지원사업 참여기업 모집안내 (에너지밸리기업개발원)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179062
-END:VEVENT
-BEGIN:VEVENT
-UID:d285c84033d812c9831598d12d5abb93@benefit-hunter
-DTSTAMP:20260906T000000Z
-DTSTART;VALUE=DATE:20260906
-SUMMARY:[마감] 2026년「강남 취‧창업허브센터」7차 입주 기업 신규 모집 ((주)오픈놀)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178941
-END:VEVENT
-BEGIN:VEVENT
-UID:bba486b7b6f36e16472174d574187d83@benefit-hunter
-DTSTAMP:20260907T000000Z
-DTSTART;VALUE=DATE:20260907
-SUMMARY:[마감] 2026년 대전 스타트업스쿨 스타트업 리딩클래스 (4회차 ㅣ 스타트업 IR & 투자유치 마스터클래스) (대전창조경제혁신센터)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179046
-END:VEVENT
-BEGIN:VEVENT
 UID:6cec28b08236c7af371de0a8979a40ee@benefit-hunter
 DTSTAMP:20260908T000000Z
 DTSTART;VALUE=DATE:20260908
@@ -57,6 +36,27 @@ DTSTAMP:20260909T000000Z
 DTSTART;VALUE=DATE:20260909
 SUMMARY:[마감] 2026 서울 오픈이노베이션 인사이트 데이 (마크앤컴퍼니)
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179028
+END:VEVENT
+BEGIN:VEVENT
+UID:149fa48103075319b78457285cfd4de5@benefit-hunter
+DTSTAMP:20260911T000000Z
+DTSTART;VALUE=DATE:20260911
+SUMMARY:[마감] 2026년 AX 에이지테크 시장확산 지원사업 모집 공고(해양문화도시 기반의 에이지테크 실증거점 조성) (부산광역시)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000126187
+END:VEVENT
+BEGIN:VEVENT
+UID:7e3fbb5157dbe74bdcc78a9a523c8655@benefit-hunter
+DTSTAMP:20260911T000000Z
+DTSTART;VALUE=DATE:20260911
+SUMMARY:[마감] 진주시 2026년 2차 우리동네 맑은공기 패키지 지원사업 사전 기술진단 참여 사업장 추가 모집 공고 (경상남도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000126185
+END:VEVENT
+BEGIN:VEVENT
+UID:e287bdd0ef26a6d95f7ff16efd571109@benefit-hunter
+DTSTAMP:20260911T000000Z
+DTSTART;VALUE=DATE:20260911
+SUMMARY:[마감] 화성시 2026년 신중년 고용지원 사업 참여기업 모집 공고 (경기도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000126180
 END:VEVENT
 BEGIN:VEVENT
 UID:4a423e2bb75beb4f29efe4e3df8cd095@benefit-hunter
@@ -94,11 +94,39 @@ SUMMARY:[마감] 2026년 구미시 스타트업 필드 4차 입주기업 모집 
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179019
 END:VEVENT
 BEGIN:VEVENT
+UID:1459816f46f826b364b020b4503d8aba@benefit-hunter
+DTSTAMP:20260915T000000Z
+DTSTART;VALUE=DATE:20260915
+SUMMARY:[마감] 화성시 2026년 하반기 지역서점 인증(갱신) 신청 접수 공고 (경기도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000126182
+END:VEVENT
+BEGIN:VEVENT
+UID:9575870e9c775d7a281ed1f14124a6d6@benefit-hunter
+DTSTAMP:20260915T000000Z
+DTSTART;VALUE=DATE:20260915
+SUMMARY:[마감] 진주시 2026년 2차 반려동물 동반 출입 음식점 물품구입 지원 추가 공고 (경상남도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000126181
+END:VEVENT
+BEGIN:VEVENT
 UID:c3b9a62a68454c25b16b7b7e253b1c6e@benefit-hunter
 DTSTAMP:20260915T000000Z
 DTSTART;VALUE=DATE:20260915
 SUMMARY:[마감] 2026년 성장기업 재무·세무 관리개선  바우처 지원사업 제1차 시행계획 공고 ((사)한국중소기업발전협회)
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179073
+END:VEVENT
+BEGIN:VEVENT
+UID:0f7a561803016924fa23c5bfd385201f@benefit-hunter
+DTSTAMP:20260915T000000Z
+DTSTART;VALUE=DATE:20260915
+SUMMARY:[마감] 2026년 특허출원·등록 비용 바우처 지원사업 12차(하반기 5차) ((사)한국중소기업발전협회)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179043
+END:VEVENT
+BEGIN:VEVENT
+UID:da96c4cbc573bca1a89df29316202888@benefit-hunter
+DTSTAMP:20260915T000000Z
+DTSTART;VALUE=DATE:20260915
+SUMMARY:[마감] 2026년 9월 전북 IR피칭 & 오피스아워 by KRYPTON 신청 접수 (크립톤)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179120
 END:VEVENT
 BEGIN:VEVENT
 UID:9185923b8e1cabbd3d9bcec3fc9e7c4e@benefit-hunter
@@ -115,6 +143,13 @@ SUMMARY:[마감] 스피드(30분) 창업 멘토링 (마포청년창업취업지�
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179103
 END:VEVENT
 BEGIN:VEVENT
+UID:63ae6a388351f29889f98200435af05a@benefit-hunter
+DTSTAMP:20260917T000000Z
+DTSTART;VALUE=DATE:20260917
+SUMMARY:[마감] 2026년 지역ㆍ산업맞춤형 일자리지원 사업(제주지역 자율계정) 관광콘텐츠 특화형 고용정착 및 인재육성 지원사업 추가모집 공고 (고용노동부)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000126191
+END:VEVENT
+BEGIN:VEVENT
 UID:300c145cb3f6a19997b2f72f7b15fdb6@benefit-hunter
 DTSTAMP:20260917T000000Z
 DTSTART;VALUE=DATE:20260917
@@ -127,6 +162,20 @@ DTSTAMP:20260920T000000Z
 DTSTART;VALUE=DATE:20260920
 SUMMARY:[마감] 2026년 제5회 유니버설디자인 공모전 (한남대학교산학협력단)
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178547
+END:VEVENT
+BEGIN:VEVENT
+UID:7255aaaad651ea1c917a163b959b76e4@benefit-hunter
+DTSTAMP:20260921T000000Z
+DTSTART;VALUE=DATE:20260921
+SUMMARY:[마감] 2026년 라오스(비엔티안) 전력기자재 사절단 참가 공고 (산업통상부)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000126189
+END:VEVENT
+BEGIN:VEVENT
+UID:b803f561aba31ba3375480f7f464cdd0@benefit-hunter
+DTSTAMP:20260922T000000Z
+DTSTART;VALUE=DATE:20260922
+SUMMARY:[마감] 울주군 2026년 소규모 사업장 방지시설 설치 지원사업 공고(우리동네 맑은공기 패키지 지원사업) (울산광역시)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000126178
 END:VEVENT
 BEGIN:VEVENT
 UID:3aab05a08074f2859a1c3d56985e7f7e@benefit-hunter
@@ -157,6 +206,20 @@ SUMMARY:[마감] 2026년 제3차 대전 팁스타운 입주기업 모집 공고 
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178981
 END:VEVENT
 BEGIN:VEVENT
+UID:3f6c25ed350f2db198d0670f31518e08@benefit-hunter
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20260930
+SUMMARY:[마감] 대덕구 2026년 3분기 착한가격업소 신규 모집 공고 (대전광역시)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000126179
+END:VEVENT
+BEGIN:VEVENT
+UID:77b41052e7e66bbf5da35b3aec8b33a9@benefit-hunter
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20260930
+SUMMARY:[마감] 부천시 2026년 9월 유해물질 시험분석 수수료 지원 사업 참여 기업 모집 공고 (경기도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000126177
+END:VEVENT
+BEGIN:VEVENT
 UID:cd032f4a5d83f8f5cf381d77f9f6c8c2@benefit-hunter
 DTSTAMP:20260930T000000Z
 DTSTART;VALUE=DATE:20260930
@@ -164,11 +227,25 @@ SUMMARY:[마감] 2026년 2차 CNU Startup to TIPS 기업 모집 (충남대학교
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179080
 END:VEVENT
 BEGIN:VEVENT
+UID:59f16f0af460744e54d7ebd28c7e2ff6@benefit-hunter
+DTSTAMP:20261014T000000Z
+DTSTART;VALUE=DATE:20261014
+SUMMARY:[마감] 2026 디캠프 배치 9기 모집 공고 (재단법인 은행권청년창업재단)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179094
+END:VEVENT
+BEGIN:VEVENT
 UID:6dc5f171fad62ea0dc8cc4b0fa4b0702@benefit-hunter
 DTSTAMP:20261026T000000Z
 DTSTART;VALUE=DATE:20261026
 SUMMARY:[마감] 코리아 핀테크 위크 2026  「핀테크 스타트업 1:1 투자 밋업」 참여기업 모집 (한국성장금융투자운용)
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179012
+END:VEVENT
+BEGIN:VEVENT
+UID:15a2ebcdf40481843405ae04b1cfe6c4@benefit-hunter
+DTSTAMP:20261113T000000Z
+DTSTART;VALUE=DATE:20261113
+SUMMARY:[마감] 2026년 2차 지역산업위기대응 이차보전 지원사업 변경 공고 (산업통상부)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000126190
 END:VEVENT
 BEGIN:VEVENT
 UID:407c4367db37b50ad58cbeb2b13ed752@benefit-hunter
