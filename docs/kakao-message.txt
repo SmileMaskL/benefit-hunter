@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-1, 청년창업 IR 경진대회 외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 청년창업 IR 경진대회 외 24건
 
-[D-1] 청년창업 IR 경진대회 (계명대학교산학협력단)
+[D-0] 청년창업 IR 경진대회 (계명대학교산학협력단)
   마감: 2026-09-01 ~ 2026-09-08 17:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179101
-[D-1] 2026 인천 관광스타트업 IR 데이 참가기업 모집 (인천관광공사)
+[D-0] 2026 인천 관광스타트업 IR 데이 참가기업 모집 (인천관광공사)
   마감: 2026-08-20 ~ 2026-09-08 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178979
-[D-2] 중동상황대응  [수출위기극복 및 대체시장 개척]  심화컨설팅 (서울경제진흥원)
+[D-1] 중동상황대응  [수출위기극복 및 대체시장 개척]  심화컨설팅 (서울경제진흥원)
   마감: 2026-08-20 ~ 2026-09-09 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179017
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
