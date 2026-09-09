@@ -3,20 +3,6 @@ VERSION:2.0
 PRODID:-//benefit-hunter//deadlines//KO
 CALSCALE:GREGORIAN
 BEGIN:VEVENT
-UID:6cec28b08236c7af371de0a8979a40ee@benefit-hunter
-DTSTAMP:20260908T000000Z
-DTSTART;VALUE=DATE:20260908
-SUMMARY:[마감] 청년창업 IR 경진대회 (계명대학교산학협력단)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179101
-END:VEVENT
-BEGIN:VEVENT
-UID:87e9e660c7b422efdd6b1a6c65fa05e6@benefit-hunter
-DTSTAMP:20260908T000000Z
-DTSTART;VALUE=DATE:20260908
-SUMMARY:[마감] 2026 인천 관광스타트업 IR 데이 참가기업 모집 (인천관광공사)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178979
-END:VEVENT
-BEGIN:VEVENT
 UID:68bd5df54cc517b0ef4aa9e0aedec983@benefit-hunter
 DTSTAMP:20260909T000000Z
 DTSTART;VALUE=DATE:20260909
@@ -31,11 +17,11 @@ SUMMARY:[마감] 신규 입주기업 모집 공고 (서울여자대학교 산학
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179056
 END:VEVENT
 BEGIN:VEVENT
-UID:ea4ff2fd56e54f6572d276473b0ae615@benefit-hunter
+UID:e218319a686e0006429da70468f9da50@benefit-hunter
 DTSTAMP:20260909T000000Z
 DTSTART;VALUE=DATE:20260909
-SUMMARY:[마감] 2026 서울 오픈이노베이션 인사이트 데이 (마크앤컴퍼니)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179028
+SUMMARY:[마감] 서울디자인런 2026 - 창업은 언제 혼자를 벗어나야 할까? ((주)오픈놀)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179137
 END:VEVENT
 BEGIN:VEVENT
 UID:4a423e2bb75beb4f29efe4e3df8cd095@benefit-hunter
@@ -59,6 +45,13 @@ SUMMARY:[마감] 2026년 9월 동네창업학교 교육생 모집 공고 (충남
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179050
 END:VEVENT
 BEGIN:VEVENT
+UID:fafb530a5a65073ecd3ce37be4406e7f@benefit-hunter
+DTSTAMP:20260914T000000Z
+DTSTART;VALUE=DATE:20260914
+SUMMARY:[마감] SURF 2026 INCHEON (인천스타트업위크) 사전 등록 및 비즈니스 밋업 신청 오픈 (인천창조경제혁신센터)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179156
+END:VEVENT
+BEGIN:VEVENT
 UID:cbde855023c776dafbc682f1912d8e37@benefit-hunter
 DTSTAMP:20260914T000000Z
 DTSTART;VALUE=DATE:20260914
@@ -66,11 +59,11 @@ SUMMARY:[마감] 2026「판교 창업존」입주기업 및 투자사·협력기
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179084
 END:VEVENT
 BEGIN:VEVENT
-UID:093c08fa0c46f61c5d008b21d7eaf74d@benefit-hunter
-DTSTAMP:20260914T000000Z
-DTSTART;VALUE=DATE:20260914
-SUMMARY:[마감] 2026년 구미시 스타트업 필드 4차 입주기업 모집 공고 (구미전자정보기술원)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179019
+UID:63b6614fec6dfd6ff3c6892aa9d44f1a@benefit-hunter
+DTSTAMP:20260915T000000Z
+DTSTART;VALUE=DATE:20260915
+SUMMARY:[마감] 2026년 청년창업기업 세무 역량강화 특강 및 1:1 멘토링 참여자 모집 ((재)성동벤처밸리)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179151
 END:VEVENT
 BEGIN:VEVENT
 UID:c3b9a62a68454c25b16b7b7e253b1c6e@benefit-hunter
@@ -80,18 +73,18 @@ SUMMARY:[마감] 2026년 성장기업 재무·세무 관리개선  바우처 지
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179073
 END:VEVENT
 BEGIN:VEVENT
-UID:0f7a561803016924fa23c5bfd385201f@benefit-hunter
+UID:6771ad5790f7f1ae939ef81c344a3961@benefit-hunter
 DTSTAMP:20260915T000000Z
 DTSTART;VALUE=DATE:20260915
-SUMMARY:[마감] 2026년 특허출원·등록 비용 바우처 지원사업 12차(하반기 5차) ((사)한국중소기업발전협회)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179043
+SUMMARY:[마감] (대구센터) 2026년 제8회 제대군인 창업 워크숍 개최 안내 (국가보훈부)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179146
 END:VEVENT
 BEGIN:VEVENT
-UID:da96c4cbc573bca1a89df29316202888@benefit-hunter
-DTSTAMP:20260915T000000Z
-DTSTART;VALUE=DATE:20260915
-SUMMARY:[마감] 2026년 9월 전북 IR피칭 & 오피스아워 by KRYPTON 신청 접수 (크립톤)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179120
+UID:ada28654de4e57ca8f8fe2d860e2b5ae@benefit-hunter
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20260916
+SUMMARY:[마감] K-이커머스 미국 진출의 모든 것: 크라우드펀딩부터 Shopify·글로벌 결제까지 세미나 참여기업 모집 ((주)펀딩인사이더)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179181
 END:VEVENT
 BEGIN:VEVENT
 UID:9185923b8e1cabbd3d9bcec3fc9e7c4e@benefit-hunter
@@ -101,6 +94,13 @@ SUMMARY:[마감] 싱가포르 현지 진출 지원 국내 블록체인 기업 �
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179068
 END:VEVENT
 BEGIN:VEVENT
+UID:3cff70771e6bfe672185c67eb9d265c3@benefit-hunter
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20260916
+SUMMARY:[마감] 구로구 청년창업지원센터 일반 창업교육(하반기: 3회차): 서울시 청년이 활용 가능한 창업지원 정책 (구로구 청년창업지원센터)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179139
+END:VEVENT
+BEGIN:VEVENT
 UID:39d605350cac962e058f97ca13355c15@benefit-hunter
 DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20260916
@@ -108,18 +108,25 @@ SUMMARY:[마감] 스피드(30분) 창업 멘토링 (마포청년창업취업지�
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179103
 END:VEVENT
 BEGIN:VEVENT
-UID:300c145cb3f6a19997b2f72f7b15fdb6@benefit-hunter
-DTSTAMP:20260917T000000Z
-DTSTART;VALUE=DATE:20260917
-SUMMARY:[마감] 2026년 제대군인 창업 경진대회 참가자 모집 (국가보훈부)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178931
+UID:9f366f312e51ac013b99174aaea2e31f@benefit-hunter
+DTSTAMP:20260919T000000Z
+DTSTART;VALUE=DATE:20260919
+SUMMARY:[마감] SK와 스타트업이 만드는 협력의 시작점\, 9/22 SK임팩트부스터 데이에 초대합니다 (마크앤컴퍼니)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179166
 END:VEVENT
 BEGIN:VEVENT
-UID:6f842905e0525a94391ff077e9d0341a@benefit-hunter
-DTSTAMP:20260920T000000Z
-DTSTART;VALUE=DATE:20260920
-SUMMARY:[마감] 2026년 제5회 유니버설디자인 공모전 (한남대학교산학협력단)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178547
+UID:e13c0d548702ee2ee39a81f12f66d74f@benefit-hunter
+DTSTAMP:20260921T000000Z
+DTSTART;VALUE=DATE:20260921
+SUMMARY:[마감] 2026 강원권 LIPS 민간운영사 연합 INVESTOR DAY 9월 참여기업 모집 (재단법인 강원창조경제혁신센터)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179128
+END:VEVENT
+BEGIN:VEVENT
+UID:34a57d5fd35643ef108db0067488f342@benefit-hunter
+DTSTAMP:20260921T000000Z
+DTSTART;VALUE=DATE:20260921
+SUMMARY:[마감] 청년 창업 인사이트 밋업 (관악구청)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179134
 END:VEVENT
 BEGIN:VEVENT
 UID:3aab05a08074f2859a1c3d56985e7f7e@benefit-hunter
@@ -136,18 +143,11 @@ SUMMARY:[마감] AI 기반 서비스 개발·사업화 1인 창업가 캠프 7�
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178831
 END:VEVENT
 BEGIN:VEVENT
-UID:a27b38712f70f9be6be1d338d00ef0f6@benefit-hunter
-DTSTAMP:20260928T000000Z
-DTSTART;VALUE=DATE:20260928
-SUMMARY:[마감] 더인벤션랩 2026 엣지업 크리에이터스 4기 AX/LX Challenge  모집공고 (더인벤션랩)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179038
-END:VEVENT
-BEGIN:VEVENT
-UID:c3780221861500f01210161b318c8d49@benefit-hunter
-DTSTAMP:20260928T000000Z
-DTSTART;VALUE=DATE:20260928
-SUMMARY:[마감] 2026년 제3차 대전 팁스타운 입주기업 모집 공고 (창업진흥원)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=178981
+UID:eba4d3683a991d340d52d98b28095ef3@benefit-hunter
+DTSTAMP:20260927T000000Z
+DTSTART;VALUE=DATE:20260927
+SUMMARY:[마감] Midnight Korea Hackathon 2026 & Privacy Night 참가 안내 (서울핀테크랩)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179179
 END:VEVENT
 BEGIN:VEVENT
 UID:cd032f4a5d83f8f5cf381d77f9f6c8c2@benefit-hunter
@@ -157,11 +157,11 @@ SUMMARY:[마감] 2026년 2차 CNU Startup to TIPS 기업 모집 (충남대학교
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179080
 END:VEVENT
 BEGIN:VEVENT
-UID:59f16f0af460744e54d7ebd28c7e2ff6@benefit-hunter
-DTSTAMP:20261014T000000Z
-DTSTART;VALUE=DATE:20261014
-SUMMARY:[마감] 2026 디캠프 배치 9기 모집 공고 (재단법인 은행권청년창업재단)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179094
+UID:b7db811bd060652149ed1ce27dae41d9@benefit-hunter
+DTSTAMP:20260930T000000Z
+DTSTART;VALUE=DATE:20260930
+SUMMARY:[마감] 충북대학교 『글로벌(G)테크벤처센터(BI) 』 입주기업 모집 (충북대학교)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179147
 END:VEVENT
 BEGIN:VEVENT
 UID:6dc5f171fad62ea0dc8cc4b0fa4b0702@benefit-hunter
