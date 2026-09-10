@@ -232,7 +232,7 @@ def render_affiliate_banner(position: str = "bottom") -> str:
   </script>
   <div class="affiliate-disclosure">{escape(AFFILIATE_DISCLOSURE)}</div>
 </div>"""
-    if position == "bottom" and AFFILIATE_BANNER_URL:
+    if AFFILIATE_BANNER_URL:
         text = AFFILIATE_BANNER_TEXT or "추천 상품 보러 가기"
         return f"""<div class="related-site">
   <span class="icon">🛍️</span>
