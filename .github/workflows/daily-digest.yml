@@ -17,9 +17,9 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
@@ -52,6 +52,9 @@ jobs:
           AFFILIATE_BANNER_URL: ${{ vars.AFFILIATE_BANNER_URL }}
           AFFILIATE_BANNER_TEXT: ${{ vars.AFFILIATE_BANNER_TEXT }}
           AFFILIATE_DISCLOSURE: ${{ vars.AFFILIATE_DISCLOSURE }}
+          COUPANG_TRACKING_CODE: ${{ vars.COUPANG_TRACKING_CODE }}
+          COUPANG_WIDGET_ID_TOP: ${{ vars.COUPANG_WIDGET_ID_TOP }}
+          COUPANG_WIDGET_ID_BOTTOM: ${{ vars.COUPANG_WIDGET_ID_BOTTOM }}
         run: python build_digest.py
         working-directory: automation
 
