@@ -81,6 +81,15 @@ ADSENSE_SLOTS = {
 # 나타난다. MONETIZATION_HOWTO.md 경로 B 참고.
 AFFILIATE_BANNER_URL = os.environ.get("AFFILIATE_BANNER_URL", "")
 AFFILIATE_BANNER_TEXT = os.environ.get("AFFILIATE_BANNER_TEXT", "")
+# 쿠팡파트너스 자동 노출 위젯(클릭 없이 상품이 바로 보이는 캐러셀).
+# partners.coupang.com → 배너 관리 → 위젯 만들기에서 발급받은 값을
+# COUPANG_TRACKING_CODE / COUPANG_WIDGET_ID_TOP / COUPANG_WIDGET_ID_BOTTOM로
+# 등록하면 다음 자동 발행부터 본문 상단·하단에 실제 상품이 자동 표시된다.
+COUPANG_TRACKING_CODE = os.environ.get("COUPANG_TRACKING_CODE", "")
+COUPANG_WIDGET_IDS = {
+    "top": os.environ.get("COUPANG_WIDGET_ID_TOP", ""),
+    "bottom": os.environ.get("COUPANG_WIDGET_ID_BOTTOM", ""),
+}
 # 쿠팡 약관 + 공정위 추천보증 심사지침이 요구하는 필수 표시 문구.
 # 쿠팡파트너스가 아닌 다른 제휴(금융상품 등)를 걸 땐 AFFILIATE_DISCLOSURE로
 # 그 프로그램에 맞는 문구로 바꿔서 등록할 것.
@@ -208,18 +217,29 @@ def _ad_side(position: str) -> str:
     return f'<aside class="side-rail {position}">{inner}</aside>'
 
 
-def render_affiliate_banner() -> str:
-    """제휴 링크 배너. URL이 없으면 빈 문자열(아무것도 안 뜸) — 애드센스와
-    같은 "값 채우기 전엔 조용히 숨김" 패턴. 값이 있으면 법적으로 필요한
-    고지 문구(AFFILIATE_DISCLOSURE)를 반드시 같이 표시한다."""
-    if not AFFILIATE_BANNER_URL:
-        return ""
-    text = AFFILIATE_BANNER_TEXT or "추천 상품 보러 가기"
-    return f"""<div class="related-site">
+def render_affiliate_banner(position: str = "bottom") -> str:
+    """제휴 상품 영역. 쿠팡파트너스 위젯 값(COUPANG_TRACKING_CODE +
+    COUPANG_WIDGET_ID_TOP/BOTTOM)이 있으면 클릭 없이 상품이 바로 보이는
+    캐러셀 위젯을 낸다. 위젯 값이 없고 단순 링크(AFFILIATE_BANNER_URL)만
+    있으면 기존처럼 클릭형 배너를, 둘 다 없으면 빈 문자열을 반환한다 —
+    애드센스와 같은 "값 채우기 전엔 조용히 숨김" 패턴."""
+    widget_id = COUPANG_WIDGET_IDS.get(position, "")
+    if COUPANG_TRACKING_CODE and widget_id:
+        return f"""<div class="related-site coupang-widget">
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <script>
+    new PartnersCoupang.G({{"id":{widget_id},"template":"carousel","trackingCode":"{COUPANG_TRACKING_CODE}","width":"680","height":"140"}});
+  </script>
+  <div class="affiliate-disclosure">{escape(AFFILIATE_DISCLOSURE)}</div>
+</div>"""
+    if position == "bottom" and AFFILIATE_BANNER_URL:
+        text = AFFILIATE_BANNER_TEXT or "추천 상품 보러 가기"
+        return f"""<div class="related-site">
   <span class="icon">🛍️</span>
   <div class="txt"><strong>{escape(text)}</strong><span>{escape(AFFILIATE_DISCLOSURE)}</span></div>
   <a class="btn-secondary" href="{escape(AFFILIATE_BANNER_URL)}" target="_blank" rel="noopener sponsored">바로가기</a>
 </div>"""
+    return ""
 
 
 def _onesignal_snippet() -> str:
@@ -367,7 +387,8 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
     bottom_ad = "" if (for_email or embeddable) else _ad_slot("bottom")
     left_side = "" if (for_email or embeddable) else _ad_side("left")
     right_side = "" if (for_email or embeddable) else _ad_side("right")
-    affiliate_html = "" if (for_email or embeddable) else render_affiliate_banner()
+    affiliate_html_top = "" if (for_email or embeddable) else render_affiliate_banner("top")
+    affiliate_html_bottom = "" if (for_email or embeddable) else render_affiliate_banner("bottom")
     header_nav = "" if for_email else f"""<header>
   <div class="header-inner">
     <a class="logo" href="./"><span class="logo-mark">🎯</span>지원금헌터</a>
@@ -436,7 +457,7 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
     body_main = f"""<div class="page-shell">
 {left_side}
 <main>
-{affiliate_html}
+{affiliate_html_top}
 {top_ad}
 {stat_bar}
 {subscribe_html}
@@ -453,6 +474,7 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
 </ul>
 {f'<div id="intl">{intl_section}</div>' if intl_section else ""}
 {related_site}
+{affiliate_html_bottom}
 {bottom_ad}
 </main>
 {right_side}

@@ -91,6 +91,8 @@ AUTOMATION.md가 "무엇을 왜 이렇게 만들었나"라면, 이 문서는 **"
 MONETIZATION_HOWTO.md 경로 B 참고. 쿠팡파트너스부터 시작하는 걸 권장한다
 (승인이 거의 즉시라 진입장벽이 낮음).
 
+**방법 A — 클릭형 링크 배너(간단하지만 클릭해야만 상품이 보임)**
+
 1. [coupartners.coupang.com](https://coupartners.coupang.com) 가입 →
    본인 인증 → 승인 후 원하는 상품의 제휴 링크 생성
 2. GitHub 저장소 Variables에 등록:
@@ -101,7 +103,22 @@ MONETIZATION_HOWTO.md 경로 B 참고. 쿠팡파트너스부터 시작하는 걸
 3. 등록하면 다음 자동 발행부터 본문 하단에 배너가 자동으로 뜨고,
    법적으로 필요한 고지 문구도 같이 표시된다 — 직접 HTML을 고칠 필요 없음
 
-이걸 안 채우면: 배너 자리가 아예 안 뜬다(빈 자리조차 안 남기고 완전히
+**방법 B — 자동 노출 캐러셀 위젯(권장: 클릭 없이 상품이 바로 보임)**
+
+1. [partners.coupang.com](https://partners.coupang.com) 로그인 → **배너
+   관리 → 위젯 만들기** → "캐러셀" 형태 선택 → 원하는 카테고리로 위젯 생성
+2. 발급된 화면에 나오는 `id`(숫자)와 `trackingCode`(AF로 시작하는 문자열)를
+   확인
+3. GitHub 저장소 Variables에 등록:
+   - `COUPANG_TRACKING_CODE` = 발급받은 trackingCode
+   - `COUPANG_WIDGET_ID_TOP` = 본문 상단에 쓸 위젯 id
+   - `COUPANG_WIDGET_ID_BOTTOM` = 본문 하단에 쓸 위젯 id (상단과 같은 위젯을
+     재사용해도 되면 TOP과 같은 값을 넣어도 됨)
+4. 등록하면 다음 자동 발행부터 본문 상단·하단에 실제 쿠팡 상품이 캐러셀로
+   클릭 없이 자동 표시된다. 이 세 값이 등록돼 있으면 방법 A(단순 링크)보다
+   항상 우선한다.
+
+이걸 안 채우면: 배너/위젯 자리가 아예 안 뜬다(빈 자리조차 안 남기고 완전히
 숨김 — 애드센스 자리와 달리 "미승인" 상태를 보여줄 필요가 없어서).
 
 ## 5. Brevo 무료 계정 — 이메일 발송용
@@ -204,7 +221,7 @@ Secrets and variables → Actions → Secrets 탭 → New repository secret**
 | --- | --- | --- |
 | GitHub 저장소·Pages·`PAGES_URL` | 필수 | ✅ 완료 |
 | `ADSENSE_CLIENT_ID`, `ADSENSE_SLOT_TOP/MID/BOTTOM/LEFT/RIGHT` | **수익화 1순위** | ✅ 완료 (ca-pub-4674765308814336, 사이드 레일 포함) |
-| `AFFILIATE_BANNER_URL/TEXT/DISCLOSURE` | 수익화 2순위(쿠팡파트너스 등) | ⬜ 대기 — 아래 4-2번 |
+| `AFFILIATE_BANNER_URL/TEXT/DISCLOSURE` (방법 A) 또는 `COUPANG_TRACKING_CODE`+`COUPANG_WIDGET_ID_TOP/BOTTOM` (방법 B, 권장) | 수익화 2순위(쿠팡파트너스 등) | ⬜ 대기 — 아래 4-2번 |
 | `GA_MEASUREMENT_ID` | 권장(트래픽 확인용) | ⬜ 대기 |
 | `GOOGLE_SITE_VERIFICATION` | 구글 검색 노출 | ✅ 자동 인증돼서 불필요 (SEO_SETUP.md 참고) |
 | 네이버 sitemap 제출 (변수 불필요) | 기존 `smilemaskl.github.io` 사이트에서 제출 — [SEO_SETUP.md](SEO_SETUP.md) 참고 | ⬜ 대기 |
