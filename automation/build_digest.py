@@ -456,7 +456,7 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
 <div class="related-site">
   <span class="icon">🛡️</span>
   <div class="txt"><strong>PulseGuard — 가벼운 PC 상태 감시 프로그램</strong><span>오래된 저사양 PC가 멈추기 전에 미리 알려주는 초경량 무료 프로그램</span></div>
-  <a class="btn-secondary" href="https://smilemaskl.github.io/pulseguard/" target="_blank" rel="noopener">바로가기</a>
+  <a class="btn-secondary" href="https://smilemaskl.github.io/PulseGuard/" target="_blank" rel="noopener">바로가기</a>
 </div>"""
 
     body_main = f"""<div class="page-shell">
