@@ -17,7 +17,10 @@
 """
 from __future__ import annotations
 
+import os
 import re
+import shutil
+import traceback
 from datetime import date, datetime
 
 REGION_RE = re.compile(r"^\[([^\]]+)\]\s*")
@@ -122,3 +125,56 @@ def today_kst() -> date:
     # 날짜를 그대로 KST 날짜로 취급한다(실행 시각이 KST 08:00대이므로
     # UTC 날짜와 KST 날짜가 어긋나는 자정 근접 구간이 아니다).
     return datetime.utcnow().date()
+
+
+# ---------- Log/Error, Log/Success 공용 로깅 ----------
+# 자동화 스크립트(collect_*.py, build_digest.py, notify_*.py, send_email_brevo.py)가
+# 성공/실패를 저장소에 남기는 공용 유틸리티. 저장소 루트의 Log/Error 또는
+# Log/Success 아래에 월 폴더(YYYY-MM)를 만들고, 그 안에 날짜별 파일로 이어 붙인다.
+# daily-digest.yml이 Log/ 를 커밋하므로 GitHub에 그대로 기록이 남는다.
+
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+LOG_ROOT = os.path.join(_REPO_ROOT, "Log")
+LOG_RETENTION_MONTHS = 6
+
+
+def _write_log(kind: str, script_name: str, message: str) -> None:
+    now = datetime.utcnow()
+    today = now.strftime("%Y-%m-%d")
+    month = today[:7]
+    dir_path = os.path.join(LOG_ROOT, kind, month)
+    os.makedirs(dir_path, exist_ok=True)
+    log_path = os.path.join(dir_path, f"{kind}_log_{today}.txt")
+    line = f"[{now:%Y-%m-%d %H:%M} UTC] [{script_name}] {message}\n"
+    with open(log_path, "a", encoding="utf-8") as f:
+        f.write(line)
+
+
+def log_success(script_name: str, message: str) -> None:
+    _write_log("Success", script_name, message)
+
+
+def log_error(script_name: str, message: str, exc: BaseException | None = None) -> None:
+    if exc is not None:
+        message = f"{message}\n" + "".join(traceback.format_exception(type(exc), exc, exc.__traceback__))
+    _write_log("Error", script_name, message)
+
+
+def cleanup_old_logs(retention_months: int = LOG_RETENTION_MONTHS) -> None:
+    """Log/Error, Log/Success 안의 월 폴더(YYYY-MM) 중 retention_months보다
+    오래된 폴더를 지운다. 스크립트가 돌 때마다 한 번씩 호출하면 된다."""
+    now = datetime.utcnow()
+    cutoff_year = now.year
+    cutoff_month = now.month - retention_months
+    while cutoff_month <= 0:
+        cutoff_month += 12
+        cutoff_year -= 1
+    cutoff_label = f"{cutoff_year:04d}-{cutoff_month:02d}"
+
+    for kind in ("Error", "Success"):
+        dir_path = os.path.join(LOG_ROOT, kind)
+        if not os.path.isdir(dir_path):
+            continue
+        for entry in os.listdir(dir_path):
+            if re.fullmatch(r"\d{4}-\d{2}", entry) and entry < cutoff_label:
+                shutil.rmtree(os.path.join(dir_path, entry), ignore_errors=True)

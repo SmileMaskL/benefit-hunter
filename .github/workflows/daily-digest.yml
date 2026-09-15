@@ -87,7 +87,7 @@ jobs:
         run: |
           git config user.name "benefit-hunter-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add docs/
+          git add docs/ Log/
           git diff --cached --quiet || git commit -m "chore: 오늘의 다이제스트 $(date -u +'%Y-%m-%d')"
           git push
 

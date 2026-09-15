@@ -32,7 +32,15 @@ from html import escape
 
 from collect_bizinfo import collect as collect_bizinfo
 from collect_kstartup import collect as collect_kstartup
-from common import INDEXNOW_KEY, days_left, guess_categories, today_kst
+from common import (
+    INDEXNOW_KEY,
+    cleanup_old_logs,
+    days_left,
+    guess_categories,
+    log_error,
+    log_success,
+    today_kst,
+)
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS_DIR = os.path.join(REPO_ROOT, "docs")
@@ -780,7 +788,13 @@ def main() -> None:
         f.write(render_kakao_text(entries, today, subject))
 
     print(f"[build_digest] {len(entries)}건 처리 완료 (기업마당+K-Startup). 제목: {subject}")
+    log_success("build_digest", f"{len(entries)}건 처리 완료 (기업마당+K-Startup). 제목: {subject}")
 
 
 if __name__ == "__main__":
-    main()
+    cleanup_old_logs()
+    try:
+        main()
+    except Exception as e:
+        log_error("build_digest", "다이제스트 생성 실패 (기업마당/K-Startup 수집 또는 페이지 생성 중 오류)", exc=e)
+        raise

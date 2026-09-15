@@ -19,7 +19,7 @@ from urllib.parse import urlparse
 
 import requests
 
-from common import INDEXNOW_KEY, today_kst
+from common import INDEXNOW_KEY, cleanup_old_logs, log_error, log_success, today_kst
 
 INDEXNOW_URL = "https://api.indexnow.org/indexnow"
 PAGES_URL = os.environ.get("PAGES_URL", "").rstrip("/")
@@ -53,10 +53,19 @@ def main() -> None:
     )
     # IndexNow는 200/202를 정상 처리로 본다.
     if resp.status_code not in (200, 202):
-        print(f"[notify_indexnow] 실패: {resp.status_code} {resp.text[:200]}", file=sys.stderr)
+        msg = f"실패: {resp.status_code} {resp.text[:200]}"
+        print(f"[notify_indexnow] {msg}", file=sys.stderr)
+        log_error("notify_indexnow", msg)
         return
-    print(f"[notify_indexnow] {len(urls)}개 URL 핑 완료 (status {resp.status_code})")
+    msg = f"{len(urls)}개 URL 핑 완료 (status {resp.status_code})"
+    print(f"[notify_indexnow] {msg}")
+    log_success("notify_indexnow", msg)
 
 
 if __name__ == "__main__":
-    main()
+    cleanup_old_logs()
+    try:
+        main()
+    except Exception as e:
+        log_error("notify_indexnow", "실행 중 예외 발생", exc=e)
+        raise

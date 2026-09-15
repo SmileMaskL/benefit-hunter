@@ -20,6 +20,8 @@ import sys
 
 import requests
 
+from common import cleanup_old_logs, log_error, log_success
+
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "automation", "output")
 ONESIGNAL_URL = "https://onesignal.com/api/v1/notifications"
 
@@ -49,10 +51,18 @@ def main() -> None:
         timeout=15,
     )
     if resp.status_code >= 300:
-        print(f"[notify_onesignal] 발송 실패: {resp.status_code} {resp.text[:200]}", file=sys.stderr)
+        msg = f"발송 실패: {resp.status_code} {resp.text[:200]}"
+        print(f"[notify_onesignal] {msg}", file=sys.stderr)
+        log_error("notify_onesignal", msg)
         return
     print("[notify_onesignal] 발송 완료")
+    log_success("notify_onesignal", "발송 완료")
 
 
 if __name__ == "__main__":
-    main()
+    cleanup_old_logs()
+    try:
+        main()
+    except Exception as e:
+        log_error("notify_onesignal", "실행 중 예외 발생", exc=e)
+        raise

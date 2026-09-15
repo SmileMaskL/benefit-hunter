@@ -34,6 +34,7 @@ from datetime import date as date_cls
 import requests
 
 from build_digest import render_html
+from common import cleanup_old_logs, log_error, log_success
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SUBSCRIBERS_CSV = os.path.join(REPO_ROOT, "automation", "subscribers.csv")
@@ -138,8 +139,19 @@ def main() -> None:
         failed += not ok
         time.sleep(0.15)  # Brevo 초당 요청 제한을 여유 있게 피함
 
-    print(f"[send_email_brevo] 발송 완료: 성공 {sent}건(맞춤형 {personalized}건 포함), 실패 {failed}건")
+    summary = f"발송 완료: 성공 {sent}건(맞춤형 {personalized}건 포함), 실패 {failed}건"
+    print(f"[send_email_brevo] {summary}")
+    if failed > 0:
+        log_error("send_email_brevo", summary)
+    else:
+        log_success("send_email_brevo", summary)
 
 
 if __name__ == "__main__":
+    cleanup_old_logs()
+    try:
+        main()
+    except Exception as e:
+        log_error("send_email_brevo", "실행 중 예외 발생", exc=e)
+        raise
     main()

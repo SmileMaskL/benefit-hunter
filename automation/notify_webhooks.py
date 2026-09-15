@@ -16,6 +16,8 @@ import sys
 
 import requests
 
+from common import cleanup_old_logs, log_error, log_success
+
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "automation", "output")
 
 
@@ -39,16 +41,24 @@ def _plain_summary() -> str:
     return "\n".join(lines)
 
 
-def notify_discord(webhook_url: str) -> None:
+def notify_discord(webhook_url: str) -> bool:
     resp = requests.post(webhook_url, json={"content": _plain_summary()}, timeout=15)
     if resp.status_code >= 300:
-        print(f"[notify_webhooks] Discord 전송 실패: {resp.status_code} {resp.text[:200]}", file=sys.stderr)
+        msg = f"Discord 전송 실패: {resp.status_code} {resp.text[:200]}"
+        print(f"[notify_webhooks] {msg}", file=sys.stderr)
+        log_error("notify_webhooks", msg)
+        return False
+    return True
 
 
-def notify_slack(webhook_url: str) -> None:
+def notify_slack(webhook_url: str) -> bool:
     resp = requests.post(webhook_url, json={"text": _plain_summary()}, timeout=15)
     if resp.status_code >= 300:
-        print(f"[notify_webhooks] Slack 전송 실패: {resp.status_code} {resp.text[:200]}", file=sys.stderr)
+        msg = f"Slack 전송 실패: {resp.status_code} {resp.text[:200]}"
+        print(f"[notify_webhooks] {msg}", file=sys.stderr)
+        log_error("notify_webhooks", msg)
+        return False
+    return True
 
 
 def main() -> None:
@@ -58,12 +68,24 @@ def main() -> None:
     if not discord_url and not slack_url:
         print("[notify_webhooks] DISCORD_WEBHOOK_URL / SLACK_WEBHOOK_URL 둘 다 없어 건너뜁니다.")
         return
+
+    ok = True
     if discord_url:
-        notify_discord(discord_url)
+        ok = notify_discord(discord_url) and ok
     if slack_url:
-        notify_slack(slack_url)
-    print("[notify_webhooks] 완료")
+        ok = notify_slack(slack_url) and ok
+
+    if ok:
+        print("[notify_webhooks] 완료")
+        log_success("notify_webhooks", "웹훅 전송 완료")
+    else:
+        print("[notify_webhooks] 일부 전송 실패")
 
 
 if __name__ == "__main__":
-    main()
+    cleanup_old_logs()
+    try:
+        main()
+    except Exception as e:
+        log_error("notify_webhooks", "실행 중 예외 발생", exc=e)
+        raise
