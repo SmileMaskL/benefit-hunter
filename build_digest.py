@@ -371,12 +371,17 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
             "mainEntity": {"@type": "ItemList", "itemListElement": item_list},
         }
         json_ld = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>'
+    og_image_url = f"{page_url}og-image.png" if page_url else ""
     og_tags = f"""
 {site_verification}<link rel="canonical" href="{escape(canonical_url)}">
 <meta property="og:title" content="지원금헌터 — {today.isoformat()}">
 <meta property="og:description" content="{escape(description)}">
 <meta property="og:type" content="website">
 {f'<meta property="og:url" content="{escape(page_url)}">' if page_url else ''}
+{f'<meta property="og:image" content="{escape(og_image_url)}">' if og_image_url else ''}
+{f'<meta property="og:image:width" content="1200">' if og_image_url else ''}
+{f'<meta property="og:image:height" content="630">' if og_image_url else ''}
+{f'<meta name="twitter:card" content="summary_large_image">' if og_image_url else ''}
 <link rel="alternate" type="application/rss+xml" title="지원금헌터 RSS" href="feed.xml">
 {json_ld}""" if not for_email else ""
     subscribe_html = "" if (for_email or embeddable) else render_subscribe_box()
