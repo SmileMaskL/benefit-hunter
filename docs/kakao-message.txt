@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-1, SK와 스타트업이 만드는 협력의 시작 외 24건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026 홍콩 메가쇼(Mega Sho 외 38건
 
-[D-1] SK와 스타트업이 만드는 협력의 시작점, 9/22 SK임팩트부스터 데이에 초대합니다 (마크앤컴퍼니)
-  마감: 2026-09-04 ~ 2026-09-19 00:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179166
-[D-2] 2026년 과천시 창업지원센터 보육실 입주기업 모집 공고 (과천시 창업지원센터)
-  마감: 2026-09-11 ~ 2026-09-20 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179127
-[D-3] 2026 홍콩 메가쇼(Mega Show Hong Kong 2026) 참가기업 모집 공고 (서울경제진흥원)
+[D-0] 2026 홍콩 메가쇼(Mega Show Hong Kong 2026) 참가기업 모집 공고 (서울경제진흥원)
   마감: 2026-09-11 ~ 2026-09-21 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179243
+[D-0] 2026 강원권 LIPS 민간운영사 연합 INVESTOR DAY 9월 참여기업 모집 (재단법인 강원창조경제혁신센터)
+  마감: 2026-09-02 ~ 2026-09-21 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179128
+[D-0] 청년 창업 인사이트 밋업 (관악구청)
+  마감: 2026-08-29 ~ 2026-09-21 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179134
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
