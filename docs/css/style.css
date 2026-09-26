@@ -458,3 +458,7 @@ footer a { color: var(--text-sub); text-decoration: underline; }
   header, footer, .hero, .ad-slot, .subscribe-box { display: none !important; }
   main { padding: 0; max-width: 100%; }
 }
+
+.guide-article{margin:28px 0;line-height:1.75;text-align:left}
+.guide-article ul{padding-left:1.3em}
+.guide-article li{margin:6px 0}

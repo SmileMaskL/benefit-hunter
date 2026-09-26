@@ -190,6 +190,20 @@ def _adsense_head_snippet() -> str:
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT_ID}" crossorigin="anonymous"></script>"""
 
 
+GUIDE_HTML = """<section class="guide-article">
+<h2 class="section-title">지원사업 신청 전 꼭 확인하세요</h2>
+<p>지원금헌터는 기업마당과 K-Startup 등 공공 사이트에 올라온 지원사업 공고를 매일 모아 마감이 임박한 순서로 정리합니다. 이곳의 내용은 공고를 훑어보기 위한 요약이므로, 신청 전에는 반드시 각 공고의 원문 링크에서 접수 기간과 자격 요건을 다시 확인하세요.</p>
+<ul>
+<li><strong>대상 요건</strong>: 사업자 유형(개인·법인), 업력, 사업장 소재지, 대표자 나이 등 공고마다 조건이 다릅니다. 지역 한정 공고가 많으니 소재지부터 확인하세요.</li>
+<li><strong>중복 수혜 제한</strong>: 같은 성격의 지원사업은 동시에 받을 수 없거나 이전 수혜 이력이 감점되는 경우가 있습니다.</li>
+<li><strong>제출 서류</strong>: 사업자등록증명, 납세 관련 증명서, 사업계획서 등을 요구하는 경우가 많고, 발급에 시간이 걸리는 서류는 마감 며칠 전에 미리 준비하는 편이 안전합니다.</li>
+<li><strong>마감일 표시</strong>: "D-3"처럼 표시된 값은 오늘 날짜 기준으로 계산한 남은 일수입니다. 접수 시각(보통 당일 오후)은 공고 원문에서 확인하세요.</li>
+</ul>
+<p>공고 내용이 바뀌거나 취소되는 일도 있으므로, 신청 직전에 원문 페이지를 한 번 더 열어 보는 습관을 권합니다. 지원금을 받은 뒤의 세금과 실수령액이 궁금하다면 <a href="https://smilemaskl.github.io/" target="_blank" rel="noopener">SmileMaskL의 계산기</a>를 함께 이용해 보세요.</p>
+</section>
+"""
+
+
 def _ad_slot(position: str) -> str:
     slot = ADSENSE_SLOTS.get(position, "")
     # top은 히어로 바로 아래, 스크롤 없이(또는 아주 조금만 스크롤해서) 보이는
@@ -387,11 +401,11 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
     subscribe_html = "" if (for_email or embeddable) else render_subscribe_box()
     css_link = EMAIL_STYLE if for_email else '<link rel="stylesheet" href="css/style.css">'
     head_extra = "" if for_email else f"{_ga_snippet()}{_adsense_head_snippet()}"
-    top_ad = "" if (for_email or embeddable) else _ad_slot("top")
-    mid_ad = "" if (for_email or embeddable) else _ad_slot("mid")
+    top_ad = ""  # 애드센스 정책: 링크 목록 화면에는 광고를 최소화(하단 1개만)
+    mid_ad = ""
     bottom_ad = "" if (for_email or embeddable) else _ad_slot("bottom")
-    left_side = "" if (for_email or embeddable) else _ad_side("left")
-    right_side = "" if (for_email or embeddable) else _ad_side("right")
+    left_side = ""
+    right_side = ""
     affiliate_html_top = "" if (for_email or embeddable) else render_affiliate_banner("top")
     affiliate_html_bottom = "" if (for_email or embeddable) else render_affiliate_banner("bottom")
     header_nav = "" if for_email else f"""<header>
@@ -478,6 +492,7 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
 {rest_html or "<li>추가 공고가 없습니다.</li>"}
 </ul>
 {f'<div id="intl">{intl_section}</div>' if intl_section else ""}
+{GUIDE_HTML}
 {related_site}
 {affiliate_html_bottom}
 {bottom_ad}
@@ -640,7 +655,6 @@ def render_archive_index() -> str:
 <h2 class="section-title">지난 발행 검색</h2>
 <input id="q" type="search" placeholder="예: 청년, 대구, 창업 ..." style="width:100%;padding:.7rem;font-size:1rem;border:1.5px solid var(--border);border-radius:10px;margin-bottom:1rem;background:var(--card-bg);color:var(--text)">
 <ul class="digest-list" id="results"></ul>
-{_ad_slot("bottom")}
 </main>
 <footer>지원금헌터 · <a href="../privacy.html">개인정보처리방침</a></footer>
 <script src="../js/common.js"></script>
