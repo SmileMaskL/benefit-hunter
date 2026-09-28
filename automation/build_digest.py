@@ -398,11 +398,14 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
     subscribe_html = "" if (for_email or embeddable) else render_subscribe_box()
     css_link = EMAIL_STYLE if for_email else '<link rel="stylesheet" href="css/style.css">'
     head_extra = "" if for_email else f"{_ga_snippet()}{_adsense_head_snippet()}"
-    top_ad = "" if (for_email or embeddable) else _ad_slot("top")
-    mid_ad = "" if (for_email or embeddable) else _ad_slot("mid")
+    # 2026-09-28: 애드센스가 "가치가 별로 낮은 콘텐츠"로 반려 - 공고 목록 위주의
+    # 얇은 본문에 광고가 5개(top/mid/bottom/좌우 사이드)나 붙어 광고 밀도가
+    # 너무 높았던 게 원인으로 보인다. 재검토를 통과하려고 본문 맨 아래 1개만 남긴다.
+    top_ad = ""
+    mid_ad = ""
     bottom_ad = "" if (for_email or embeddable) else _ad_slot("bottom")
-    left_side = "" if (for_email or embeddable) else _ad_side("left")
-    right_side = "" if (for_email or embeddable) else _ad_side("right")
+    left_side = ""
+    right_side = ""
     affiliate_html_top = "" if (for_email or embeddable) else render_affiliate_banner("top")
     affiliate_html_bottom = "" if (for_email or embeddable) else render_affiliate_banner("bottom")
     header_nav = "" if for_email else f"""<header>
