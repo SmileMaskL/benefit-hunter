@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 청년창업 거주지원시설(창업하여家) 입 외 24건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 26년 9월 스타트업 언론 홍보 지원 외 39건
 
-[D-0] 청년창업 거주지원시설(창업하여家) 입주자 3차 모집(연장) ((재)광주테크노파크)
-  마감: 2026-09-02 ~ 2026-09-29 17:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179292
-[D-1] 26년 9월 스타트업 언론 홍보 지원사업 참가사 모집 공고(2차) (스타트업데일리)
+[D-0] 26년 9월 스타트업 언론 홍보 지원사업 참가사 모집 공고(2차) (스타트업데일리)
   마감: 2026-09-15 ~ 2026-09-30 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179255
-[D-1] 2026년 2차 CNU Startup to TIPS 기업 모집 (충남대학교기술지주(주))
+[D-0] 2026년 2차 CNU Startup to TIPS 기업 모집 (충남대학교기술지주(주))
   마감: 2026-09-01 ~ 2026-09-30 16:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179080
+[D-0] 충북대학교 『글로벌(G)테크벤처센터(BI) 』 입주기업 모집 (충북대학교)
+  마감: 2026-09-03 ~ 2026-09-30 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179147
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
