@@ -359,7 +359,17 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
     # "오늘자 미리보기", 아카이브가 그날의 진짜 permalink라는 개념.
     canonical_url = f"{page_url}archive/{today.isoformat()}.html" if page_url else f"archive/{today.isoformat()}.html"
     top_title = top[0]["title"] if top else "오늘의 지원사업"
-    description = f"마감임박 D-{top[0]['days_left']}: {top_title[:60]}" if top and top[0]["days_left"] is not None else "정부·지자체 지원금·지원사업 마감임박 데일리 큐레이션"
+    # 예전 설명은 오늘의 TOP1 공고 하나로만 채워져서("마감임박 D-3: 성북구
+    # 중장년 기술창업센터 입주기업...") 검색 결과에 특정 지역·업종 공고 하나만
+    # 노출됐다 - "지원금" 같은 일반 검색에선 자기 상황과 안 맞아 보여 클릭률이
+    # 떨어진다(실측 CTR 0.35%, 노출 287회/클릭 1회). 총 건수를 앞에 내세워
+    # "다양한 공고가 모여 있다"는 걸 먼저 보여주고, TOP1은 구체성을 위한
+    # 예시로만 뒤에 붙인다.
+    if top:
+        hook = f"D-{top[0]['days_left']} {top_title}" if top[0]["days_left"] is not None else top_title
+        description = f"오늘 {len(entries)}건 중 마감임박 {len(top)}건 — {hook[:40]} 등. 정부·지자체 지원금을 매일 자동 업데이트합니다."
+    else:
+        description = "정부·지자체 지원금·지원사업 마감임박 데일리 큐레이션. 매일 자동 업데이트됩니다."
     site_verification = (
         (f'<meta name="google-site-verification" content="{escape(GOOGLE_SITE_VERIFICATION)}">\n' if GOOGLE_SITE_VERIFICATION else "")
         + (f'<meta name="naver-site-verification" content="{escape(NAVER_SITE_VERIFICATION)}">\n' if NAVER_SITE_VERIFICATION else "")
