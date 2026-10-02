@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026 Silicon Valley  외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-3, 2026년 성북구 중장년 기술창업센터 외 39건
 
-[D-0] 2026 Silicon Valley GTM(Go-To-Market) Program - Public Announcement for Service Provider (창업진흥원)
-  마감: 2026-09-17 ~ 2026-10-01 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179293
-[D-1] 2026년 1차 홍릉벤처밸리 창업보육센터 입주기업 모집 공고 (키스트이노베이션)
-  마감: 2026-09-07 ~ 2026-10-02 15:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179215
-[D-4] 2026년 성북구 중장년 기술창업센터 입주기업 모집공고(3차) (한성대학교산학협력단)
+[D-3] 2026년 성북구 중장년 기술창업센터 입주기업 모집공고(3차) (한성대학교산학협력단)
   마감: 2026-09-21 ~ 2026-10-05 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179320
+[D-3] 2026 옥천군 로컬 크리에이터 아카데미 (주식회사 렛츠)
+  마감: 2026-09-21 ~ 2026-10-05 13:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179354
+[D-4] 2026. 하반기 도봉구 외식업 창업 교육생 모집공고 (도봉구청)
+  마감: 2026-09-16 ~ 2026-10-06 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179286
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
