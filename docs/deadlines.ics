@@ -108,13 +108,6 @@ SUMMARY:[마감] 26년 10월 스타트업 언론 홍보 지원사업 참가사 �
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179361
 END:VEVENT
 BEGIN:VEVENT
-UID:365d81fc81dcd95613db281358b1dd69@benefit-hunter
-DTSTAMP:20261016T000000Z
-DTSTART;VALUE=DATE:20261016
-SUMMARY:[마감] 2026년 한신대학교 창업보육센터 신규 창업기업 모집 공고 (한신대학교 창업보육센터)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179377
-END:VEVENT
-BEGIN:VEVENT
 UID:6a59b0413e7cd4fb2ec30d80048ffa39@benefit-hunter
 DTSTAMP:20261020T000000Z
 DTSTART;VALUE=DATE:20261020
@@ -134,6 +127,13 @@ DTSTAMP:20261021T000000Z
 DTSTART;VALUE=DATE:20261021
 SUMMARY:[마감] 2026년 위치정보 보호조치 교육 (6차) ((주)아이전스)
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179393
+END:VEVENT
+BEGIN:VEVENT
+UID:d362ca09d22fb63b38eab10d39e36596@benefit-hunter
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20261022
+SUMMARY:[마감] 2026년 강북창업지원센터 10월 창업 교육 및 그룹상담 프로그램 참가자 모집 (광운대학교산학협력단)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179418
 END:VEVENT
 BEGIN:VEVENT
 UID:432167bac1388929d0f0855625f15c86@benefit-hunter
