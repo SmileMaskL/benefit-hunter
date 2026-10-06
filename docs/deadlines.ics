@@ -3,20 +3,6 @@ VERSION:2.0
 PRODID:-//benefit-hunter//deadlines//KO
 CALSCALE:GREGORIAN
 BEGIN:VEVENT
-UID:ce6c7970becea13522310ae1fa1b1056@benefit-hunter
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261005
-SUMMARY:[마감] 2026년 성북구 중장년 기술창업센터 입주기업 모집공고(3차) (한성대학교산학협력단)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179320
-END:VEVENT
-BEGIN:VEVENT
-UID:5493bdbf6fcecce4983a31f29df410da@benefit-hunter
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20261005
-SUMMARY:[마감] 2026 옥천군 로컬 크리에이터 아카데미 (주식회사 렛츠)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179354
-END:VEVENT
-BEGIN:VEVENT
 UID:dca6a356fc7d7e7411a5624899c30c35@benefit-hunter
 DTSTAMP:20261006T000000Z
 DTSTART;VALUE=DATE:20261006
@@ -108,6 +94,13 @@ SUMMARY:[마감] 26년 10월 스타트업 언론 홍보 지원사업 참가사 �
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179361
 END:VEVENT
 BEGIN:VEVENT
+UID:365d81fc81dcd95613db281358b1dd69@benefit-hunter
+DTSTAMP:20261016T000000Z
+DTSTART;VALUE=DATE:20261016
+SUMMARY:[마감] 2026년 한신대학교 창업보육센터 신규 창업기업 모집 공고 (한신대학교 창업보육센터)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179377
+END:VEVENT
+BEGIN:VEVENT
 UID:6a59b0413e7cd4fb2ec30d80048ffa39@benefit-hunter
 DTSTAMP:20261020T000000Z
 DTSTART;VALUE=DATE:20261020
@@ -169,6 +162,13 @@ DTSTAMP:20261026T000000Z
 DTSTART;VALUE=DATE:20261026
 SUMMARY:[마감] 코리아 핀테크 위크 2026  「핀테크 스타트업 1:1 투자 밋업」 참여기업 모집 (한국성장금융투자운용)
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179012
+END:VEVENT
+BEGIN:VEVENT
+UID:b67d016e0658f0e0d347b128fe3626fd@benefit-hunter
+DTSTAMP:20261028T000000Z
+DTSTART;VALUE=DATE:20261028
+SUMMARY:[마감] 동국대학교 BMC창업보육센터(고양)신규 입주기업 모집공고(2026년 6차) (동국대학교 BMC창업보육센터)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179360
 END:VEVENT
 BEGIN:VEVENT
 UID:2a3bc47383e00c3765bef22d28926dbf@benefit-hunter

@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026년 성북구 중장년 기술창업센터 외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026. 하반기 도봉구 외식업 창업 외 39건
 
-[D-0] 2026년 성북구 중장년 기술창업센터 입주기업 모집공고(3차) (한성대학교산학협력단)
-  마감: 2026-09-21 ~ 2026-10-05 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179320
-[D-0] 2026 옥천군 로컬 크리에이터 아카데미 (주식회사 렛츠)
-  마감: 2026-09-21 ~ 2026-10-05 13:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179354
-[D-1] 2026. 하반기 도봉구 외식업 창업 교육생 모집공고 (도봉구청)
+[D-0] 2026. 하반기 도봉구 외식업 창업 교육생 모집공고 (도봉구청)
   마감: 2026-09-16 ~ 2026-10-06 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179286
+[D-1] 2026년 행복한백화점 매장 입점모집 공고 (중소벤처기업부)
+  마감: 2026-10-01 ~ 2026-10-07 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000126967
+[D-1] 구로구 청년창업지원센터 일반 창업교육(하반기: 4회차): 온라인 마케팅 실전 가이드 (구로구 청년창업지원센터)
+  마감: 2026-09-17 ~ 2026-10-07 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179300
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
