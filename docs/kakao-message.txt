@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026. 하반기 도봉구 외식업 창업 외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 구로구 청년창업지원센터 일반 창업교육 외 39건
 
-[D-0] 2026. 하반기 도봉구 외식업 창업 교육생 모집공고 (도봉구청)
-  마감: 2026-09-16 ~ 2026-10-06 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179286
-[D-1] 2026년 행복한백화점 매장 입점모집 공고 (중소벤처기업부)
-  마감: 2026-10-01 ~ 2026-10-07 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000126967
-[D-1] 구로구 청년창업지원센터 일반 창업교육(하반기: 4회차): 온라인 마케팅 실전 가이드 (구로구 청년창업지원센터)
+[D-0] 구로구 청년창업지원센터 일반 창업교육(하반기: 4회차): 온라인 마케팅 실전 가이드 (구로구 청년창업지원센터)
   마감: 2026-09-17 ~ 2026-10-07 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179300
+[D-1] 2026년 4차 예비수소전문기업지원사업 수소산업분야 기술사업화(비R&D) 수혜기업 모집 공고 (충청남도)
+  마감: 2026-10-06 ~ 2026-10-08 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127020
+[D-1] 2026 서초AICT 데모데이 참가기업 모집 공고 (서초AICT운영센터)
+  마감: 2026-09-21 ~ 2026-10-08 15:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179328
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
