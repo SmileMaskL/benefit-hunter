@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026 서초AICT 데모데이 참가기 외 24건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-2, 2026 DMC 이노베이션 캠프 경진 외 39건
 
-[D-0] 2026 서초AICT 데모데이 참가기업 모집 공고 (서초AICT운영센터)
-  마감: 2026-09-21 ~ 2026-10-08 15:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179328
-[D-3] 2026 DMC 이노베이션 캠프 경진대회 (DIC2026) (사단법인 디엠씨코넷)
+[D-2] 2026 DMC 이노베이션 캠프 경진대회 (DIC2026) (사단법인 디엠씨코넷)
   마감: 2026-09-15 ~ 2026-10-11 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179399
-[D-4] 디캠프 10월 오피스아워 #벤처투자·#사업협력 모집 (재단법인 은행권청년창업재단)
+[D-3] 성주군 2026년 중소기업 수출 스케일업 지원사업 해외무역사절단 참여기업 추가모집 공고 (경상북도)
+  마감: 2026-10-07 ~ 2026-10-12 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127075
+[D-3] 디캠프 10월 오피스아워 #벤처투자·#사업협력 모집 (재단법인 은행권청년창업재단)
   마감: 2026-09-21 ~ 2026-10-12 11:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179319
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
