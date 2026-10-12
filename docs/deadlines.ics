@@ -3,13 +3,6 @@ VERSION:2.0
 PRODID:-//benefit-hunter//deadlines//KO
 CALSCALE:GREGORIAN
 BEGIN:VEVENT
-UID:ae627de40932545dca69103dbe8f40c2@benefit-hunter
-DTSTAMP:20261011T000000Z
-DTSTART;VALUE=DATE:20261011
-SUMMARY:[마감] 2026 DMC 이노베이션 캠프 경진대회 (DIC2026) (사단법인 디엠씨코넷)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179399
-END:VEVENT
-BEGIN:VEVENT
 UID:808ced8358a76e31e6bf556f23e21a16@benefit-hunter
 DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261012
@@ -127,6 +120,13 @@ DTSTAMP:20261022T000000Z
 DTSTART;VALUE=DATE:20261022
 SUMMARY:[마감] 2026년 블록체인 퓨처 챌린지 기업 모집 공고(블록체인 기업 IR 경진대회) (과학기술정보통신부)
 URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127078
+END:VEVENT
+BEGIN:VEVENT
+UID:d362ca09d22fb63b38eab10d39e36596@benefit-hunter
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20261022
+SUMMARY:[마감] 2026년 강북창업지원센터 10월 창업 교육 및 그룹상담 프로그램 참가자 모집 (광운대학교산학협력단)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179418
 END:VEVENT
 BEGIN:VEVENT
 UID:2853c0e2359124cceca84c0b86da275b@benefit-hunter
