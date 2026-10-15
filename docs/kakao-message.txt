@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026년도 해양수산 투자박람회 외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 26년 10월 스타트업 언론 홍보 지 외 39건
 
-[D-0] 2026년도 해양수산 투자박람회 ((사)한국벤처캐피탈협회)
-  마감: 2026-10-02 ~ 2026-10-14 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179415
-[D-0] 2026년 3D프린팅 네트워킹데이(창업 선배와의 만남) 참가자 모집 (쓰리디프린팅연구조합)
-  마감: 2026-09-28 ~ 2026-10-14 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179355
-[D-1] 남원시 2026년 하반기 착한가격업소 지정 모집 재공고 (전북특별자치도)
-  마감: 2026-10-07 ~ 2026-10-15 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127170
+[D-0] 26년 10월 스타트업 언론 홍보 지원사업 참가사 모집 공고(1차) (스타트업데일리)
+  마감: 2026-10-01 ~ 2026-10-15 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179361
+[D-1] 화성시 2026년 신중년 고용지원 사업 참여기업 모집 공고 (경기도)
+  마감: 2026-10-14 ~ 2026-10-16 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127214
+[D-1] 2026년 산업혁신기반구축사업 제조 특화 온디바이스 AI 기반 자율제조 실증 기반 구축사업 기업지원(기술지도) 프로그램 수혜기업 모집 공고 (산업통상부)
+  마감: 2026-10-12 ~ 2026-10-16 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127210
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
