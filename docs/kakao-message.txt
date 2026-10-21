@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026년 창업기업(예비창업자) 사업 외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 서리풀 소상공인 창업 클리닉(10월) 외 39건
 
-[D-0] 2026년 창업기업(예비창업자) 사업고도화 창업교육 참여자 모집 공고 (통영시청)
-  마감: 2026-10-01 ~ 2026-10-20 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179437
-[D-0] 이타카앤파트너스 조용민 대표 초청 특강 - 내가 투자한 스타트업과 성공하는 창업가의 3가지 비밀 ((재)경기도경제과학진흥원)
-  마감: 2026-10-06 ~ 2026-10-20 17:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179426
-[D-1] 서리풀 소상공인 창업 클리닉(10월) - 소상공인 1:1 컨설팅 ((주)오픈놀)
+[D-0] 서리풀 소상공인 창업 클리닉(10월) - 소상공인 1:1 컨설팅 ((주)오픈놀)
   마감: 2026-09-29 ~ 2026-10-21 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179370
+[D-0] 충북테크노파크 차세대에너지 스타트업 DEMO DAY (충북테크노파크)
+  마감: 2026-10-15 ~ 2026-10-21 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179537
+[D-0] 2026년 위치정보 보호조치 교육 (6차) ((주)아이전스)
+  마감: 2026-09-30 ~ 2026-10-21 15:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179393
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
