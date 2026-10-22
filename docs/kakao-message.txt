@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 서리풀 소상공인 창업 클리닉(10월) 외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-1, 경기창업혁신공간 서부권 「스담스담」( 외 39건
 
-[D-0] 서리풀 소상공인 창업 클리닉(10월) - 소상공인 1:1 컨설팅 ((주)오픈놀)
-  마감: 2026-09-29 ~ 2026-10-21 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179370
-[D-0] 충북테크노파크 차세대에너지 스타트업 DEMO DAY (충북테크노파크)
-  마감: 2026-10-15 ~ 2026-10-21 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179537
-[D-0] 2026년 위치정보 보호조치 교육 (6차) ((주)아이전스)
-  마감: 2026-09-30 ~ 2026-10-21 15:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179393
+[D-1] 경기창업혁신공간 서부권 「스담스담」(오픈 네트워킹) 3회차 ((재)경기도경제과학진흥원)
+  마감: 2026-10-02 ~ 2026-10-23 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179416
+[D-1] 2026년 나주형 청년 에너지 창업 사관학교(직·주·락·비) 사업 1차 수행기업 모집 (전남테크노파크)
+  마감: 2026-10-15 ~ 2026-10-23 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179519
+[D-3] 로컬 인디브랜드 성장을 위한 국내 및 글로벌 성장 프로그램 참가 기업 모집 ((주)푼타컴퍼니)
+  마감: 2026-09-29 ~ 2026-10-25 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179366
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
