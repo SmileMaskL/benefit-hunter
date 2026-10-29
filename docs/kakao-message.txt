@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-1, 금산군 2026년 베트남 소비촉진사업 외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026년 남동발전 상생형 창업벤처기 외 39건
 
-[D-1] 금산군 2026년 베트남 소비촉진사업 참가기업 추가 모집 공고 (충청남도)
-  마감: 2026-10-26 ~ 2026-10-29 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127489
-[D-1] 2026년 남동발전 상생형 창업벤처기업 지원사업 참가기업 모집공고(연장) ((재)경남창조경제혁신센터)
+[D-0] 2026년 남동발전 상생형 창업벤처기업 지원사업 참가기업 모집공고(연장) ((재)경남창조경제혁신센터)
   마감: 2026-10-19 ~ 2026-10-29 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179576
-[D-2] 2026년 지역기업 성장사다리 지원사업(예비선도기업 육성사업) 비R&D 지원 프로그램 참여기업 모집 수정 공고 (중소벤처기업부)
-  마감: 2026-10-19 ~ 2026-10-30 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127496
+[D-1] 성남 중장년 기술창업센터 입주기업 모집 공고 (성남산업진흥원)
+  마감: 2026-10-22 ~ 2026-10-30 16:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179607
+[D-3] 고흥군 2027년 모범업소 지정 신청 공고 (전남광주통합특별시)
+  마감: 2026-10-23 ~ 2026-11-01 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127531
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
