@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026년 남동발전 상생형 창업벤처기 외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026 연구개발특구 딥테크 스타트업 외 39건
 
-[D-0] 2026년 남동발전 상생형 창업벤처기업 지원사업 참가기업 모집공고(연장) ((재)경남창조경제혁신센터)
-  마감: 2026-10-19 ~ 2026-10-29 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179576
-[D-1] 성남 중장년 기술창업센터 입주기업 모집 공고 (성남산업진흥원)
-  마감: 2026-10-22 ~ 2026-10-30 16:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179607
-[D-3] 고흥군 2027년 모범업소 지정 신청 공고 (전남광주통합특별시)
-  마감: 2026-10-23 ~ 2026-11-01 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127531
+[D-0] 2026 연구개발특구 딥테크 스타트업 챌린지 Final Day  행사 사전접수 (리벤처스)
+  마감: 2026-10-28 ~ 2026-10-30 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179645
+[D-2] 2026  예비창업패키지 ST 창업준비 아카데미 참여자 모집 (서울과학기술대학교 창업지원단)
+  마감: 2026-10-26 ~ 2026-11-01 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179616
+[D-2] 2026 PR Day : 기술, 현실이 되다 (포항공과대학교 기술지주 주식회사)
+  마감: 2026-10-22 ~ 2026-11-01 17:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179604
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
