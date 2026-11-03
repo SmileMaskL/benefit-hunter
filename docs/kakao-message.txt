@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-1, 제2차 소담 라이브 스테이션 지원사업 외 38건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 일반 참가자 모집 외 38건
 
-[D-1] 제2차 소담 라이브 스테이션 지원사업 참여기업 공고 (경상북도)
-  마감: 2026-10-27 ~ 2026-11-03 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127591
-[D-1] 2026년 소담스타(SODAM STAR) 육성사업 참여 소상공인 모집 공고 (경상북도)
-  마감: 2026-10-27 ~ 2026-11-03 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127590
-[D-1] 2026 네이버클라우드 그린하우스 : MARKET CONNECT (알파브라더스)
-  마감: 2026-10-28 ~ 2026-11-03 00:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179652
+[D-0] 일반 참가자 모집 (예술경영지원센터)
+  마감: 2026-10-21 ~ 2026-11-03 14:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179646
+[D-0] 스타트업을 위한 정부 R&D 특강 (한국기술교육대학교 산학협력단)
+  마감: 2026-10-30 ~ 2026-11-03 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179674
+[D-1] 공주시 2027년 축산물작업장 현대화사업 추가 신청 공고 (충청남도)
+  마감: 2026-10-26 ~ 2026-11-04 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127631
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
