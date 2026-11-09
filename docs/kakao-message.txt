@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-2, 2026 별별상상 스타트업 챌린지 외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 대덕 원스톱 Bridge 연계 제 1 외 39건
 
-[D-2] 2026 별별상상 스타트업 챌린지 (주식회사 툰즈)
-  마감: 2026-11-01 ~ 2026-11-08 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179676
-[D-3] 대덕 원스톱 Bridge 연계 제 108회 대전창업포럼 참가 모집 (대전창조경제혁신센터)
+[D-0] 대덕 원스톱 Bridge 연계 제 108회 대전창업포럼 참가 모집 (대전창조경제혁신센터)
   마감: 2026-10-29 ~ 2026-11-09 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179664
-[D-3] 11월 창업 교육 프로그램 - 초기 스타트업을 위한 브랜드 만들기 ((주)오픈놀)
+[D-0] 11월 창업 교육 프로그램 - 초기 스타트업을 위한 브랜드 만들기 ((주)오픈놀)
   마감: 2026-10-26 ~ 2026-11-09 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179622
+[D-1] 장흥군 2026년 수산물 가공공장 에너지 절감장비 지원사업 신청 공고 (전남광주통합특별시)
+  마감: 2026-11-03 ~ 2026-11-10 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127743
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
