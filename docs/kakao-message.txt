@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 상지대학교 창업보육센터 입주기업 모집 외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 예비 초기 스타트업을 위한 창업 교육 외 24건
 
-[D-0] 상지대학교 창업보육센터 입주기업 모집 공고 (상지대학교산학협력단)
-  마감: 2026-10-23 ~ 2026-11-10 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179612
-[D-1] 예비 초기 스타트업을 위한 창업 교육 프로그램 러닝메이트 9기 모집 (오렌지플래닛 창업재단)
+[D-0] 예비 초기 스타트업을 위한 창업 교육 프로그램 러닝메이트 9기 모집 (오렌지플래닛 창업재단)
   마감: 2026-10-26 ~ 2026-11-11 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179621
-[D-2] 2026  도봉 오픈 창업 스쿨 -  2027 NEXT STAGE (광운대학교산학협력단)
+[D-1] 2026  도봉 오픈 창업 스쿨 -  2027 NEXT STAGE (광운대학교산학협력단)
   마감: 2026-10-27 ~ 2026-11-12 16:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179635
+[D-2] 제 3회 대전창업문화 주간(창업의 시작과 끝) (대전창조경제혁신센터)
+  마감: 2026-11-09 ~ 2026-11-13 13:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179760
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
