@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 예비 초기 스타트업을 위한 창업 교육 외 24건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2026  도봉 오픈 창업 스쿨 -  외 39건
 
-[D-0] 예비 초기 스타트업을 위한 창업 교육 프로그램 러닝메이트 9기 모집 (오렌지플래닛 창업재단)
-  마감: 2026-10-26 ~ 2026-11-11 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179621
-[D-1] 2026  도봉 오픈 창업 스쿨 -  2027 NEXT STAGE (광운대학교산학협력단)
+[D-0] 2026  도봉 오픈 창업 스쿨 -  2027 NEXT STAGE (광운대학교산학협력단)
   마감: 2026-10-27 ~ 2026-11-12 16:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179635
-[D-2] 제 3회 대전창업문화 주간(창업의 시작과 끝) (대전창조경제혁신센터)
-  마감: 2026-11-09 ~ 2026-11-13 13:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179760
+[D-1] 태백시 태백주도형 청년일자리사업 참여자 4차 추가모집 공고 (강원특별자치도)
+  마감: 2026-11-11 ~ 2026-11-13 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127865
+[D-1] 보은군 2026년 중소기업 청년재직자 고용안정 지원사업 추가 모집 공고 (충청북도)
+  마감: 2026-11-10 ~ 2026-11-13 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127863
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
