@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 제 3회 대전창업문화 주간(창업의 시 외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 반도체 공정을 혁신하는 스타트업들 ( 외 39건
 
-[D-0] 제 3회 대전창업문화 주간(창업의 시작과 끝) (대전창조경제혁신센터)
-  마감: 2026-11-09 ~ 2026-11-13 13:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179760
-[D-0] 2026 아산 스타트업 Scale-UP 프로그램 참여기업 모집 (조슈아파트너스 주식회사)
-  마감: 2026-11-05 ~ 2026-11-13 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179737
-[D-0] 2026 년 홍익대 아트앤디자인테크 창업보육센터 입주기업 모집(2 차) 공고문 (홍익대학교)
-  마감: 2026-11-01 ~ 2026-11-13 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179665
+[D-0] 반도체 공정을 혁신하는 스타트업들 (11/18, 수) (행복나래 주식회사)
+  마감: 2026-11-03 ~ 2026-11-16 12:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179716
+[D-2] 강진군 2026년 음식점 입식식탁ㆍ경사로 설치 신청업소 모집 재공고 (전남광주통합특별시)
+  마감: 2026-11-09 ~ 2026-11-18 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127929
+[D-2] 순천시 2026년 외식업소 시설개선 지원사업 참여업소 추가모집 공고 (전남광주통합특별시)
+  마감: 2026-11-16 ~ 2026-11-18 · https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000127923
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/
