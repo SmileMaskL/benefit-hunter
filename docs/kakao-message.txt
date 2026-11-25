@@ -1,10 +1,10 @@
-🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-1, 2027년 인천관광기업지원센터 입주기 외 39건
+🎯 지원금헌터 — [지원금헌터] 오늘 마감 D-0, 2027년 인천관광기업지원센터 입주기 외 39건
 
-[D-1] 2027년 인천관광기업지원센터 입주기업 모집 (인천관광공사)
+[D-0] 2027년 인천관광기업지원센터 입주기업 모집 (인천관광공사)
   마감: 2026-11-05 ~ 2026-11-25 18:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179738
-[D-1] 제4회 판다밋업 : 기후테크 Policy to Business ((재)경기도경제과학진흥원)
-  마감: 2026-11-13 ~ 2026-11-25 00:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179807
-[D-1] 창업 초보를 위한 창업 A-Z 교육 ((주)하우그로우)
-  마감: 2026-10-28 ~ 2026-11-25 11:00 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179650
+[D-1] 2026 여성벤처활성화사업 「여성벤처&스타트업 혁신성장 포럼」참여자 모집 ((사)한국여성벤처협회)
+  마감: 2026-11-11 ~ 2026-11-26 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179775
+[D-1] 한국공항공사 창업보육센터 입주기업 모집 공고 (한국공항공사)
+  마감: 2026-11-09 ~ 2026-11-26 23:59 · http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179731
 
 전체 목록 보기: https://smilemaskl.github.io/benefit-hunter/

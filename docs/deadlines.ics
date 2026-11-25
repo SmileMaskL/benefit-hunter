@@ -10,20 +10,6 @@ SUMMARY:[마감] 2027년 인천관광기업지원센터 입주기업 모집 (인
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179738
 END:VEVENT
 BEGIN:VEVENT
-UID:116e883c23fa08978306bd22aa3dbf7e@benefit-hunter
-DTSTAMP:20261125T000000Z
-DTSTART;VALUE=DATE:20261125
-SUMMARY:[마감] 제4회 판다밋업 : 기후테크 Policy to Business ((재)경기도경제과학진흥원)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179807
-END:VEVENT
-BEGIN:VEVENT
-UID:7731bfdd733a3cf31ec2584cac1a717e@benefit-hunter
-DTSTAMP:20261125T000000Z
-DTSTART;VALUE=DATE:20261125
-SUMMARY:[마감] 창업 초보를 위한 창업 A-Z 교육 ((주)하우그로우)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179650
-END:VEVENT
-BEGIN:VEVENT
 UID:08bea50f125cfdf680f36b8ec05e44da@benefit-hunter
 DTSTAMP:20261126T000000Z
 DTSTART;VALUE=DATE:20261126
@@ -129,11 +115,25 @@ SUMMARY:[마감] 2026년 의료기기 사업화 촉진 사업 지원 기업 상�
 URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128107
 END:VEVENT
 BEGIN:VEVENT
+UID:6967a667bce8ff351e1241f4198a70bb@benefit-hunter
+DTSTAMP:20261201T000000Z
+DTSTART;VALUE=DATE:20261201
+SUMMARY:[마감] 서부 경기문화창조허브 공간입주 18기 입주기업 모집 (경기콘텐츠진흥원)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179856
+END:VEVENT
+BEGIN:VEVENT
 UID:41b8c4c4e417e0141bb47e34573d57e8@benefit-hunter
 DTSTAMP:20261202T000000Z
 DTSTART;VALUE=DATE:20261202
 SUMMARY:[마감] 2026 첨단산업 스케일업 AX·PoC 지원 성과공유회 (경기창조경제혁신센터)
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179854
+END:VEVENT
+BEGIN:VEVENT
+UID:c159160695f1de8dc7d674ac4d8c71e1@benefit-hunter
+DTSTAMP:20261202T000000Z
+DTSTART;VALUE=DATE:20261202
+SUMMARY:[마감] 2026 AI × 바이오 융합기술 파트너링데이 개최 ((주)시공아이피씨)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179842
 END:VEVENT
 BEGIN:VEVENT
 UID:4de43fed171c3e2998e6eb4b667ffdb2@benefit-hunter
