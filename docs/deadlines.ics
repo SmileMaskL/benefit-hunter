@@ -3,13 +3,6 @@ VERSION:2.0
 PRODID:-//benefit-hunter//deadlines//KO
 CALSCALE:GREGORIAN
 BEGIN:VEVENT
-UID:70109cf7de4c377c2bd552baf6a6b456@benefit-hunter
-DTSTAMP:20261125T000000Z
-DTSTART;VALUE=DATE:20261125
-SUMMARY:[마감] 2027년 인천관광기업지원센터 입주기업 모집 (인천관광공사)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179738
-END:VEVENT
-BEGIN:VEVENT
 UID:08bea50f125cfdf680f36b8ec05e44da@benefit-hunter
 DTSTAMP:20261126T000000Z
 DTSTART;VALUE=DATE:20261126
@@ -29,27 +22,6 @@ DTSTAMP:20261126T000000Z
 DTSTART;VALUE=DATE:20261126
 SUMMARY:[마감] 2026 여성벤처 글로벌 컨퍼런스 ((사)한국여성벤처협회)
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179743
-END:VEVENT
-BEGIN:VEVENT
-UID:03977db147fc5ec5e04d5b5e88493b84@benefit-hunter
-DTSTAMP:20261127T000000Z
-DTSTART;VALUE=DATE:20261127
-SUMMARY:[마감] 고창군 2026년 5차 어업인 경영안정 지원사업 모집 공고 (전북특별자치도)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128106
-END:VEVENT
-BEGIN:VEVENT
-UID:5284795dff323a6495904bb668cd8216@benefit-hunter
-DTSTAMP:20261127T000000Z
-DTSTART;VALUE=DATE:20261127
-SUMMARY:[마감] 부안군 2026년 3차 수산물 가공ㆍ유통분야 지원사업 희망자 모집 공고 (전북특별자치도)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128104
-END:VEVENT
-BEGIN:VEVENT
-UID:a59ea85efc479cfc17d4c36cb77b0e80@benefit-hunter
-DTSTAMP:20261127T000000Z
-DTSTART;VALUE=DATE:20261127
-SUMMARY:[마감] 담양군 2026년 동절기 가금농장 드론소독 지원사업 참가 희망업체 접수 공고 (전남광주통합특별시)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128096
 END:VEVENT
 BEGIN:VEVENT
 UID:6bd4136401d0f13e32cdc14fb1c55721@benefit-hunter
@@ -73,18 +45,11 @@ SUMMARY:[마감] 모두의 창업 등 정부지원사업 완벽 대비! 「1:1 �
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179797
 END:VEVENT
 BEGIN:VEVENT
-UID:e52f895e1ece09f82e5ff8398645ce31@benefit-hunter
+UID:86b545ad5a8f6b59d18ec46ea75cd0f5@benefit-hunter
 DTSTAMP:20261130T000000Z
 DTSTART;VALUE=DATE:20261130
-SUMMARY:[마감] 2026년 한국건강증진개발원 기술자료 임치 계획 공고 (보건복지부)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128103
-END:VEVENT
-BEGIN:VEVENT
-UID:3bd2023c8073933198db73a07e4caab6@benefit-hunter
-DTSTAMP:20261130T000000Z
-DTSTART;VALUE=DATE:20261130
-SUMMARY:[마감] 2026년 5차 양식장 친환경에너지보급사업(인버터) 대상자 모집 공고 (제주특별자치도)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128099
+SUMMARY:[마감] CES 2027 경상북도 글로벌 비즈니스 지원사업 모집 공고 (경상북도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128117
 END:VEVENT
 BEGIN:VEVENT
 UID:7b7156214fc76b110a8ccb6d2adcf98b@benefit-hunter
@@ -108,18 +73,18 @@ SUMMARY:[마감] 2026 방탈출 공간 게임 제작 지원사업 (에픽로그�
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179682
 END:VEVENT
 BEGIN:VEVENT
-UID:81133c10933f23033e92d052746a1eb3@benefit-hunter
-DTSTAMP:20261201T000000Z
-DTSTART;VALUE=DATE:20261201
-SUMMARY:[마감] 2026년 의료기기 사업화 촉진 사업 지원 기업 상시 모집 공고 (산업통상부)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128107
-END:VEVENT
-BEGIN:VEVENT
 UID:6967a667bce8ff351e1241f4198a70bb@benefit-hunter
 DTSTAMP:20261201T000000Z
 DTSTART;VALUE=DATE:20261201
 SUMMARY:[마감] 서부 경기문화창조허브 공간입주 18기 입주기업 모집 (경기콘텐츠진흥원)
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179856
+END:VEVENT
+BEGIN:VEVENT
+UID:e14e304fa1c3f425a6d86c575392e9b6@benefit-hunter
+DTSTAMP:20261202T000000Z
+DTSTART;VALUE=DATE:20261202
+SUMMARY:[마감] 2026년 사회연대경제 WEEK 팝업빌리지(오프라인 판매기획전) 기업 모집 공고 (부산광역시)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128119
 END:VEVENT
 BEGIN:VEVENT
 UID:41b8c4c4e417e0141bb47e34573d57e8@benefit-hunter
@@ -129,11 +94,11 @@ SUMMARY:[마감] 2026 첨단산업 스케일업 AX·PoC 지원 성과공유회 (
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179854
 END:VEVENT
 BEGIN:VEVENT
-UID:c159160695f1de8dc7d674ac4d8c71e1@benefit-hunter
-DTSTAMP:20261202T000000Z
-DTSTART;VALUE=DATE:20261202
-SUMMARY:[마감] 2026 AI × 바이오 융합기술 파트너링데이 개최 ((주)시공아이피씨)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179842
+UID:0e368b63208529ef5f6ba4f6ad8f9cbb@benefit-hunter
+DTSTAMP:20261203T000000Z
+DTSTART;VALUE=DATE:20261203
+SUMMARY:[마감] 원주시 2026년 착한가격업소 신규모집 공고 (강원특별자치도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128127
 END:VEVENT
 BEGIN:VEVENT
 UID:4de43fed171c3e2998e6eb4b667ffdb2@benefit-hunter
@@ -150,18 +115,11 @@ SUMMARY:[마감] '2026 Shinhan Future's Lab Demo Day' 참관 기업 모집 (신�
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179837
 END:VEVENT
 BEGIN:VEVENT
-UID:4da25739521b8100524dfebe7a5ed911@benefit-hunter
+UID:65265daec6eadd8b6a97fe162f064ec5@benefit-hunter
 DTSTAMP:20261204T000000Z
 DTSTART;VALUE=DATE:20261204
-SUMMARY:[마감] 울진군 2026년 6차 여성어업인 특화건강검진 신청 공고 (경상북도)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128101
-END:VEVENT
-BEGIN:VEVENT
-UID:6da93e179bb48cfd9ff4b6c6c6d5dad9@benefit-hunter
-DTSTAMP:20261204T000000Z
-DTSTART;VALUE=DATE:20261204
-SUMMARY:[마감] 고흥군 2027년 농수산물 베트남 홍보(판촉)행사 지원사업 공고 (전남광주통합특별시)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128097
+SUMMARY:[마감] 원주시 2027년 동계 대학생 직장체험활동 지원사업 참여 기업체 모집 공고 (강원특별자치도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128122
 END:VEVENT
 BEGIN:VEVENT
 UID:9f398c1254a391fd79af2dffa143d88d@benefit-hunter
@@ -199,11 +157,11 @@ SUMMARY:[마감] 2026년 12월 KICXUP 서울 입주기업 모집공고 (씨엔�
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179852
 END:VEVENT
 BEGIN:VEVENT
-UID:6b15cd1d35526d65654cbd956a2bb8ab@benefit-hunter
-DTSTAMP:20261207T000000Z
-DTSTART;VALUE=DATE:20261207
-SUMMARY:[마감] 군산시 2027년 청년 어촌정착지원 사업 지원대상자 모집 공고 (전북특별자치도)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128105
+UID:fb133ac38c83ac2527c18557d782eb57@benefit-hunter
+DTSTAMP:20261208T000000Z
+DTSTART;VALUE=DATE:20261208
+SUMMARY:[마감] 진주시 농업기금 융자 특별지원 계획 공고 (경상남도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128121
 END:VEVENT
 BEGIN:VEVENT
 UID:799dbd75da1be83f556f971c9a71db04@benefit-hunter
@@ -213,11 +171,25 @@ SUMMARY:[마감] 2026년 5차 국립공주대학교 창업보육센터 입주기
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179819
 END:VEVENT
 BEGIN:VEVENT
-UID:13305d8c5a18d3b7327a36ebe3b2b188@benefit-hunter
-DTSTAMP:20261210T000000Z
-DTSTART;VALUE=DATE:20261210
-SUMMARY:[마감] 군산시 2026년 3차 어업인 경영안정 지원사업 모집 공고 (전북특별자치도)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128102
+UID:3c226e1a50994c879313f2117ca83a46@benefit-hunter
+DTSTAMP:20261209T000000Z
+DTSTART;VALUE=DATE:20261209
+SUMMARY:[마감] 김포시 2027년 청년어촌정착지원 사업 대상자 모집 공고 (경기도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128128
+END:VEVENT
+BEGIN:VEVENT
+UID:6f732d3547434285f9d9d21ed40c7ec1@benefit-hunter
+DTSTAMP:20261209T000000Z
+DTSTART;VALUE=DATE:20261209
+SUMMARY:[마감] 춘천시 2027년 청년어촌정착지원 사업 지원계획 공고 (강원특별자치도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128126
+END:VEVENT
+BEGIN:VEVENT
+UID:9a24857a0786bc44a4183859888791de@benefit-hunter
+DTSTAMP:20261209T000000Z
+DTSTART;VALUE=DATE:20261209
+SUMMARY:[마감] 2026년 달구벌여성창업보육센터 6차 입주기업 모집 (달구벌여성인력개발센터)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179884
 END:VEVENT
 BEGIN:VEVENT
 UID:7b3d7f4fe6672a2304dffb2705980a2b@benefit-hunter
@@ -234,6 +206,13 @@ SUMMARY:[마감] 2027년 상반기 「IBK창공(創工) 서울대캠프」 모�
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179814
 END:VEVENT
 BEGIN:VEVENT
+UID:74361e496ca5900fcbd12c11ea7958d4@benefit-hunter
+DTSTAMP:20261211T000000Z
+DTSTART;VALUE=DATE:20261211
+SUMMARY:[마감] 고성군 2027년 수산자원보호 직불제 사업자 모집 공고 (강원특별자치도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128123
+END:VEVENT
+BEGIN:VEVENT
 UID:89ff9162495bd2489facacc6f10349f5@benefit-hunter
 DTSTAMP:20261211T000000Z
 DTSTART;VALUE=DATE:20261211
@@ -241,25 +220,46 @@ SUMMARY:[마감] 2026년 3차 포텐셜씨드(Potential Seed) 경작형 프로�
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179860
 END:VEVENT
 BEGIN:VEVENT
-UID:5a203a762deb186a32762fb4e8b19628@benefit-hunter
-DTSTAMP:20261215T000000Z
-DTSTART;VALUE=DATE:20261215
-SUMMARY:[마감] 성주군 2026년 골목형상점가 모집 공고 (경상북도)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128100
+UID:dbbf1d4b37bd3c83c7fbb9e3149584fd@benefit-hunter
+DTSTAMP:20261214T000000Z
+DTSTART;VALUE=DATE:20261214
+SUMMARY:[마감] 삼척시 2027년 청년어촌정착지원 사업 대상자 모집 공고 (강원특별자치도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128125
 END:VEVENT
 BEGIN:VEVENT
-UID:0895b78d962b48b476efaf8ddf375661@benefit-hunter
-DTSTAMP:20261215T000000Z
-DTSTART;VALUE=DATE:20261215
-SUMMARY:[마감] 순천시 2027년 청년어촌정착지원사업 신청자 모집 공고 (전남광주통합특별시)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128095
+UID:f7fa22b6680cb4cac8f0c7c00211b54a@benefit-hunter
+DTSTAMP:20261222T000000Z
+DTSTART;VALUE=DATE:20261222
+SUMMARY:[마감] 남해군 2027년 청년 창업농 맞춤형 지원사업 신청 공고 (경상남도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128130
 END:VEVENT
 BEGIN:VEVENT
-UID:f55d965b17bc243e8b3e69fe50d7d4ff@benefit-hunter
-DTSTAMP:20261218T000000Z
-DTSTART;VALUE=DATE:20261218
-SUMMARY:[마감] 2026년 10차 전북특별자치도 ILP 서비스 지원사업 ILP 서비스 기술연결 수요기업 모집 공고 (전북특별자치도)
-URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128094
+UID:005c40ee8175f6d42bb529a3da98826e@benefit-hunter
+DTSTAMP:20261222T000000Z
+DTSTART;VALUE=DATE:20261222
+SUMMARY:[마감] 거제시 2027년 청년 창업농 맞춤형 지원사업 대상자 모집 공고 (경상남도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128120
+END:VEVENT
+BEGIN:VEVENT
+UID:606c76dc1ac268e743462539721eb041@benefit-hunter
+DTSTAMP:20261222T000000Z
+DTSTART;VALUE=DATE:20261222
+SUMMARY:[마감] 밀양시 2027년 청년창업농 맞춤형지원사업 신청 공고 (경상남도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128118
+END:VEVENT
+BEGIN:VEVENT
+UID:eff21a45bbb7b3b502766e0d994fa533@benefit-hunter
+DTSTAMP:20261222T000000Z
+DTSTART;VALUE=DATE:20261222
+SUMMARY:[마감] 산청군 2027년 청년창업농 맞춤형 지원사업 신청 공고 (경상남도)
+URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128116
+END:VEVENT
+BEGIN:VEVENT
+UID:b9b1152308c3602b0476578511a0b3b0@benefit-hunter
+DTSTAMP:20261228T000000Z
+DTSTART;VALUE=DATE:20261228
+SUMMARY:[마감] 2027년 글로벌 액셀러레이팅(GMEP) 지원사업 주관기관 모집 공고 (창업진흥원)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179887
 END:VEVENT
 BEGIN:VEVENT
 UID:29d2aa294e21b7c9c397b16a2aedbdd8@benefit-hunter
