@@ -290,10 +290,34 @@ def render_subscribe_box() -> str:
   <p style="font-size:.78rem;">{email_block}</p>
 </div>"""
 
-NAV_LINKS = """<a href="./">오늘의 발행</a>
-      <a href="archive/">아카이브·검색</a>
-      <a href="widget.html">위젯 심기</a>
-      <a href="feed.xml">RSS</a>"""
+def nav_links(prefix: str = "") -> str:
+    """상단 메뉴. prefix는 docs/ 기준 상대경로 보정값 — docs/index.html은 "",
+    docs/archive/YYYY-MM-DD.html은 "../" (예전엔 같은 HTML을 archive/에도 그대로
+    저장해서 css/js/메뉴 링크가 전부 archive/css/... 로 깨졌다. canonical이
+    아카이브 쪽이라 검색엔진·애드센스 심사도 깨진 페이지를 보게 됐었다)."""
+    return f"""<a href="{prefix or './'}">오늘의 발행</a>
+      <a href="{prefix}archive/">아카이브·검색</a>
+      <a href="{prefix}guide.html">신청 가이드</a>
+      <a href="{prefix}widget.html">위젯 심기</a>
+      <a href="{prefix}about.html">소개</a>"""
+
+
+NAV_LINKS = nav_links()
+ARCHIVE_NAV_LINKS = nav_links("../")
+
+# 애드센스 "가치 없는 콘텐츠" 반려 대응 — 공고 목록(외부 데이터)만 있는 얇은
+# 페이지가 되지 않도록, 매일 페이지에 운영자가 직접 쓴 이용 안내를 함께 싣는다.
+# 더 자세한 내용은 정적 파일 docs/guide.html, docs/about.html (자동 덮어쓰기 안 됨).
+SITE_GUIDE_HTML = """<section class="guide-article">
+  <h2>지원금헌터 이용 안내</h2>
+  <p>지원금헌터는 정부 공식 창구인 <strong>기업마당(bizinfo.go.kr)</strong>과 <strong>K-Startup(k-startup.go.kr)</strong>에 올라오는 지원사업 공고를 매일 아침 자동으로 모아, <strong>마감이 가까운 순서</strong>로 정리해 보여 주는 무료 서비스입니다. 수백 건의 공고를 일일이 확인하지 않아도 "이번 주에 놓치면 안 되는 공고"를 한눈에 볼 수 있습니다.</p>
+  <ul>
+    <li><strong>D-day 배지</strong>: 빨간색은 3일 이내, 주황색은 일주일 이내 마감입니다. "⚠️"는 예산 소진 시 마감처럼 날짜가 정해지지 않은 공고로, 빨리 신청할수록 유리합니다.</li>
+    <li><strong>태그</strong>: 예비창업·소상공인·청년 등 대상과 지역(📍)을 공고 제목과 기관명으로 자동 분류한 것입니다. 정확한 자격 요건은 반드시 원문 공고에서 확인하세요.</li>
+    <li><strong>신청 방법</strong>: 공고 제목을 누르면 원문 페이지로 이동합니다. 신청은 지원금헌터가 아닌 해당 기관 사이트에서 직접 진행합니다.</li>
+  </ul>
+  <p>처음이라면 <a href="{prefix}guide.html">지원사업 신청 가이드</a>에서 공고 읽는 법, 준비 서류, 사업계획서 작성 요령, 지원금 사칭 사기 구별법을 먼저 확인해 보세요.</p>
+</section>"""
 
 # 이메일 클라이언트는 외부 스타일시트(<link>)를 대부분 무시하거나 잘라낸다.
 # docs/css/style.css의 CSS 변수(var(--text) 등)도 구버전 Outlook 등에서
@@ -316,7 +340,9 @@ EMAIL_STYLE = """<style>
 </style>"""
 
 
-def render_html(entries: list[dict], today: date, *, embeddable: bool = False, for_email: bool = False) -> str:
+def render_html(entries: list[dict], today: date, *, embeddable: bool = False, for_email: bool = False, asset_prefix: str = "") -> str:
+    # asset_prefix: docs/archive/ 아래에 저장할 땐 "../" — css/js/메뉴 상대경로 보정용
+    p = asset_prefix
     # entries는 이미 "날짜 있는 건 먼저, 마감 임박순"으로 정렬돼 있으므로
     # 앞쪽 TOP_N개를 그대로 잘라 쓰면 된다.
     top = entries[:TOP_N]
@@ -403,10 +429,10 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
 {f'<meta property="og:image:height" content="630">' if og_image_url else ''}
 {f'<meta name="twitter:card" content="summary_large_image">' if og_image_url else ''}
 {f'<meta name="twitter:image" content="{escape(og_image_url)}">' if og_image_url else ''}
-<link rel="alternate" type="application/rss+xml" title="지원금헌터 RSS" href="feed.xml">
+<link rel="alternate" type="application/rss+xml" title="지원금헌터 RSS" href="{p}feed.xml">
 {json_ld}""" if not for_email else ""
     subscribe_html = "" if (for_email or embeddable) else render_subscribe_box()
-    css_link = EMAIL_STYLE if for_email else '<link rel="stylesheet" href="css/style.css">'
+    css_link = EMAIL_STYLE if for_email else f'<link rel="stylesheet" href="{p}css/style.css">'
     head_extra = "" if for_email else f"{_ga_snippet()}{_adsense_head_snippet()}"
     # 2026-09-28: 애드센스가 "가치가 별로 낮은 콘텐츠"로 반려 - 공고 목록 위주의
     # 얇은 본문에 광고가 5개(top/mid/bottom/좌우 사이드)나 붙어 광고 밀도가
@@ -420,14 +446,14 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
     affiliate_html_bottom = "" if (for_email or embeddable) else render_affiliate_banner("bottom")
     header_nav = "" if for_email else f"""<header>
   <div class="header-inner">
-    <a class="logo" href="./"><span class="logo-mark">🎯</span>지원금헌터</a>
+    <a class="logo" href="{p or './'}"><span class="logo-mark">🎯</span>지원금헌터</a>
     <nav>
-      {NAV_LINKS}
+      {nav_links(p)}
     </nav>
     <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()" aria-label="다크모드 전환">🌙</button>
   </div>
 </header>"""
-    scripts = "" if for_email else '<script src="js/common.js"></script>'
+    scripts = "" if for_email else f'<script src="{p}js/common.js"></script>'
 
     body_count = f"오늘 마감임박 {len(top)}건 포함, 총 {len(entries)}건"
     soonest = top[0]["days_left"] if top and top[0]["days_left"] is not None else None
@@ -437,17 +463,17 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
     biz_count = sum(1 for e in entries if "소상공인" in e["tags"])
     intl_count = len(intl)
 
-    quicknav = """<div class="quicknav">
+    quicknav = f"""<div class="quicknav">
       <a href="#top3"><span class="qicon">🔥</span>마감임박</a>
       <a href="#all"><span class="qicon">📂</span>전체공고</a>
       <a href="#intl"><span class="qicon">🌐</span>해외</a>
-      <a href="archive/"><span class="qicon">🔍</span>아카이브</a>
-      <a href="widget.html"><span class="qicon">🧩</span>위젯</a>
-    </div>""" if intl_count else """<div class="quicknav">
+      <a href="{p}archive/"><span class="qicon">🔍</span>아카이브</a>
+      <a href="{p}guide.html"><span class="qicon">📘</span>신청 가이드</a>
+    </div>""" if intl_count else f"""<div class="quicknav">
       <a href="#top3"><span class="qicon">🔥</span>마감임박</a>
       <a href="#all"><span class="qicon">📂</span>전체공고</a>
-      <a href="archive/"><span class="qicon">🔍</span>아카이브</a>
-      <a href="widget.html"><span class="qicon">🧩</span>위젯</a>
+      <a href="{p}archive/"><span class="qicon">🔍</span>아카이브</a>
+      <a href="{p}guide.html"><span class="qicon">📘</span>신청 가이드</a>
     </div>"""
 
     hero = "" if for_email else f"""<section class="hero">
@@ -488,6 +514,8 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
   <a class="btn-secondary" href="https://smilemaskl.github.io/PulseGuard/" target="_blank" rel="noopener">바로가기</a>
 </div>"""
 
+    site_guide = SITE_GUIDE_HTML.replace("{prefix}", p)
+
     body_main = f"""<div class="page-shell">
 {left_side}
 <main>
@@ -507,6 +535,7 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
 {rest_html or "<li>추가 공고가 없습니다.</li>"}
 </ul>
 {f'<div id="intl">{intl_section}</div>' if intl_section else ""}
+{site_guide}
 {related_site}
 {affiliate_html_bottom}
 {bottom_ad}
@@ -526,7 +555,9 @@ def render_html(entries: list[dict], today: date, *, embeddable: bool = False, f
 
     footer = "" if for_email else f"""<footer>
   지원금헌터{f' · 문의/수신거부: {escape(CONTACT_EMAIL)}로 회신' if CONTACT_EMAIL else ''} ·
-  <a href="{page_url}privacy.html">개인정보처리방침</a>
+  <a href="{page_url or p}guide.html">신청 가이드</a> ·
+  <a href="{page_url or p}about.html">소개</a> ·
+  <a href="{page_url or p}privacy.html">개인정보처리방침</a>
 </footer>"""
     footer_email = f'<p style="font-size:.75rem;color:#888">지원금헌터{f" · 문의/수신거부: {escape(CONTACT_EMAIL)}로 회신" if CONTACT_EMAIL else ""} · <a href="{page_url}privacy.html">개인정보처리방침</a> · 이 메일은 구독 신청하신 분께만 발송됩니다.</p>' if for_email else ""
 
@@ -658,9 +689,7 @@ def render_archive_index() -> str:
   <div class="header-inner">
     <a class="logo" href="../"><span class="logo-mark">🎯</span>지원금헌터</a>
     <nav>
-      <a href="../">오늘의 발행</a>
-      <a href="../widget.html">위젯 심기</a>
-      <a href="../feed.xml">RSS</a>
+      {ARCHIVE_NAV_LINKS}
     </nav>
     <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()" aria-label="다크모드 전환">🌙</button>
   </div>
@@ -671,7 +700,7 @@ def render_archive_index() -> str:
 <ul class="digest-list" id="results"></ul>
 {_ad_slot("bottom")}
 </main>
-<footer>지원금헌터 · <a href="../privacy.html">개인정보처리방침</a></footer>
+<footer>지원금헌터 · <a href="../guide.html">신청 가이드</a> · <a href="../about.html">소개</a> · <a href="../privacy.html">개인정보처리방침</a></footer>
 <script src="../js/common.js"></script>
 <script>
   let data = [];
@@ -719,6 +748,8 @@ def render_sitemap(today: date) -> str:
         urls.append((f"{base}archive/{fname}", d, "never", "0.5"))
 
     urls.append((f"{base}archive/", today, "daily", "0.6"))
+    urls.append((f"{base}guide.html", today, "monthly", "0.7"))
+    urls.append((f"{base}about.html", today, "yearly", "0.3"))
     urls.append((f"{base}privacy.html", today, "yearly", "0.2"))
 
     entries_xml = "\n".join(
@@ -756,6 +787,37 @@ def render_kakao_text(entries: list[dict], today: date, subject: str) -> str:
     return "\n".join(lines)
 
 
+def repair_old_archives() -> int:
+    """예전 버전이 만든 docs/archive/YYYY-MM-DD.html은 css/js/메뉴가 상대경로
+    그대로라 스타일이 깨져 있다. 매 실행마다 "../" 보정을 적용한다 — 이미
+    고쳐진 파일은 패턴이 안 맞아 그대로 두므로 여러 번 돌려도 안전하다."""
+    fixes = [
+        ('href="css/', 'href="../css/'),
+        ('src="js/', 'src="../js/'),
+        ('href="./"', 'href="../"'),
+        ('href="archive/"', 'href="../archive/"'),
+        ('href="widget.html"', 'href="../widget.html"'),
+        ('href="feed.xml"', 'href="../feed.xml"'),
+    ]
+    if not os.path.isdir(ARCHIVE_DIR):
+        return 0
+    repaired = 0
+    for fname in os.listdir(ARCHIVE_DIR):
+        if not fname.endswith(".html") or fname == "index.html":
+            continue
+        path = os.path.join(ARCHIVE_DIR, fname)
+        with open(path, encoding="utf-8") as f:
+            text = f.read()
+        new_text = text
+        for old, new in fixes:
+            new_text = new_text.replace(old, new)
+        if new_text != text:
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(new_text)
+            repaired += 1
+    return repaired
+
+
 def main() -> None:
     today = today_kst()
     entries = build_entries(today)
@@ -767,8 +829,12 @@ def main() -> None:
     html = render_html(entries, today)
     with open(os.path.join(DOCS_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
+    # 아카이브는 docs/archive/ 한 단계 아래라 css/js/메뉴 경로를 "../"로 보정해서 따로 렌더링
     with open(os.path.join(ARCHIVE_DIR, f"{today.isoformat()}.html"), "w", encoding="utf-8") as f:
-        f.write(html)
+        f.write(render_html(entries, today, asset_prefix="../"))
+    repaired = repair_old_archives()
+    if repaired:
+        print(f"[build_digest] 예전 아카이브 {repaired}개 경로 보정")
     with open(os.path.join(ARCHIVE_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(render_archive_index())
 
