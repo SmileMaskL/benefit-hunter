@@ -27,6 +27,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 from datetime import date
 from html import escape
 
@@ -787,6 +788,33 @@ def render_kakao_text(entries: list[dict], today: date, subject: str) -> str:
     return "\n".join(lines)
 
 
+_COUPANG_HIDE_OPEN = "<!--COUPANG-HIDDEN "
+_COUPANG_HIDE_CLOSE = " COUPANG-HIDDEN-->"
+_COUPANG_BLOCK_RE = re.compile(
+    r'<div class="related-site coupang-widget">.*?</div>\s*</div>', re.S
+)
+_COUPANG_HIDDEN_RE = re.compile(
+    re.escape(_COUPANG_HIDE_OPEN) + r"(.*?)" + re.escape(_COUPANG_HIDE_CLOSE), re.S
+)
+
+
+def _toggle_old_coupang(text: str) -> str:
+    """예전 아카이브에 박혀 있는 쿠팡 위젯을 현재 설정에 맞춘다.
+    COUPANG_TRACKING_CODE가 비어 있으면(애드센스 심사 중) 위젯 블록을
+    주석으로 감싸 숨기고, 값이 다시 등록되면 주석을 풀어 원래대로 보인다.
+    이미 원하는 상태인 파일은 바뀌지 않으므로 매번 돌려도 안전하다."""
+    if COUPANG_TRACKING_CODE:
+        return _COUPANG_HIDDEN_RE.sub(lambda m: m.group(1), text)
+    hidden_spans = [m.span() for m in _COUPANG_HIDDEN_RE.finditer(text)]
+
+    def _hide(m: "re.Match[str]") -> str:
+        if any(s <= m.start() < e for s, e in hidden_spans):
+            return m.group(0)
+        return _COUPANG_HIDE_OPEN + m.group(0) + _COUPANG_HIDE_CLOSE
+
+    return _COUPANG_BLOCK_RE.sub(_hide, text)
+
+
 def repair_old_archives() -> int:
     """예전 버전이 만든 docs/archive/YYYY-MM-DD.html은 css/js/메뉴가 상대경로
     그대로라 스타일이 깨져 있다. 매 실행마다 "../" 보정을 적용한다 — 이미
@@ -811,6 +839,7 @@ def repair_old_archives() -> int:
         new_text = text
         for old, new in fixes:
             new_text = new_text.replace(old, new)
+        new_text = _toggle_old_coupang(new_text)
         if new_text != text:
             with open(path, "w", encoding="utf-8") as f:
                 f.write(new_text)
