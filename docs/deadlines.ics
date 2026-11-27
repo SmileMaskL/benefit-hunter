@@ -66,32 +66,18 @@ SUMMARY:[마감] 서부 경기문화창조허브 공간입주 18기 입주기업
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179856
 END:VEVENT
 BEGIN:VEVENT
+UID:8cbb65b5c1d5a41729060d2cd36a0409@benefit-hunter
+DTSTAMP:20261202T000000Z
+DTSTART;VALUE=DATE:20261202
+SUMMARY:[마감] 2026년 시흥 R-AI-S-E 워케이션 참가자 모집 (조슈아파트너스 주식회사)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179904
+END:VEVENT
+BEGIN:VEVENT
 UID:41b8c4c4e417e0141bb47e34573d57e8@benefit-hunter
 DTSTAMP:20261202T000000Z
 DTSTART;VALUE=DATE:20261202
 SUMMARY:[마감] 2026 첨단산업 스케일업 AX·PoC 지원 성과공유회 (경기창조경제혁신센터)
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179854
-END:VEVENT
-BEGIN:VEVENT
-UID:9f50ee62b1bf8b39e074d94246bb9a62@benefit-hunter
-DTSTAMP:20261202T000000Z
-DTSTART;VALUE=DATE:20261202
-SUMMARY:[마감] 「2026년 제4회 부기테크 투자쇼 」일반 참가자(참관객) 모집 (부산기술창업투자원)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179883
-END:VEVENT
-BEGIN:VEVENT
-UID:459c9638a2f4c23d38e5b06247097019@benefit-hunter
-DTSTAMP:20261202T000000Z
-DTSTART;VALUE=DATE:20261202
-SUMMARY:[마감] 서울디자인런 2026 - 돈 없이도 줄 세우는 브랜드의 비밀 ((주)오픈놀)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179886
-END:VEVENT
-BEGIN:VEVENT
-UID:c159160695f1de8dc7d674ac4d8c71e1@benefit-hunter
-DTSTAMP:20261202T000000Z
-DTSTART;VALUE=DATE:20261202
-SUMMARY:[마감] 2026 AI × 바이오 융합기술 파트너링데이 개최 ((주)시공아이피씨)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179842
 END:VEVENT
 BEGIN:VEVENT
 UID:6f23cb5b1b16dd3570a120faed5de3c6@benefit-hunter
@@ -220,6 +206,13 @@ SUMMARY:[마감] 2026년 4분기 충북혁신도시 공공기관 연관산업 �
 URL:https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000128144
 END:VEVENT
 BEGIN:VEVENT
+UID:210225af6a45b5b660b89e248375d0de@benefit-hunter
+DTSTAMP:20261210T000000Z
+DTSTART;VALUE=DATE:20261210
+SUMMARY:[마감] 「유니콘 랩(U-Lab) 대구」2026년 3차 입주기업 모집 공고 (대구창조경제혁신센터)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179903
+END:VEVENT
+BEGIN:VEVENT
 UID:7b3d7f4fe6672a2304dffb2705980a2b@benefit-hunter
 DTSTAMP:20261210T000000Z
 DTSTART;VALUE=DATE:20261210
@@ -246,6 +239,13 @@ DTSTAMP:20261211T000000Z
 DTSTART;VALUE=DATE:20261211
 SUMMARY:[마감] 2026년 3차 포텐셜씨드(Potential Seed) 경작형 프로그램 참여기업 모집 공고 (울산창조경제혁신센터)
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179860
+END:VEVENT
+BEGIN:VEVENT
+UID:34fe73e121f2a75784ffc6671a6b9344@benefit-hunter
+DTSTAMP:20261213T000000Z
+DTSTART;VALUE=DATE:20261213
+SUMMARY:[마감] 2027년 서울소셜벤처허브 1차 신규 입주기업 모집 (서울소셜벤처허브)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179850
 END:VEVENT
 BEGIN:VEVENT
 UID:b9b1152308c3602b0476578511a0b3b0@benefit-hunter
