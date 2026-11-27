@@ -3,27 +3,6 @@ VERSION:2.0
 PRODID:-//benefit-hunter//deadlines//KO
 CALSCALE:GREGORIAN
 BEGIN:VEVENT
-UID:08bea50f125cfdf680f36b8ec05e44da@benefit-hunter
-DTSTAMP:20261126T000000Z
-DTSTART;VALUE=DATE:20261126
-SUMMARY:[마감] 2026 여성벤처활성화사업 「여성벤처&스타트업 혁신성장 포럼」참여자 모집 ((사)한국여성벤처협회)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179775
-END:VEVENT
-BEGIN:VEVENT
-UID:15bcac1aa5cd75add8a12d3af32cad45@benefit-hunter
-DTSTAMP:20261126T000000Z
-DTSTART;VALUE=DATE:20261126
-SUMMARY:[마감] 한국공항공사 창업보육센터 입주기업 모집 공고 (한국공항공사)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179731
-END:VEVENT
-BEGIN:VEVENT
-UID:d47a829f55e43f28661a1eb4b5e9d948@benefit-hunter
-DTSTAMP:20261126T000000Z
-DTSTART;VALUE=DATE:20261126
-SUMMARY:[마감] 2026 여성벤처 글로벌 컨퍼런스 ((사)한국여성벤처협회)
-URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179743
-END:VEVENT
-BEGIN:VEVENT
 UID:6bd4136401d0f13e32cdc14fb1c55721@benefit-hunter
 DTSTAMP:20261127T000000Z
 DTSTART;VALUE=DATE:20261127
@@ -92,6 +71,27 @@ DTSTAMP:20261202T000000Z
 DTSTART;VALUE=DATE:20261202
 SUMMARY:[마감] 2026 첨단산업 스케일업 AX·PoC 지원 성과공유회 (경기창조경제혁신센터)
 URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179854
+END:VEVENT
+BEGIN:VEVENT
+UID:9f50ee62b1bf8b39e074d94246bb9a62@benefit-hunter
+DTSTAMP:20261202T000000Z
+DTSTART;VALUE=DATE:20261202
+SUMMARY:[마감] 「2026년 제4회 부기테크 투자쇼 」일반 참가자(참관객) 모집 (부산기술창업투자원)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179883
+END:VEVENT
+BEGIN:VEVENT
+UID:459c9638a2f4c23d38e5b06247097019@benefit-hunter
+DTSTAMP:20261202T000000Z
+DTSTART;VALUE=DATE:20261202
+SUMMARY:[마감] 서울디자인런 2026 - 돈 없이도 줄 세우는 브랜드의 비밀 ((주)오픈놀)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179886
+END:VEVENT
+BEGIN:VEVENT
+UID:c159160695f1de8dc7d674ac4d8c71e1@benefit-hunter
+DTSTAMP:20261202T000000Z
+DTSTART;VALUE=DATE:20261202
+SUMMARY:[마감] 2026 AI × 바이오 융합기술 파트너링데이 개최 ((주)시공아이피씨)
+URL:http://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&id=179842
 END:VEVENT
 BEGIN:VEVENT
 UID:6f23cb5b1b16dd3570a120faed5de3c6@benefit-hunter
